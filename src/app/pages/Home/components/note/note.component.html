@@ -1,0 +1,43 @@
+<div class="container ci-component-note">
+    <div class="row mb-3 align-items-center">
+        <img
+            (click)="onBackHome()"
+            class="col-1 img-back"
+            src="assets/svg/back_home.svg"
+        />
+        <div
+            class="col"
+            class="ci-body-text-h1"
+        >List Note Provider</div>
+    </div>
+    <div
+        class="row ci-note-border"
+        *ngFor="let item of notes"
+    >
+        <div class="col-11">
+            <div class="ci-note-title-date">
+                <div class="ci-body-text-h1">{{item?.Title}}</div>
+                <div class="date">{{item.NoteDate | date:'dd.MM.yyyy'}}</div>
+            </div>
+            <p class="ci-white-space ci-item-content">{{item?.Content}}</p>
+        </div>
+        <div class="col-1 align-self-center">
+            <img
+                (click)="onUpdateNote(item)"
+                class="img-icon"
+                src="assets/svg/edit-inline.svg"
+            />
+            <img
+                class="img-icon-del"
+                (click)="onDeleteNote(item)"
+                src="assets/svg/deleteinline.svg"
+            />
+        </div>
+    </div>
+    <div class="create-note">
+        <img
+            (click)="createNote()"
+            src="assets/svg/createnote.svg"
+        >
+    </div>
+</div>

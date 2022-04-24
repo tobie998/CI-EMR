@@ -1,0 +1,12 @@
+@import "../../../../shared/scss/variables.scss";
+::ng-deep .diagnosis {
+    .mat-tab-labels {
+        background-color: $ci-color-white;
+        border-radius: 15px;
+        height: 50px;
+    }
+}
+
+.height-81 {
+    height: 81vh;
+}

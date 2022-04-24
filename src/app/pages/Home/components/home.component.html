@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <app-list-patient
+                [config]="configRecent"
+                [data]="listRecent"
+                (callback)="routerLinkListPatient($event)"
+            >
+            </app-list-patient>
+        </div>
+        <div class="col-4">
+            <app-user></app-user>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-8">
+            <app-list-patient
+                [config]="configOpenClients"
+                [data]="listOpenClients"
+                (callback)="routerLinkListPatient($event)"
+            >
+            </app-list-patient>
+        </div>
+        <div class="col-4">
+            <div class="note-container insideShadow">
+                <div class="note-header ci-body-text">{{ "NOTE" | translate }}</div>
+                <div class="note-body">
+                    <div
+                        class="note-item"
+                        *ngFor="let note of notes"
+                        (click)="openDialogUpdate(note)"
+                    >
+                        <div class="note-title">
+                            <div class="note-left">
+                                {{ note?.Title }}
+                            </div>
+                            <span class="note-time">
+                                {{ note?.NoteDate | date: "MM/dd/yyyy" }}
+                            </span>
+                        </div>
+                        <div class="note-preview">
+                            {{ note?.Content }}
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+                <div class="note-footer">
+                    <span
+                        class="ci-caption"
+                        (click)="showAllNote()"
+                    >{{ count }} {{ "NOTE" | translate }}</span>
+                    <img
+                        class="float-right"
+                        (click)="createNote()"
+                        src="assets/svg/createnote.svg"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <div class="today">Today, <span>{{getTime}}</span></div>
+            <app-timeline></app-timeline>
+            <div class="contact_img">
+                <img src="assets/images/contract.jpg" />
+            </div>
+        </div>
+    </div>
+</div>

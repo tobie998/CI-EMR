@@ -1,0 +1,200 @@
+<div class="ci-vital ci-p-30-table-patient outsideShadow margin-vital">
+    <div
+        class="c-loading"
+        [class.c-loading--hidden]="isLoading"
+    >
+        <div
+            class="c-loading__status spinner-border m-5"
+            role="status"
+        >
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div>
+        <div class="row m-0">
+            <div
+                *ngIf="!isTable"
+                class="col-10 row pr-5"
+            >
+                <div
+                    *ngFor="let item of model.series;let ix = index"
+                    class="d-flex p-0  ci-align-items-center"
+                    [class]="ix===1 || ix===0 ?'col-3':'col-2'"
+                    (click)="onSelectItem(item)"
+                >
+                    <span
+                        class="ci-badge-defaut mr-2"
+                        [style.background-color]="!item.hide ? item.color : ''"
+                    ></span>
+                    <div [style.opacity]="item.hide ? '0.5': '1'">
+                        {{item.name}}
+                    </div>
+                </div>
+            </div>
+            <div
+                class="col-10 row"
+                *ngIf="isTable"
+            ></div>
+            <div class="col-2 p-0 next-step">
+                <!-- <button (click)="onClickSort()">sort</button> -->
+                <button
+                    (click)="onNextList()"
+                    class="ci-button-next vitals-button-next justify-content-center"
+                    [disabled]="isData"
+                >
+                    <img
+                        class="img-back-table"
+                        src="assets/svg/back.svg"
+                    >
+                    {{textSelect}}
+                    <img
+                        class="img-back-chart"
+                        src="assets/svg/next.svg"
+                    >
+                </button>
+            </div>
+        </div>
+        <div
+            *ngIf="!isTable"
+            class="row"
+        >
+            <div class="col-10 position-r">
+                <div
+                    *ngIf="leftRight === false"
+                    [style.background-color]="color"
+                    class="text-left-chart"
+                >
+                    {{text}}
+                </div>
+                <span class="ci-badge-defaut-status ci-bg-BP position-a"></span>
+                <span class="ci-badge-defaut-status ci-bg-Spo2 position-a"></span>
+            </div>
+            <div class="col-2 position-r">
+                <div
+                    *ngIf="leftRight === true"
+                    class="text-right-chart text-align-right"
+                    [style.background-color]="color"
+                >
+                    <div
+                        *ngIf="text === 'C'"
+                        class="unit-kendo-chart"
+                    >&deg;</div>
+                    {{text}}
+                </div>
+                <span class="ci-badge-defaut-status ci-bg-RR position-a"></span>
+                <span class="ci-badge-defaut-status ci-bg-Pulse position-a"></span>
+                <span class="ci-badge-defaut-status ci-bg-Temperature position-a"></span>
+            </div>
+        </div>
+        <kendo-chart
+            class="z-1"
+            *ngIf="!isTable"
+            (seriesClick)="onSeriesClick($event)"
+        >
+            <kendo-chart-area background="#f6f6f6">
+            </kendo-chart-area>
+            <kendo-chart-legend [visible]="legendVisible">
+            </kendo-chart-legend>
+            <kendo-chart-value-axis>
+                <kendo-chart-value-axis-item
+                    *ngFor="let item of model.valueAxes"
+                    [name]="item.name"
+                    [min]="item.min"
+                    [max]="item.max"
+                    [color]="item.color"
+                    [labels]="valueAxisLabels"
+                >
+                </kendo-chart-value-axis-item>
+            </kendo-chart-value-axis>
+            <kendo-chart-category-axis>
+                <kendo-chart-category-axis-item
+                    [(categories)]="model.categories"
+                    [axisCrossingValue]="crossingValues"
+                >
+                    <kendo-chart-category-axis-item-labels font="16">
+                    </kendo-chart-category-axis-item-labels>
+                </kendo-chart-category-axis-item>
+            </kendo-chart-category-axis>
+            <kendo-chart-series>
+                <kendo-chart-series-item
+                    *ngFor="let item of model.seriesSub"
+                    [data]="item.data"
+                    [type]="item.type"
+                    [stack]="item.stack"
+                    [color]="item.color"
+                    [axis]="item.axis"
+                >
+                    <kendo-chart-series-item-labels-from
+                        *ngIf="item.checked"
+                        [content]="labelContentFrom"
+                    >
+                    </kendo-chart-series-item-labels-from>
+                    <kendo-chart-series-item-labels-to
+                        *ngIf="item.checked"
+                        [content]="labelContentTo"
+                    >
+                    </kendo-chart-series-item-labels-to>
+                    <kendo-chart-series-item-labels *ngIf="item.checked"></kendo-chart-series-item-labels>
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+        </kendo-chart>
+        <div class="scoll-vital">
+            <div class="overTable">
+            </div>
+            <table
+                *ngIf="isTable"
+                class="table-list-vital "
+            >
+                <tr>
+                    <th
+                        rowspan="2"
+                        class="border-radius-30-0 text-align-center fixh123 ci-font-regular"
+                    >
+                        Name
+                    </th>
+                    <th
+                        class="text-align-center b-bt-1 ci-font-regular"
+                        *ngFor="let item of modelData.Date2; let ix = index"
+                        [attr.colspan]="item?.colspan"
+                        [class]="(ix + 1) == modelData.Date2.length ? 'border-radius-t-r-30' : 'border-right'"
+                    >
+                        {{item?.ResultDate | date: 'MM/dd/yyyy'}}</th>
+                </tr>
+                <tr>
+                    <th
+                        class="text-align-center ci-font-regular"
+                        *ngFor="let item of modelData.Time2; let ix = index"
+                        [class]="(ix + 1) == modelData.Time2.length ? 'border-radius-b-r-30' : 'border-right'"
+                    >
+                        {{item?.ResultDate | date: 'shortTime'}}</th>
+                </tr>
+                <br>
+                <ng-container *ngFor="let item of data; let ix = index">
+                    <tr>
+                        <td
+                            [style.background-color]="(ix % 2) !== 0 ? 'white': '#F0F0F0'"
+                            class="border-radius-30-0 fixh123 "
+                        >
+                            {{item?.Name === 'Temperature' ? item?.Name +'(&#8451;)' : item?.Name }}
+                        </td>
+                        <td
+                            class="text-align-center "
+                            [style.background-color]="(ix % 2) !== 0 ? 'white': '#F0F0F0'"
+                            *ngFor="let a of item.Value; let ix2 = index"
+                            [class]="(ix2 + 1) == item.Value.length ? 'border-radius-0-30' : ''"
+                            (click)="onOpenDetail(ix2)"
+                        >{{a || '--'}}</td>
+                    </tr>
+                    <br>
+                </ng-container>
+            </table>
+        </div>
+    </div>
+    <div class="ci-group-btn vital-button">
+        <img
+            (click)="openDialog()"
+            src="assets/svg/Bottomadd.svg"
+        />
+        <img src="assets/svg/print.svg" />
+    </div>
+</div>

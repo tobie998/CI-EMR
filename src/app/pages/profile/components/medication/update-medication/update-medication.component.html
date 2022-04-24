@@ -1,0 +1,128 @@
+<div class="row ci-align-items-center">
+    <div class="col-12 ci-body-text-h1 ci-dflex-modal">
+        {{'UPDATEMEDICATION' | translate}}
+        <div>
+            <button
+                class="ci-button-cancel"
+                (click)="closeDialog()"
+            >
+                {{ "CANCEL" | translate }}
+            </button>
+            <button
+                class="ci-button-save"
+                (click)="onUpdateMedication()"
+            >
+                {{ "SAVE" | translate }}
+            </button>
+        </div>
+
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2 ci-body-text-h3">{{'PURPOSE' | translate}}:</div>
+    <input
+        class="ci-input-text-bt col-10"
+        type="text"
+        [(ngModel)]="model.Purpose"
+        name="Purpose" disabled
+    />
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2 ci-body-text-h3">{{'NAME-1' | translate}}:</div>
+    <input
+        class="ci-input-text-bt col-10"
+        [(ngModel)]="model.DrugName"
+        name="DrugName" disabled
+    />
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2 ci-body-text-h3">{{'DOSE' | translate}}:</div>
+    <input
+        class="ci-input-text-bt col-10"
+        [(ngModel)]="model.DoseValue"
+        name="DoseValue"
+    />
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2 ci-body-text-h3">{{'NUMBER' | translate}}:</div>
+    <input
+        type="number"
+        class="ci-input-text-bt col-1"
+        [(ngModel)]="model.Number"
+        name="Number"
+    />
+    <div class="col-2">
+        <select
+            class="ci-select-defaut"
+            [(ngModel)]="model.NumberUnit"
+        >
+            <option value="1">pills</option>
+            <option value="2">capsule</option>
+            <option value="3">Injection</option>
+            <option value="4">Gel</option>
+        </select>
+    </div>
+    <div class="col-1 ci-body-text-h3 mr-1">{{'FREQUENCY' | translate}}:</div>
+    <input
+        class="ci-input-text-bt col-1"
+        type="number"
+        [(ngModel)]="model.FrequencyValue"
+        name="FrequencyValue"
+    />
+    <div class="col-2">
+        <select
+            class="ci-select-defaut"
+            [(ngModel)]="model.FrequencyUnit"
+        >
+            <option value="times daily">{{'TIMESDAILY' | translate}}</option>
+            <option value="times weekly">{{'TIMESWEEKLY' | translate}}</option>
+        </select>
+        <!-- <button [class]="model.FrequencyUnit == 'times daily' ? 'ci-button-exam' : 'ci-button-exam-active'"
+            (click)="model.FrequencyUnit = 'times daily'">{{'TIMESDAILY' | translate}}</button> -->
+    </div>
+    <!-- <div class="col-2">
+        <button [class]="model.FrequencyUnit == 'times weekly' ? 'ci-button-exam' : 'ci-button-exam-active'"
+            (click)="model.FrequencyUnit = 'times weekly'">{{'TIMESWEEKLY' | translate}}</button>
+    </div> -->
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2 ci-body-text-h3">{{'DURATION' | translate}}:</div>
+    <div class="col-1 ci-body-text-h3">{{'FROM' | translate}}</div>
+    <input
+        class="ci-input-text-bt col-3"
+        type="date"
+        [(ngModel)]="model.StartDate"
+        name="StartDate"
+    />
+    <div class="col-1 ci-body-text-h3">{{'TO' | translate}}</div>
+    <input
+        class="ci-input-text-bt col-3"
+        type="date"
+        [(ngModel)]="model.EndDate"
+        name="EndDate"
+    />
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2 ci-body-text-h3">{{'ROUTE' | translate}}:</div>
+    <select
+        class="ci-select-defaut col-10"
+        [(ngModel)]="model.DrugrouteId"
+        name="DrugrouteId"
+    >
+        <option
+            *ngFor="let item of listDrugRouter"
+            [value]="item.DrugrouteId"
+        >
+            {{ item.Name }}
+        </option>
+    </select>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2 ci-body-text-h3">{{'DETAILS' | translate}}:</div>
+    <input
+        class="ci-input-text-bt col-10"
+        [(ngModel)]="model.Detail"
+        name="Detail"
+        type="text"
+    />
+</div>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+  <g id="Bottom_add" data-name="Bottom add" transform="translate(-13.5 -1.206)">
+    <g id="_add_circle_outline" data-name=" add_circle_outline" transform="translate(14 1.707)">
+      <rect id="Path" width="28" height="28" transform="translate(0 -0.001)" fill="rgba(0,0,0,0)"/>
+      <path id="Icon" d="M14,28A14,14,0,1,1,28,14,14.016,14.016,0,0,1,14,28ZM14,2.8A11.2,11.2,0,1,0,25.2,14,11.214,11.214,0,0,0,14,2.8ZM14,21a1.4,1.4,0,0,1-1.4-1.4V15.4H8.4a1.4,1.4,0,1,1,0-2.8h4.2V8.4a1.4,1.4,0,1,1,2.8,0v4.2h4.2a1.4,1.4,0,1,1,0,2.8H15.4v4.2A1.4,1.4,0,0,1,14,21Z" transform="translate(0 -0.001)" fill="#707070" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,96 @@
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-12 ci-dflex-modal ">
+            <div class="ci-body-text-h1"> {{ "ADD SERVICES" | translate }} </div>
+            <div>
+                <button
+                    class="ci-button-cancel"
+                    (click)="closeDialog()"
+                >
+                    {{ "CANCEL" | translate }}
+                </button>
+                <button
+                    class="ci-button-save"
+                    (click)="updateInvoice()"
+                >
+                    {{ "SAVE" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row invoice-scroll-modal">
+        <div class="col-3 ci-subtitle align-self-center">
+            {{ "CATEGORY" | translate }}:
+        </div>
+        <div class="col-9 align-self-center">
+            <select
+                class="ci-select-defaut"
+                [(ngModel)]="model.ServiceType"
+                name="ServiceType"
+            >
+                <option
+                    *ngFor="let item of ListService"
+                    [value]="item.NumericKey"
+                >
+                    {{ item.Value }}
+                </option>
+            </select>
+        </div>
+        <div class="col-3 ci-subtitle align-self-center">
+            {{ "NAME-2" | translate }}:
+        </div>
+        <div class="col-9 align-self-center">
+            <!-- <select
+                class="ci-select-defaut"
+                [(ngModel)]="model.ServiceId"
+                name="ServiceId"
+            >
+                <option
+                    *ngFor="let item of ListExam"
+                    [value]="item.ExamId"
+                >
+                    {{ item.Name }}
+                </option>
+            </select> -->
+            <input
+                class="ci-input-text-bt"
+                [(ngModel)]="model.Name"
+                name="Name"
+                type="text"
+            />
+        </div>
+        <div class="col-3 ci-subtitle align-self-center">
+            {{ "DESCRIPTION" | translate }}:
+        </div>
+        <div class="col-9 align-self-center">
+            <input
+                class="ci-input-text-bt"
+                [(ngModel)]="model.Description"
+                name="Description"
+            />
+        </div>
+        <div class="col-3 ci-subtitle align-self-center">
+            {{ "PRICE" | translate }}:
+        </div>
+        <div class="col-9 align-self-center">
+            <input
+                class="ci-input-text-bt"
+                [(ngModel)]="model.Price"
+                name="price"
+                type="number"
+            />
+        </div>
+        <div class="col-3 ci-subtitle align-self-center">
+            {{ "QUANTITY" | translate }}:
+        </div>
+        <div class="col-9 align-self-center">
+            <input
+                class="ci-input-text-bt"
+                [(ngModel)]="model.Quantity"
+                name="Quantity"
+                type="number"
+            />
+        </div>
+    </div>
+
+</div>

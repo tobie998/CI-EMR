@@ -1,0 +1,39 @@
+@import "../../../../shared/scss/variables.scss";
+
+.ci-component-note {
+    .create-note {
+        margin: 20px;
+        color: $ci-color-dim-gray;
+        img {
+            width: 28px;
+            height: 28px;
+            position: absolute;
+            bottom: 1em;
+            right: 2rem;
+        }
+    }
+
+    .ci-note-title-date {
+        display: flex;
+        align-items: center;
+        .date {
+            margin-left: 40px;
+        }
+    }
+
+    .ci-note-border {
+        border-bottom: 2px solid #ccc;
+    }
+
+    .ci-item-content {
+        width: 90% !important;
+    }
+
+    .img-back {
+        height: 28px;
+    }
+    .img-icon-del {
+        right: 0px;
+        position: absolute;
+    }
+}

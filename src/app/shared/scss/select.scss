@@ -1,0 +1,10 @@
+@import "../scss/variables.scss";
+
+.ci-select-defaut {
+    width: 100%;
+    border: 0px;
+    border-bottom: 2px solid $ci-color-border;
+    padding: 5px;
+    background: none;
+    outline: none;
+}

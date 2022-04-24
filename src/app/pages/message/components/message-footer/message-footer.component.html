@@ -1,0 +1,17 @@
+<!-- <div>
+    <span class="ci-input-create" *ngIf="showGroupMes === false">
+        <input type="text" placeholder="Texts" [(ngModel)]="content" *ngIf="receiveUserprofileId" (keyup.enter)="sendMessage()"/>
+        <img *ngIf="content && content.length === 0 && receiveUserprofileId" src="assets/svg/Bottomadd.svg" alt="">
+        <mat-icon class="add-icon" *ngIf="content && content.length !== 0 && receiveUserprofileId" (click)="sendMessage()">send
+        </mat-icon>
+    </span>
+
+</div> -->
+<div class="ci-input-create" >
+    <span class="ci-input-create">
+        <input type="text" placeholder="Texts" [(ngModel)]="content" (keyup.enter)="detectSendMessage()"/>
+        <!-- <img *ngIf="!content.length" src="assets/svg/Bottomadd.svg" alt=""> -->
+        <mat-icon class="add-icon" *ngIf="content.length !== 0" (click)="detectSendMessage()">send
+        </mat-icon>
+    </span>
+</div>

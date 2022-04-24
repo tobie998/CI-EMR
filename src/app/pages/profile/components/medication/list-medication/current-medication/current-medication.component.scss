@@ -1,0 +1,21 @@
+.button-group {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    img {
+        width: 30px;
+        height: 30px;
+    }
+}
+mat-icon {
+    font-size: 36px;
+    color: gray;
+}
+.example-table-container {
+    max-height: 65vh;
+    overflow: auto;
+}
+
+.width-100px {
+    width: 100px;
+}

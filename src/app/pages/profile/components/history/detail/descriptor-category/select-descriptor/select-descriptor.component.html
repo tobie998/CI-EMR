@@ -1,0 +1,24 @@
+<div class="select-descriptor">
+    <div class="select-header">
+        <span>Add descriptor's category</span>
+        <div>
+            <button class="ci-button-cancel" (click)="closeDialog()">
+                {{ "CANCEL" | translate }}
+            </button>
+            <button class="ci-button-save" (click)="createItemDescriptor()">
+                {{ "SAVE" | translate }}
+            </button>
+        </div>
+    </div>
+    <div class="select-content">
+        <div class="select-content-item">
+            <label for="">Category:</label>
+            <input [(ngModel)]="data.Name" name="Name" type="text" class="ci-input-text-bt">
+        </div>
+        <div class="select-content-item">
+            <label for="">Decription:</label>
+            <input [(ngModel)]="data.Description" name="Description" type="text" class="ci-input-text-bt">
+        </div>
+
+    </div>
+</div>

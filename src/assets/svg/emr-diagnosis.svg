@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18.675" height="29.531" viewBox="0 0 18.675 29.531">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        stroke: #000;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-3 {
+        stroke: #fff;
+        stroke-linecap: round;
+      }
+
+      .cls-4 {
+        stroke-width: 0.5px;
+      }
+    </style>
+  </defs>
+  <g id="Group_965" data-name="Group 965" transform="translate(0.5 0.5)">
+    <g id="Group_964" data-name="Group 964">
+      <path id="Path_2656" data-name="Path 2656" class="cls-1" d="M1140.271,545.625h-3.155v1.3a1.048,1.048,0,0,1-.976,1.107h-6.449a1.047,1.047,0,0,1-.976-1.107v-1.3h-3.434a1.44,1.44,0,0,0-1.342,1.522v22.1a1.44,1.44,0,0,0,1.342,1.522h14.99a1.44,1.44,0,0,0,1.342-1.522v-22.1A1.44,1.44,0,0,0,1140.271,545.625Z" transform="translate(-1123.938 -542.236)"/>
+      <path id="Path_2657" data-name="Path 2657" class="cls-2" d="M1135.851,545.638a.887.887,0,0,0-.887-.887h-.357a2.583,2.583,0,0,0-5.161,0h-.34a.886.886,0,0,0-.887.887" transform="translate(-1123.047 -542.281)"/>
+      <line id="Line_25" data-name="Line 25" class="cls-3" y2="12.963" transform="translate(15.996 3.516)"/>
+      <path id="Path_2658" data-name="Path 2658" class="cls-3" d="M1139.869,560.364v3.547h-14.2v-5.869" transform="translate(-1123.915 -537.069)"/>
+    </g>
+    <line id="Line_26" data-name="Line 26" class="cls-3" y1="10.81" transform="translate(1.794 4.956)"/>
+    <line id="Line_27" data-name="Line 27" class="cls-3" x2="1.14" transform="translate(4.159 19.264)"/>
+    <line id="Line_28" data-name="Line 28" class="cls-3" x2="5.785" transform="translate(6.523 19.315)"/>
+    <line id="Line_29" data-name="Line 29" class="cls-3" x2="2.154" transform="translate(10.155 22.592)"/>
+    <line id="Line_30" data-name="Line 30" class="cls-3" x1="4.729" transform="translate(4.117 22.233)"/>
+    <path id="Path_2659" data-name="Path 2659" class="cls-3" d="M1127.125,553.171h1.9l1.393-2.027,1.52,3.5,1.562-4.983,1.056,3.5h2.069" transform="translate(-1123.895 -540.164)"/>
+    <circle id="Ellipse_4" data-name="Ellipse 4" class="cls-4" cx="1.161" cy="1.161" r="1.161" transform="translate(7.777 1.573)"/>
+  </g>
+</svg>

@@ -1,0 +1,336 @@
+<div class="row">
+    <div class="col-12 align-self-center ci-body-text-h1 ci-dflex-modal">
+        {{ "ADD FAMILY" | translate }}
+        <div>
+            <button
+                class="ci-button-cancel"
+                (click)="closeDialog()"
+            >
+                {{ "CANCEL" | translate }}
+            </button>
+            <button
+                class="ci-button-save"
+                (click)="createFamilyHistory()"
+            >
+                {{ "SAVE" | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-5 ">
+                <div class="content-history-title">
+                    {{ "DID ANYONE" | translate }} <span>{{ "HEART" | translate }}</span>?
+                </div>
+            </div>
+            <div class="btn">
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[0])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[0]?.checked !== true ? 'ci-button-exam': 'ci-button-exam-active'"
+                >
+                    {{ "No" | translate }}
+                </button>
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[0])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[0]?.checked === true ? 'ci-button-exam': 'ci-button-exam-active' "
+                >
+                    {{ "YES" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div
+        [hidden]="dataFamilyHistory?.ListFamilyFactor[0]?.checked !== true"
+        class="container mb-5"
+    >
+        <div class="content-history">
+            <div class="row align-items-start">
+                <div class="col-3 ">
+                    <div class="history-title">{{ "WHO IN" | translate }}</div>
+                </div>
+                <div class="col-9 family row ">
+                    <div
+                        class="col-4 "
+                        *ngFor="let item of dataFamilyHistory?.ListFamilyFactor[0]?.RelationshipList; let index = index"
+                    >
+                        <button
+                            class="w-100"
+                            (click)="setActive(item)"
+                            [class]="item.checked ? 'ci-button-exam': 'ci-button-exam-active'"
+                        >
+                            {{ item.Value }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="boder-hr" />
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="content-history-title">
+                    {{ "DID ANYONE" | translate }} <span>{{ "STROKE" | translate }}</span>?
+                </div>
+            </div>
+            <div class="btn">
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[1])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[1]?.checked !== true ? 'ci-button-exam': 'ci-button-exam-active'"
+                >
+                    {{ "No" | translate }}
+                </button>
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[1])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[1]?.checked === true  ? 'ci-button-exam': 'ci-button-exam-active' "
+                >
+                    {{ "YES" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div
+        [hidden]="dataFamilyHistory?.ListFamilyFactor[1]?.checked !== true"
+        class="container mb-5"
+    >
+        <div class="content-history">
+            <div class="row align-items-start">
+                <div class="col-3 question">
+                    <div class="history-title">
+                        {{ "WHO IN" | translate }}
+                    </div>
+                </div>
+                <div class="col-9 family row">
+                    <div
+                        class="col-4"
+                        *ngFor="let item of dataFamilyHistory?.ListFamilyFactor[1]?.RelationshipList; let index = index"
+                    >
+
+                        <button
+                            class="w-100 "
+                            (click)="setActive(item)"
+                            [class]="item.checked ? 'ci-button-exam': 'ci-button-exam-active' "
+                        >
+                            {{ item.Value }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="border-hr" />
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="content-history-title">
+                    {{ "DID ANYONE" | translate }} <span>{{ "DEMENTIA" | translate }}</span>?
+                </div>
+
+            </div>
+            <div class="btn">
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[2])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[2]?.checked !== true ? 'ci-button-exam': 'ci-button-exam-active'"
+                >
+                    {{ "No" | translate }}
+                </button>
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[2])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[2]?.checked === true ? 'ci-button-exam': 'ci-button-exam-active' "
+                >
+                    {{ "YES" | translate }}
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div
+        [hidden]="dataFamilyHistory?.ListFamilyFactor[2]?.checked !== true"
+        class="container mb-5 "
+    >
+        <div class="content-history">
+            <div class="row align-items-start">
+                <div class="col-3 ">
+                    <div class="history-title">{{ "WHO IN" | translate }}</div>
+                </div>
+                <div class="col-9 family row">
+                    <div
+                        class="col-4"
+                        *ngFor="let item of dataFamilyHistory?.ListFamilyFactor[2]?.RelationshipList; let index = index"
+                    >
+
+                        <button
+                            class="w-100"
+                            (click)="setActive(item)"
+                            [class]="item.checked ? 'ci-button-exam': 'ci-button-exam-active' "
+                        >
+                            {{ item.Value }}
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="boder-hr" />
+    <div class="container">
+        <div class="row">
+            <div class="col-5 ">
+                <div class="content-history-title">
+                    {{ "DID ANYONE" | translate }} <span>{{ "DIABETES" | translate }}</span>?
+                </div>
+            </div>
+            <div class="btn">
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[3])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[3]?.checked !== true? 'ci-button-exam': 'ci-button-exam-active'"
+                >
+                    {{ "No" | translate }}
+                </button>
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[3])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[3]?.checked === true ? 'ci-button-exam': 'ci-button-exam-active' "
+                >
+                    {{ "YES" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div
+        [hidden]="dataFamilyHistory?.ListFamilyFactor[3]?.checked !== true"
+        class="container mb-5 "
+    >
+        <div class="content-history">
+            <div class="row align-items-start">
+                <div class="col-3 ">
+                    <div class="history-title">{{ "WHO IN" | translate }}</div>
+                </div>
+                <div class="col-9 family row">
+                    <div
+                        class="col-4"
+                        *ngFor="let item of dataFamilyHistory?.ListFamilyFactor[3]?.RelationshipList; let index = index"
+                    >
+
+
+                        <button
+                            class="w-100"
+                            (click)="setActive(item)"
+                            [class]="item.checked ? 'ci-button-exam': 'ci-button-exam-active' "
+                        >
+                            {{ item.Value }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="border-hr" />
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="content-history-title">
+                    {{ "DID ANYONE" | translate }}
+                    <span>{{ "HIGH BLOOD" | translate }}</span>?
+                </div>
+            </div>
+            <div class="btn">
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[4])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[4]?.checked !== true ? 'ci-button-exam': 'ci-button-exam-active'"
+                >
+                    {{ "No" | translate }}
+                </button>
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[4])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[4]?.checked === true ? 'ci-button-exam': 'ci-button-exam-active' "
+                >
+                    {{ "YES" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div
+        [hidden]="dataFamilyHistory?.ListFamilyFactor[4]?.checked !== true"
+        class="container mb-5 "
+    >
+        <div class="content-history">
+            <div class="row align-items-start">
+                <div class="col-3 ">
+                    <div class="history-title">
+                        {{ "WHO IN" | translate }}
+                    </div>
+                </div>
+                <div class="col-9 family row">
+                    <div
+                        class="col-4"
+                        *ngFor="let item of dataFamilyHistory?.ListFamilyFactor[4]?.RelationshipList; let index = index"
+                    >
+                        <button
+                            class="w-100"
+                            (click)="setActive(item)"
+                            [class]="item.checked ? 'ci-button-exam': 'ci-button-exam-active' "
+                        >
+                            {{ item.Value }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="border-hr" />
+    <div class="container">
+        <div class="row">
+            <div class="col-5 ">
+                <div class="content-history-title">
+                    {{ "DID ANYONE" | translate }} <span>{{ "CANCER" | translate }}</span>?
+                </div>
+
+            </div>
+            <div class="btn">
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[5])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[5]?.checked !== true ? 'ci-button-exam': 'ci-button-exam-active'"
+                >
+                    {{ "No" | translate }}
+                </button>
+                <button
+                    (click)="setActive(dataFamilyHistory?.ListFamilyFactor[5])"
+                    [class]="dataFamilyHistory?.ListFamilyFactor[5]?.checked === true ? 'ci-button-exam': 'ci-button-exam-active' "
+                >
+                    {{ "YES" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div
+        [hidden]="dataFamilyHistory?.ListFamilyFactor[2]?.checked !== true"
+        class="container mb-5 "
+    >
+        <div class="content-history">
+            <div class="row align-items-start">
+                <div class="col-3 ">
+                    <div class="history-title">{{ "WHO IN" | translate }}</div>
+                </div>
+                <div class="col-9 family row">
+                    <div
+                        class="col-4"
+                        *ngFor="let item of dataFamilyHistory?.ListFamilyFactor[5]?.RelationshipList; let index = index"
+                    >
+                        <button
+                            class="w-100"
+                            (click)="setActive(item)"
+                            [class]="item.checked ? 'ci-button-exam': 'ci-button-exam-active' "
+                        >
+                            {{ item.Value }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="home_timeline">
+    <ejs-schedule
+        (eventRendered)="oneventRendered($event)"
+        [readonly]='readonly'
+        width="100%"
+        height="245px"
+        class="boder-timeline"
+        [selectedDate]="selectedDate"
+        [eventSettings]="eventSettings"
+        startHour="00:00"
+        endHour="24:00"
+        (popupOpen)="onPopupOpen($event)"
+    >
+        <e-views>
+            <e-view option="TimelineDay"></e-view>
+        </e-views>
+    </ejs-schedule>
+</div>

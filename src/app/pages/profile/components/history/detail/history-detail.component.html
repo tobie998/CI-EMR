@@ -1,0 +1,207 @@
+<div class="container-fluid header">
+  <div class="row mt-4">
+    <div class="col-2">{{ "OVERALL" | translate }}</div>
+    <div class="col-10">
+      <div class="row btn-rating">
+        <!-- <div class="col-3">{{ overall.SymptomName }}</div> -->
+        <div class="col-12" *ngIf="data && data.Old === true">
+          <div class="row rating-history">
+            <button [class]="overall == 2 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(overall, 2, 1, true)">
+              Much worse
+            </button>
+            <button [class]="overall == 3 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(overall, 3, 1, true)">
+              Worse
+            </button>
+            <button [class]="overall == 4 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(overall, 4, 1, true)">
+              Same
+            </button>
+            <button [class]="overall == 5 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(overall, 5, 1, true)">
+              Better
+            </button>
+            <button [class]="overall == 6 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(overall, 6, 1, true)">
+              Much better
+            </button>
+            <button [class]="overall == 7 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(overall, 7, 1, true)">
+              Gone
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-2">{{ "OLD SYMPTONS" | translate }}</div>
+    <div class="col-10">
+      <div class="row btn-rating" *ngFor="let oldSymptom of listOldSymptom">
+        <div class="col-3">{{ oldSymptom.SymptomName }}</div>
+        <div class="col-9">
+          <div class="row rating-history">
+            <button [class]="oldSymptom.ResultCode == 2 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(oldSymptom, 2, 2)">
+              Much worse
+            </button>
+            <button [class]="oldSymptom.ResultCode == 3 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(oldSymptom, 3, 2)">
+              Worse
+            </button>
+            <button [class]="oldSymptom.ResultCode == 4 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(oldSymptom, 4, 2)">
+              Same
+            </button>
+            <button [class]="oldSymptom.ResultCode == 5 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(oldSymptom, 5, 2)">
+              Better
+            </button>
+            <button [class]="oldSymptom.ResultCode == 6 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(oldSymptom, 6, 2)">
+              Much better
+            </button>
+            <button [class]="oldSymptom.ResultCode == 7 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+              (click)="updateSymptom(oldSymptom, 7, 2)">
+              Gone
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row new-symptons">
+    <div class="col-2">{{ "NEW SYMPTONS" | translate }}</div>
+    <div class="col-10 ">
+      <!-- <div *ngFor="let newSymptom of listNewSymptomRequire" class="mb-2 row">
+        <div  class="col-4 description"> {{ newSymptom.SymptomName }}
+          <span class="description-active" > *
+          </span>
+        </div>
+        <div class="col-8 row">
+          <button class="col-3" [class]="newSymptom.ResultCode == 0 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+            (click)="updateSymptom(newSymptom,0, 3)"> No </button>
+          <button class="col-3" [class]="newSymptom.ResultCode == 1 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+            (click)="updateSymptom(newSymptom,1, 3)"> Yes </button>
+          <div class="col-2 text-align-center">
+            <img class="h-35" (click)="openUpdateNewSymtom(newSymptom)" src="assets/svg/edit-inline.svg" />
+          </div>
+          <div  class="col-4">
+            {{newSymptom.DescriptorText}}
+          </div>
+
+        </div>
+      </div> -->
+      <div *ngFor="let newSymptom of listNewSymptom" class="mb-2 row">
+        <div *ngIf="!newSymptom.isUpdateOpen" class="col-4 description"> {{ newSymptom.SymptomName }}
+          <span class="description-active" *ngIf="newSymptom.Type === 1"> *
+          </span>
+        </div>
+        <div class="col-8 row">
+          <button class="col-3" [class]="newSymptom.VisitSymptomId && newSymptom.ResultCode == 0 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+            (click)="updateSymptom(newSymptom,0, 3)"> No </button>
+          <button class="col-3" [class]="newSymptom.VisitSymptomId && newSymptom.ResultCode == 1 ? 'ci-button-exam ' : 'ci-button-exam-active'"
+            (click)="updateSymptom(newSymptom,1, 3)"> Yes </button>
+          <div class="col-2 text-align-center" >
+            <img class="h-35" *ngIf="newSymptom.VisitSymptomId" (click)="openUpdateNewSymtom(newSymptom)" src="assets/svg/edit-inline.svg" />
+            <img class="h-35" *ngIf="newSymptom.Type !== 1"
+              (click)="deleteSymptom(newSymptom)" src="assets/svg/deleteinline.svg" />
+          </div>
+          <div  class="col-4">
+            {{newSymptom.DescriptorText}}
+          </div>
+
+        </div>
+      </div>
+      <div class="ci-input-create row">
+        <div class="col-5">
+          Name
+        </div>
+        <div class="col-7"> </div>
+        <input class="col-5" type="text" autocomplete="off" placeholder="Add new symptom" name="problem"
+          [(ngModel)]="modelNewSymptom.SymptomName" required />
+        <!-- <input class="col-5" type="text" autocomplete="off" placeholder="Description" name="Description-new-symptons" [(ngModel)]="modelNewSymptom.Description" required /> -->
+        <div class="col-2 text-align-center align-self-center">
+          <img class="emr-position-initial" (click)="createNewSymptom(3)" *ngIf="modelNewSymptom.SymptomName"
+            src="assets/svg/Bottomadd.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row new-symptons">
+    <div class="col-2">Review of systems</div>
+    <div class="col-9">
+      <ul>
+        <ng-container *ngFor="let organ of listOrgan">
+          <li *ngIf="organ && organ.ReviewActive !== 0"><strong>{{organ.OrganName}} - {{organ.stringActive}}</strong>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-1 text-align-center">
+      <img class="h-35" src="assets/svg/edit-inline.svg" (click)="openUpdateReviewSystem()"/>
+    </div>
+    <div ></div>
+    <!-- <div class="col-5">
+            <div class="mb-2" *ngFor="let review of listReview">
+                {{ review.SymptomName }}
+            </div>
+            <span class="ci-input-create">
+                <input
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Add review of systems"
+                    name="problem"
+                    [(ngModel)]="reviewName"
+                    required
+                />
+                <img
+                    (click)="createNewSymptom(4)"
+                    *ngIf="reviewName"
+                    src="assets/svg/Bottomadd.svg"
+                />
+            </span>
+        </div>
+        <div class="col-4 text-align-center">
+            <div class="mb-2" *ngFor="let review of listReview">
+                <button class="ci-mr-20" [class]="review.ResultCode == 0 ? 'ci-button-exam ' : 'ci-button-exam-active'" (click)="updateSymptom(review,0)"> No </button>
+                <button class="ci-mr-20" [class]="review.ResultCode == 1 ? 'ci-button-exam ' : 'ci-button-exam-active'" (click)="updateSymptom(review,1)"> Yes </button>
+                <img class="h-35" (click)="deleteSymptom(review.VisitSymptomId,listReview,2)" src="assets/svg/deleteinline.svg" />
+            </div>
+        </div> -->
+  </div>
+  <hr />
+  <div class="row new-symptons mb-3 pb-3">
+    <div class="col-2">{{ "MEDICATION" | translate }}</div>
+    <div class="col-3 pr-0">
+      <p>{{ "YOUR CURRENT MEDICATION" | translate }}</p>
+      <p *ngFor="let medication of drugName">{{ medication.DrugName }}</p>
+    </div>
+    <div class="col-3 p-0">
+      <p>Take it?</p>
+      <div class="medication" *ngFor="let medication of drugName">
+        <button class="ci-mr-20" (click)="updateMedical(medication, 1, 'take')"
+          [class]="medication.TakeIt === 1 ? 'ci-button-exam ' : 'ci-button-exam-active'"> No
+        </button>
+        <button class="ci-mr-20" (click)="updateMedical(medication, 2, 'take')"
+          [class]="medication.TakeIt === 2  ? 'ci-button-exam ' : 'ci-button-exam-active'">
+          Yes </button>
+      </div>
+    </div>
+    <div class="col-3 p-0">
+      <p class="tolerated">Tolerated?</p>
+      <div class="medication" *ngFor="let medication of drugName">
+        <button [hidden]="medication.Type == 0" class="ci-mr-20" (click)="updateMedical(medication, 1, 'tolerated')"
+          [class]="medication.Tolerated === 1 ? 'ci-button-exam ' : 'ci-button-exam-active'"> No
+        </button>
+        <button [hidden]="medication.Type == 0" class="ci-mr-20" (click)="updateMedical(medication, 2, 'tolerated')"
+          [class]="medication.Tolerated === 2 ? 'ci-button-exam ' : 'ci-button-exam-active'"> Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

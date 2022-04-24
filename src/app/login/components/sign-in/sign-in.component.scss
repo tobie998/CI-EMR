@@ -1,0 +1,41 @@
+@import "../../../shared/scss/variables.scss";
+
+.background {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo-login {
+      position: absolute;
+      height: 100px;
+      margin: 30px;
+      left: 0;
+      top: 0;
+    }
+    .row {
+        margin-bottom: 2em;
+        a {
+            color: $ci-color-dim-gray;
+        }
+    }
+
+    .title {
+        width: 100%;
+        color: $ci-color-ecko-blue;
+        font-size: 2.2em;
+    }
+
+    .container {
+        margin-top: -80px;
+    }
+
+    p {
+        color: $ci-color-faux-electric;
+        margin-top: 0.8em;
+    }
+
+    button {
+        outline: none;
+    }
+}

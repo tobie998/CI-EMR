@@ -1,0 +1,81 @@
+<input class="ci-input-search" type="text" [(ngModel)]="keySearch" placeholder="search" (ngModelChange)="onSearch()">
+
+
+
+<div class="ci-mess-scroll">
+  <!-- <div class="ci-body-mess">
+    <div *ngFor="let item of listConverationPreview" class="info" (click)="showMessage(item)">
+      
+    </div>
+  </div> -->
+  <div class="ci-body-mess">
+    <div *ngFor="let item of listConverationPreview" class="info" (click)="showMessage(item)">
+      <!-- <ng-container *ngIf="type === 'All'">
+        <div class="avatar">
+            <img src="{{item?.SenderProfileImage }}" width="100%" height="100%" />
+        </div>
+        <div class="title">
+            <h5>
+                {{ item.SenderFirstName }} {{ item.SenderLastName }}
+            </h5>
+            <h6>{{ item.Content }}</h6>
+        </div>
+        
+      </ng-container> -->
+      <ng-container *ngIf="!item.ConversationId || item.ConversationId === 0">
+        <div class="avatar">
+            <img src="{{ item.MediaURL }}" width="100%" height="100%" />
+          </div>
+          <div class="title">
+            <h5>
+              {{item.FirstName}} {{item.LastName}}
+            </h5>
+            <h6>{{ item.Content }}</h6>
+          </div>
+      </ng-container>
+      
+      <ng-container *ngIf="item.ConversationId && item.ConversationId !== 0">
+        <div *ngIf="item.Profilelist.length === 2" class="col-3 mess-group2">
+          <div class="row ml-0">
+            <div *ngFor="let i of item.Profilelist, let ix = index"
+              [class]="ix === 0 ? 'avatar-item1' : 'avatar-item2'">
+              <img [src]="i" width="100%" height="100%" />
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.Profilelist.length === 3" class="col-3 mess-group3">
+          <div class="row ml-0">
+            <div *ngFor="let i of item.Profilelist, let ix = index"
+              [class]="ix === 0 ? 'avatar-item1 col-6' : ix === 1 ? 'avatar-item2 col-6': 'avatar-item3 col-12'">
+              <img [src]="i" width="100%" height="100%" />
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.Profilelist.length === 4" class="col-3 mess-group4">
+          <div class="row ml-0">
+            <div *ngFor="let i of item.Profilelist, let ix = index"
+              [class]="(ix === 0 || ix === 2) ? 'avatar-item1 col-6' : 'avatar-item col-6'">
+              <img [src]="i" width="100%" height="100%" />
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.Profilelist.length > 4" class="col-3 mess-group5">
+          <div class="row ml-0">
+            <div *ngFor="let i of item.Profilelist, let ix = index" class="avatar-item">
+              <img *ngIf=" 3 > ix" [src]="i" width="100%" height="100%" />
+              <span *ngIf="ix === 3">+{{item.Profilelist.length -3}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="title">
+            <h5>
+              {{item?.ConversationName}}
+            </h5>
+            <h6>About: {{ item?.PatientName }}</h6>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

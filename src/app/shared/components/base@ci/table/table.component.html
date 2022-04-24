@@ -1,0 +1,80 @@
+<div class="table-base" [style.height]="height?.height">
+  <table class="table-style">
+    <thead>
+      <tr>
+        <th
+          scope="col"
+          *ngFor="let item of listlable"
+          [style.width]="item.width"
+        >
+          {{ item.name | translate }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataSub" [class]="item?.check ? 'active-td' : ''">
+        <td *ngFor="let i of listlable" >
+          <span *ngIf="i.type === 'radio'">
+            <input
+              id="item.VisitId"
+              name="check"
+              type="checkbox"
+              class="radio-none"
+            />
+            <label
+              for="item.VisitId"
+              [class]="item.check ? 'active' : ''"
+              (click)="active(item)"
+            ></label>
+          </span>
+          <span *ngIf="i.type === 'number'">{{ item[i.id] | number }}</span>
+          <span
+            *ngIf="i.type === 'text'"
+            [class]="checkWidth == true ? '' : 'title'"
+            >{{ item[i.id] }}</span
+          >
+          <span *ngIf="i.type === 'object'">{{ item[i.id][i.idSub] }}</span>
+          <span *ngIf="i.type === 'date'">
+            {{ item[i.id] | date: "MM/dd/yyyy" }}
+          </span>
+          <div class="setting" *ngIf="i.type === 'setting'">
+            <div *ngFor="let btn of i.listBtn">
+              <img
+                class="mr-3"
+                [src]="btn.icon"
+                (click)="onClickSetting(btn, item)"
+                *ngIf="btn.type === 'upload' && role === 'Receptionist'"
+              />
+              <img
+                class="mr-3"
+                [src]="btn.icon"
+                (click)="onClickSetting(btn, item)"
+                *ngIf="btn.type === 'view' && item.Status === true && (role === 'Doctor'
+                 || role === 'Receptionist')"
+              />
+              <img
+                class="mr-3"
+                [src]="btn.icon"
+                (click)="onClickSetting(btn, item)"
+                *ngIf="btn.type === 'view' && item.IsUpload && (role === 'Doctor'
+                 || role === 'Receptionist')"
+              />
+              <img
+                class="mr-3"
+                [src]="btn.icon"
+                (click)="onClickSetting(btn, item)"
+                *ngIf="btn.type === 'view' && item.IsUploaded === true"
+            />
+            <img
+              class="mr-3"
+              [src]="btn.icon"
+              (click)="onClickSetting(btn, item)"
+              *ngIf="btn.type === 'view-doctor' && role === 'Doctor' && !item.notShow"
+            />
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

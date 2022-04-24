@@ -1,0 +1,95 @@
+@import "../scss/variables.scss";
+
+.ci-input {
+    &-date {
+        width: 100%;
+        padding: 5px;
+        border: none;
+        border-radius: 10px;
+    }
+    &-textarea-bt {
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid $ci-color-border;
+        background: none;
+        outline: none;
+    }
+    &-text-bt {
+        width: 100% !important;
+        border: none !important;
+        border-bottom: 2px solid $ci-color-border !important;
+        background: none !important;
+    }
+    &-group-text {
+        position: relative;
+        input {
+            width: 100%;
+            border-radius: 35px;
+            border: none;
+            margin-top: 10px;
+            padding: 5px 20px;
+            background-color: $ci-color-greyish;
+        }
+        mat-spinner {
+            position: absolute;
+            top: 2px;
+            right: 20px;
+        }
+        .mat-list-base {
+            padding-top: 0;
+            display: block;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .ci-input-boder-bt {
+            border-radius: 0px !important;
+            border: 0px;
+            border-bottom: 2px solid $ci-color-border;
+        }
+    }
+    &-create {
+        position: relative;
+        input {
+            width: 100%;
+            padding: 5px 45px 5px 10px;
+            border-radius: 35px;
+            border: 1px solid $ci-color-nobel;
+            background-color: $ci-color-nobel-f2;
+            color: #212529;
+        }
+        img {
+            position: absolute;
+            height: 20px;
+            top: 0px;
+            right: 20px;
+        }
+        mat-icon{
+            position: absolute;
+            height: 20px;
+            top: 0px;
+            right: 20px;
+        }
+    }
+    &-login {
+        width: 100%;
+        padding: 10px;
+        border-radius: 12px;
+        border: none;
+        box-shadow: $ci-boxshadow-inline1, $ci-boxshadow-inline2;
+        outline: none !important;
+    }
+    &-text {
+        width: 100%;
+        border: 1px solid $ci-color-nobel;
+        border-radius: 35px;
+        padding: 5px 20px;
+    }
+    &-search {
+        width: 100%;
+        border-radius: 35px;
+        background-color: #dbdbdb;
+        height: 38px;
+        padding: 5px 20px;
+        border: none;
+    }
+}

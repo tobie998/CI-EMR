@@ -1,0 +1,83 @@
+<div class="container-fluid search-dialog">
+    <div class="row " *ngIf="isEdit !== true">
+        <div class="col-7 search mt-4">
+            <input
+                placeholder="Search patient"
+                (input)="searchPatient($event.target.value)"
+                type="search"
+            >
+            <mat-icon>search</mat-icon>
+        </div>
+
+    </div>
+    <div class="ci-group-btn">
+        <button
+            class="ci-button-cancel"
+            (click)="cancelDialog()"
+        >Cancel</button>
+        <button
+            class="ci-button-save"
+            (click)="saveDialog()"
+        >Save</button>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6 clients mx-auto">
+            Patients
+        </div>
+        <div class="col-6 clients mx-auto">
+            Doctors
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 list-patient">
+            <div
+                class="mx-auto"
+                *ngFor="let item of patientsSub"
+            >
+                <div class="row list-item">
+                    <div class="img">
+                        <img
+                            src="{{item.MediaURL}}"
+                            alt=""
+                        >
+                    </div>
+                    <div class="ml-2">
+                        <p>{{item.FirstName}} {{item.LastName}}</p>
+                        <p>ID: {{item.PatientId}}</p>
+                    </div>
+                    <input
+                        type="radio"
+                        (change)="modelPatient = item"
+                        [value]="item.PatientId"
+                        [checked]="item.PatientId === modelPatient.PatientId"
+                    >
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="col-6 list-patient">
+            <div
+                class="mx-auto"
+                *ngFor="let item of listDoctor"
+            >
+                <div class="row list-item">
+                    <div class="img">
+                        <img src="{{item.MediaURL}}">
+                    </div>
+                    <div class="ml-2">
+                        <p>{{item.FirstName}} {{item.MiddleName}} {{item.LastName}}</p>
+                        <p>ID: {{item.ProviderId}}</p>
+                    </div>
+                    <input
+                        type="checkbox"
+                        (change)="item.check = !item.check"
+                        [checked]="item.check == true"
+                    >
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+</div>

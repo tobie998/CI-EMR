@@ -1,0 +1,28 @@
+<div class="ci-p-30-table">
+    <div class="row">
+        <div class="col-6 medical-table">
+            <app-table-base
+                [(listlable)]="collumsMedical"
+                [(data)]="medical"
+                (callback)="handleCallBackTable($event)"
+                [(checkWidth)]="check"
+                [(height)]="height"
+            ></app-table-base>
+        </div>
+        <div class="col-6 medical-table">
+            <app-table-base
+                [(listlable)]="collumsSurgical"
+                [(data)]="surgical"
+                (callback)="handleCallBackTable($event)"
+                [(checkWidth)]="check"
+                [(height)]="height"
+            ></app-table-base>
+        </div>
+    </div>
+    <div class="ci-group-btn">
+        <img
+            (click)="openDialog()"
+            src="assets/svg/Bottomadd.svg"
+        />
+    </div>
+</div>

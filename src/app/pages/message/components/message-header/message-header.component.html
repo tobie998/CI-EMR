@@ -1,0 +1,50 @@
+<div class="row mess-box-title p-1" [ngClass]="{'d-flex': groupModel && groupModel.Profilelist && groupModel.Profilelist.length > 1}">
+    <div class=" mess-call " *ngIf="groupModel.Profilelist.length === 1">
+        <div class="d-flex justify-content-between  align-items-center">
+            <div class="mess-box-avatar">
+                <img src="{{groupModel.Profilelist[0].SenderProfileImage}}" width="100%" height="100%" />
+            </div>
+            <div class="mess-title align-self-center">
+                {{ groupModel.Profilelist[0].SenderFirstName }} {{ groupModel.Profilelist[0].SenderLastName }}
+            </div>
+        </div>
+        <div class="videocall">
+            <img (click)="openModal()" src="assets/svg/video-call.svg" alt="">
+        </div>
+    </div>
+    <div *ngIf="groupModel.Profilelist.length === 2" class="col-2 mess-group2">
+        <div class="row ml-0">
+            <div *ngFor="let i of groupModel.Profilelist, let ix = index"
+                [class]="ix === 0 ? 'avatar-item1' : 'avatar-item2'">
+                <img [src]="i" width="100%" height="100%" />
+            </div>
+        </div>
+    </div>
+    <div *ngIf="groupModel.Profilelist.length === 3" class="col-2 mess-group3">
+        <div class="row ml-0">
+            <div *ngFor="let i of groupModel.Profilelist, let ix = index"
+                [class]="ix === 0 ? 'avatar-item1 col-6' : ix === 1 ? 'avatar-item2 col-6': 'avatar-item3 col-12'">
+                <img [src]="i" width="100%" height="100%" />
+            </div>
+        </div>
+    </div>
+    <div *ngIf="groupModel.Profilelist.length === 4" class="col-2 mess-group4 ci-padding-right-35">
+        <div class="row ml-0">
+            <div *ngFor="let i of groupModel.Profilelist, let ix = index"
+                [class]="(ix === 0 || ix === 2) ? 'avatar-item1 col-6' : 'avatar-item col-6'">
+                <img [src]="i" width="100%" height="100%" />
+            </div>
+        </div>
+    </div>
+    <div *ngIf="groupModel.Profilelist.length > 4" class="col-2 mess-group5 ci-padding-right-50">
+        <div class="row ml-0">
+            <div *ngFor="let i of groupModel.Profilelist, let ix = index" class="avatar-item col-6">
+                <img *ngIf=" 3 > ix" [src]="i" width="100%" height="100%" />
+                <span *ngIf="ix === 3">+{{groupModel.Profilelist.length -3}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-9 p-0 align-self-center mess-title ci-white-space">
+        {{groupModel?.ConversationName}}
+    </div>
+</div>

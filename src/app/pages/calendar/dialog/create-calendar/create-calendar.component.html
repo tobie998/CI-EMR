@@ -1,0 +1,144 @@
+<div>
+    <div class="row ">
+        <div class="col-12 ci-dflex-modal">
+            <div class="ci-body-text-h3">Add event</div>
+            <div>
+                <button
+                    class="ci-button-cancel"
+                    (click)="closeDialog()"
+                >Cancel</button>
+                <button
+                    class="ci-button-save"
+                    (click)="createCalender()"
+                >Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="ci-scroll-modal">
+    <div class="content mt-5">
+        <div class="row type">
+            <div class="col-2">
+                <label for="">Type:</label>
+            </div>
+            <div class="col-10">
+                <select
+                    class="ci-select-defaut"
+                    name="Type"
+                    [(ngModel)]="model.Type"
+                >
+                    <ng-container *ngFor="let type of scheduleType">
+                      <option [value]="type.NumericKey">{{type.Value}}</option>
+                    </ng-container>
+                </select>
+            </div>
+        </div>
+        <div class="content">
+            <div class="row type">
+                <div class="col-2">
+                    <label for="">People involved:</label>
+                </div>
+                <div class="col-10">
+                    <input
+                        class="ci-select-defaut add-people-item"
+                        (click)="openDialog()"
+                        type="text"
+                        name="Notes"
+                        placeholder="People involved"
+                    />
+                    <img
+                        class="add-people"
+                        (click)="openDialog()"
+                        src="assets/svg/Icon.svg"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div
+                    class="col-5"
+                    *ngIf="ItemPatient.PatientId"
+                >
+                    Patients:
+                    <div class="patients">
+                        <img src="{{ ItemPatient?.MediaURL }}" />
+                        <div class="name_id">
+                            <span> {{ ItemPatient?.FirstName }} {{ ItemPatient?.LastName }}</span>
+                            <span>ID: {{ ItemPatient?.PatientId }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="col-5"
+                    *ngIf="listItemProvider.length !== 0"
+                >
+                    Provider:
+                    <div
+                        class="patients"
+                        *ngFor="let item of listItemProvider"
+                    >
+                        <img src="{{ item.MediaURL }}" />
+                        <div class="name_id">
+                            <span> {{ item.FirstName }} {{ item.LastName }}</span>
+                            <span>ID: {{ item.ProviderId }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row type">
+            <div class="col-2">
+                <label for="">Date:</label>
+            </div>
+            <div class="col-4">
+                <input
+                    type="date"
+                    class="ci-input-date bg-transparent"
+                    name="date"
+                    [(ngModel)]="model.Date"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row type">
+            <div class="col-2">
+                <label for="">Duration:</label>
+            </div>
+            <div class="col-6">
+                <span>from</span>
+                <input
+                    type="time"
+                    class="ci-input-date bg-transparent"
+                    name="fromTime"
+                    [(ngModel)]="model.fromTime"
+                />
+                <span>to</span> <input
+                    class="ci-input-date bg-transparent"
+                    type="time"
+                    name="toTime"
+                    [(ngModel)]="model.toTime"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row type">
+            <div class="col-2">
+                <label for="">Note:</label>
+            </div>
+            <div class="col-10 mt-2">
+                <textarea
+                    class="ci-input-textarea-bt"
+                    name="Notes"
+                    [(ngModel)]="model.Notes"
+                    cols="50"
+                    rows="4"
+                ></textarea>
+            </div>
+        </div>
+    </div>
+</div>

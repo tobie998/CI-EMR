@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="row  align-items-center">
+        <div class="col-9 calender-title ci-title-fz20">
+            {{ "CALENDAR" | translate }}
+            <button
+                (click)="clickToday()"
+                class="today"
+            >
+                Today
+            </button>
+            <button [ngClass]="currentView === 'Week' ? 'active' : 'today'"
+                (click)="backToWeek()"
+            >
+                Week
+            </button>
+            <button [ngClass]="currentView === 'Month' ? 'active' : 'today'"
+                (click)="backToMonth()"
+            >
+                Month
+            </button>
+            <div class="row toolbar-item insideShadow" *ngIf="currentView !== 'Month'">
+                <div class="col-2">
+                    <img
+                        (click)="backDate()"
+                        src="assets/images/back_calender.svg"
+                    >
+                </div>
+                <div class="col-8">{{ selectedDate | date:'MM/dd/y' }}</div>
+                <div class="col-2">
+                    <img
+                        (click)="nextDate()"
+                        src="assets/images/next_calendar.svg"
+                    >
+                </div>
+            </div>
+            <div class="row toolbar-item insideShadow" *ngIf="currentView === 'Month'">
+              <div class="col-2">
+                  <img
+                      (click)="backMonth()"
+                      src="assets/images/back_calender.svg"
+                  >
+              </div>
+              <div class="col-8">{{ selectedDate | date:'MMMM y' }} </div>
+              <div class="col-2">
+                  <img
+                      (click)="nextMonth()"
+                      src="assets/images/next_calendar.svg"
+                  >
+              </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <app-user></app-user>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="control-section">
+            <div class="col-12 content-wrapper calendar">
+                <ejs-schedule
+                    (eventRendered)="oneventRendered($event)"
+                    cssClass='schedule-event-template'
+                    [readonly]='readonly'
+                    width="100%"
+                    height="560px"
+                    startHour="00:00"
+                    endHour="24:00"
+                    [views]="scheduleViews"
+                    [selectedDate]="selectedDate"
+                    [eventSettings]="eventSettings"
+                    [rowAutoHeight]="rowAutoHeight"
+                    [currentView]="currentView"
+                    (navigating)="onNavigating($event)"
+                    (popupOpen)="onPopupOpen($event)"
+                >
+                </ejs-schedule>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="list-color col-6">
+            <div class="appointment">Clinic</div>
+            <div class="review">Home</div>
+        </div>
+        <div class="ci-group-btn">
+            <img
+                (click)="openDialog()"
+                src="assets/svg/Bottomadd.svg"
+            />
+        </div>
+    </div>
+</div>

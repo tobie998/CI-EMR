@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.644" height="24.244" viewBox="0 0 23.644 24.244">
+  <g id="Group_2425" data-name="Group 2425" transform="translate(8323 -530.414)">
+    <g id="Rectangle_3494" data-name="Rectangle 3494" transform="translate(-8322.086 534.495)" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1.5">
+      <path d="M0,0H.56a3,3,0,0,1,3,3V16.579a3,3,0,0,1-3,3H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" stroke="none"/>
+      <path d="M1.265.75h0A1.545,1.545,0,0,1,2.81,2.295v14.99a1.545,1.545,0,0,1-1.545,1.545h0a.515.515,0,0,1-.515-.515V1.265A.515.515,0,0,1,1.265.75Z" fill="none"/>
+    </g>
+    <g id="Rectangle_3497" data-name="Rectangle 3497" transform="translate(-8323 533.658)" fill="none" stroke="#1a1a1a" stroke-width="1.5">
+      <rect width="20" height="21" rx="3" stroke="none"/>
+      <rect x="0.75" y="0.75" width="18.5" height="19.5" rx="2.25" fill="none"/>
+    </g>
+    <g id="Group_2425-2" data-name="Group 2425" transform="translate(-8302.503 530.414) rotate(45)">
+      <path id="Rectangle_3495" data-name="Rectangle 3495" d="M2.225,0h0A2.225,2.225,0,0,1,4.45,2.225V5.933a.3.3,0,0,1-.3.3H.3a.3.3,0,0,1-.3-.3V2.225A2.225,2.225,0,0,1,2.225,0Z" transform="translate(0 0)" fill="#1a1a1a"/>
+      <path id="Union_14" data-name="Union 14" d="M0,8.9H4.45L2.225,13.35Zm0,0V1A1,1,0,0,1,1,0H3.45a1,1,0,0,1,1,1V8.9Z" transform="translate(0 6.805)" fill="#1a1a1a"/>
+    </g>
+  </g>
+</svg>

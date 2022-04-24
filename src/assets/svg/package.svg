@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30.034" viewBox="0 0 30 30.034">
+  <g id="Group_841" data-name="Group 841" transform="translate(-373 -298.966)">
+    <path id="Path_2489" data-name="Path 2489" d="M379.4,310.046" transform="translate(-0.122 0.369)" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Path_2490" data-name="Path 2490" d="M377.54,313.148V302.093a2.364,2.364,0,0,1,2.077-2.571H396.23a2.364,2.364,0,0,1,2.077,2.571V318.74" transform="translate(-0.229)"/>
+    <rect id="Rectangle_123" data-name="Rectangle 123" width="14.658" height="19.244" rx="2" transform="translate(373 309.756)"/>
+    <rect id="Rectangle_124" data-name="Rectangle 124" width="15.284" height="15.412" rx="2" transform="translate(387.676 313.587)"/>
+    <path id="Path_2491" data-name="Path 2491" d="M382.815,310.419h0v5.716a.391.391,0,0,1-.668.276l-1.732-1.731a.347.347,0,0,0-.49,0l-1.731,1.731a.392.392,0,0,1-.669-.276v-5.814h5.291Z" transform="translate(-0.228 -0.346)" stroke="#9fb9c8" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Path_2492" data-name="Path 2492" d="M390.673,299.723h0v5.716a.392.392,0,0,1-.669.277l-1.731-1.731a.346.346,0,0,0-.49,0l-1.732,1.731a.392.392,0,0,1-.668-.277v-5.814h5.291Z" transform="translate(-0.149 -0.005)" fill="none" stroke="#9fb9c8" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Path_2493" data-name="Path 2493" d="M398.095,315.019h0v5.716a.392.392,0,0,1-.669.277l-1.731-1.732a.347.347,0,0,0-.49,0l-1.732,1.732a.392.392,0,0,1-.669-.277v-5.814h5.291Z" transform="translate(-0.238 -0.546)" fill="none" stroke="#9fb9c8" stroke-miterlimit="10" stroke-width="1"/>
+    <line id="Line_21" data-name="Line 21" x1="2.711" transform="translate(397.93 325.306)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+    <line id="Line_22" data-name="Line 22" x1="3.183" transform="translate(397.459 326.995)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+    <line id="Line_23" data-name="Line 23" x1="2.711" transform="translate(382.857 324.991)" fill="none" stroke="#9fb9c8" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+    <line id="Line_24" data-name="Line 24" x1="3.183" transform="translate(382.374 326.681)" fill="none" stroke="#9fb9c8" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+    <rect id="Rectangle_130" data-name="Rectangle 130" width="30" height="30" transform="translate(373 298.966)" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,164 @@
+@import "../scss/variables.scss";
+
+.ci-button {
+    &-save {
+        padding: 5px 25px;
+        background-color: $ci-color-ecko-blue;
+        color: $ci-color-white;
+        font-size: 18px;
+        font-weight: 500;
+        box-shadow: 3px 3px 9px #c9c9c9, -5px -5px 9px #ffffff;
+        border-radius: 25px;
+        border: none;
+        margin-left: 10px;
+        outline: none;
+        mat-spinner {
+            position: absolute;
+            top: 15px;
+            right: 5px;
+        }
+    }
+    &-delete {
+        padding: 5px 25px;
+        background-color: $ci-color-light-red;
+        color: $ci-color-white;
+        font-size: 18px;
+        font-weight: 500;
+        box-shadow: 3px 3px 9px #c9c9c9, -5px -5px 9px #ffffff;
+        border-radius: 25px;
+        border: none;
+        margin-left: 10px;
+        outline: none;
+        mat-spinner {
+            position: absolute;
+            top: 15px;
+            right: 5px;
+        }
+    }
+    &-cancel {
+        padding: 5px 15px;
+        background-color: transparent;
+        color: $ci-color-cyan-biru;
+        line-height: 35px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 25px;
+        border: none;
+        border-radius: 25px;
+        outline: none;
+    }
+    &-cancel-view {
+      padding: 5px 25px;
+      background-color: white;
+      color: $ci-color-cyan-biru;
+      font-size: 18px;
+      font-weight: 500;
+      box-shadow: 3px 3px 9px #c9c9c9, -5px -5px 9px #ffffff;
+      border-radius: 25px;
+      border: none;
+      margin-left: 10px;
+      outline: none;
+      mat-spinner {
+          position: absolute;
+          top: 15px;
+          right: 5px;
+      }
+    }
+    &-confi {
+        padding: 5px 25px;
+        background-color: $ci-color-white-smoke;
+        color: $ci-color-nobel;
+        font-size: 18px;
+        font-weight: 500;
+        box-shadow: 3px 3px 9px #c9c9c9, -5px -5px 9px #ffffff;
+        -moz-box-shadow: 3px 3px 9px #c9c9c9, -5px -5px 9px #ffffff;
+        -webkit-box-shadow: 3px 3px 9px #c9c9c9, -5px -5px 9px #ffffff;
+        border-radius: 25px;
+        border: none;
+        outline: none;
+    }
+    &-exam {
+        padding: 5px 25px;
+        height: 50px;
+        background-color: $ci-color-white;
+        color: $ci-color-medium-blue;
+        font-size: 14px;
+        font-weight: 400;
+        box-shadow: inset 2px 2px 4px #c2c2c2, inset -2px -2px 4px #ffffff;
+        -moz-box-shadow: inset 2px 2px 4px #c2c2c2, inset -2px -2px 4px #ffffff;
+        -webkit-box-shadow: inset 2px 2px 4px #c2c2c2, inset -2px -2px 4px #ffffff;
+        border-radius: 25px;
+        border: none;
+        outline: none !important;
+    }
+    &-exam-active {
+        padding: 5px 25px;
+        background-color: $ci-color-white;
+        color: $ci-color-nobel;
+        font-size: 14px;
+        font-weight: 400;
+        height: 50px;
+        box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+        -moz-box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+        -webkit-box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+        border-radius: 25px;
+        border: none;
+        outline: none !important;
+    }
+    &-confi-cancel {
+        padding: 5px 15px;
+        background-color: transparent;
+        color: $ci-color-dim-gray;
+        line-height: 35px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 25px;
+        border: none;
+        border-radius: 25px;
+        outline: none;
+    }
+    &-active {
+        padding: 5px 25px;
+        color: $ci-color-contains-mainly-blue;
+        font-size: 18px;
+        font-weight: 500;
+        background-color: $ci-color-white;
+        -moz-box-shadow: inset 0px 5px 5px #c9c9c9;
+        -webkit-box-shadow: inset 0px 5px 5px #c9c9c9;
+        box-shadow: inset 0px 5px 5px #c9c9c9;
+        border-radius: 25px;
+        border: none;
+        outline: none;
+    }
+    &-login {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        color: $ci-color-white;
+        background: $ci-color-ecko-blue;
+        outline: none;
+    }
+    &-next {
+        box-shadow: 5px 5px 9px #c9c9c9, -5px -5px 9px #ffffff;
+        border-radius: 30px;
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        padding: 8px 30px;
+        border: none;
+        color: #707070;
+        display: flex;
+        justify-content: space-between;
+        .img-back-table {
+            position: absolute;
+            top: 11px;
+            left: 10px;
+            height: 20px;
+        }
+        .img-back-chart {
+            position: absolute;
+            top: 11px;
+            right: 10px;
+            height: 20px;
+        }
+    }
+}

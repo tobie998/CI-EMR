@@ -1,0 +1,53 @@
+<div class="row ci-align-items-center">
+    <div class="col-6">
+        <div class="ci-body-text-h1">
+            Update note
+        </div>
+    </div>
+    <div class="ci-group-btn-dialog col-6">
+        <button
+            class="ci-button-cancel"
+            (click)="closeDialog()"
+        >
+            {{ "CANCEL" | translate }}
+        </button>
+        <button
+            class="ci-button-save"
+            (click)="updateNote()"
+        >
+            {{ "SAVE" | translate }}
+        </button>
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2">
+        <span>Created:</span>
+    </div>
+    <div class="col p-0">
+        <span class="mr-3">{{data.noteDate}}</span> at <span class="ml-3">{{data.noteTime}}</span>
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2">
+        <span>Subject:</span>
+    </div>
+    <div class="col p-0">
+        <input
+            type="text"
+            class="ci-input-text-bt"
+            [(ngModel)]="data.Title"
+        >
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2">
+        <span>Body:</span>
+    </div>
+    <div class="col p-0">
+        <textarea
+            rows="3"
+            class="ci-input-text-bt"
+            [(ngModel)]="data.Content"
+        ></textarea>
+    </div>
+</div>

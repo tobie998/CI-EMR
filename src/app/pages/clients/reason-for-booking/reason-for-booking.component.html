@@ -1,0 +1,78 @@
+<div class="container-fluid ci-reason-for-booking">
+    <div class="row ci-align-items-center">
+        <div class="col-6 ci-subtitle ci-color-dim-gray ci-fz-20 align-self-center">
+            <img
+                (click)="back()"
+                src="assets/svg/back_home.svg"
+            />
+            {{ "REASON FOR BOOKING" | translate }}
+        </div>
+        <div class="col-6 group-btn">
+            <button
+                class="ci-button-save"
+                routerLink="/pages/clients/reason-booking/{{ patientId }}/schedule"
+            >
+                Select date
+            </button>
+        </div>
+    </div>
+    <div class="problem__list mt-4">
+        <div class="problem__list__header">
+            <div class="personal__info outsideShadow ml-1">
+                <img [src]="model.MediaURL" />
+                <div class="info__content">
+                    <div>
+                        <span>{{ "NAME" | translate }} :</span>
+                        <p>{{ model?.FirstName }} {{ model?.LastName }}</p>
+                    </div>
+                    <div>
+                        <span>{{ "AGE" | translate }} :</span>
+                        <p>{{ model?.age }}</p>
+                    </div>
+                    <div>
+                        <span>{{ "PHONE" | translate }} :</span>
+                        <p>{{ model?.Phone }}</p>
+                    </div>
+                    <div>
+                        <span>{{ "EMAIL" | translate }} :</span>
+                        <p>{{ model?.Email }}</p>
+                    </div>
+                    <div>
+                        <span>{{ "ADDRESS" | translate }} :</span>
+                        <p>{{ model?.Address }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="personal__note insideShadow mr-1">
+                <div>{{ "NOTE" | translate }}</div>
+                <textarea
+                    placeholder="add note ..."
+                    type="text"
+                ></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="insideShadow new_problem">
+        <div class="ci-body-text-h2 p-3">{{ "NEW PROBLEM" | translate }}</div>
+        <div class="new_problem_list">
+            <div *ngFor="let item of listName">
+                <div class="item-new-problem">
+                    {{item.Name}}
+                </div>
+            </div>
+            <span class="ci-input-create">
+                <input
+                    type="text"
+                    placeholder="+ Add new systems"
+                    name="problem"
+                    [(ngModel)]="name"
+                />
+                <img
+                    (click)="createNewProblem()"
+                    *ngIf="name"
+                    src="assets/svg/Bottomadd.svg"
+                />
+            </span>
+        </div>
+    </div>
+</div>

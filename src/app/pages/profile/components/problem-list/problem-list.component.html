@@ -1,0 +1,153 @@
+<div class="container-fluid mt-4">
+    <div class="problem__list__header">
+        <app-card-patient
+            class="w-52"
+            [data]="patientModel"
+            [cssClass]="{class:'insideShadow'}"
+        ></app-card-patient>
+        <div class="personal__note insideShadow mr-1 position-r">
+            <div class="ci-body-text problem_title">{{ "NOTE" | translate }}</div>
+            <textarea
+                id="noteInput"
+                name="Title"
+                [(ngModel)]="updateNote.Title"
+                (keyup)="showButton()"
+            ></textarea>
+            <button
+                *ngIf="hasText"
+                class="ci-button-save position-a save-note"
+                (click)="onUpdateNoteVisit()"
+            >
+                {{ "SAVE" | translate }}
+            </button>
+        </div>
+    </div>
+    <div class="problem__list__body insideShadow ml-1 mr-1">
+        <div class="old__problem">
+            <div class="ci-body-text problem_title">{{ "OLD PROBLEM" | translate }}</div>
+            <div class="old-problem">
+                <div
+                    class="problem__group"
+                    *ngFor="let problem of listOldProblem;let ix = index"
+                >
+                    <div
+                        class="title-problem"
+                        [class]="ix % 2 == 0 ? 'bg-profile-list' : ''"
+                    >
+                        <div class="ci-subtitle">
+                            {{ problem.Name }}
+                        </div>
+                        <img
+                            (click)="onDeleteProblem(problem)"
+                            src="assets/svg/deleteinline.svg"
+                        />
+                    </div>
+                    <div class="button__group">
+                        <button
+                            [class]="problem.Type == 3 && (visitId && visitId !== 0) ? 'ci-button-active' : 'ci-button-confi'"
+                            [attr.disabled]="(!visitId || visitId === 0)? true : null"
+                            (click)="updateTypeOldProblem(3, problem)"
+                        >
+                            {{ "SOLVED" | translate }}
+                        </button>
+                        <button
+                            [class]="problem.Type == 2 && (visitId && visitId !== 0) ? 'ci-button-active' : 'ci-button-confi'"
+                            [attr.disabled]="(!visitId || visitId === 0)? true : null"
+                            (click)="updateTypeOldProblem(2, problem)"
+                        >
+                            {{ "FOLLOW UP" | translate }}
+                        </button>
+                        <button
+                            [class]="problem.Type == 1 && (visitId && visitId !== 0) ? 'ci-button-active' : 'ci-button-confi'"
+                            [attr.disabled]="(!visitId || visitId === 0)? true : null"
+                            (click)="updateTypeOldProblem(1, problem)"
+                        >
+                            {{ "SKIP" | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border_problem"></div>
+        <div class="new__problem">
+            <div class="ci-body-text problem_title">{{ "NEW PROBLEM" | translate }}</div>
+            <div class="old-problem">
+                <div
+                    class="ci-list-item-input"
+                    *ngFor="let item of newProblem"
+                >
+                    <span class="ci-input-create prolem-none-border">
+                        <input
+                            type="text"
+                            placeholder="{{ 'Add new problem' | translate }}"
+                            name="problem"
+                            [(ngModel)]="item.Name"
+                            [disabled]="!item.isUpdate"
+                        />
+                        <img
+                            class="r-30"
+                            (click)="item.isUpdate = !item.isUpdate"
+                            *ngIf="!item.isUpdate"
+                            src="assets/svg/edit-inline.svg"
+                        />
+                        <img
+                            (click)="onDeleteProblem(item)"
+                            src="assets/svg/deleteinline.svg"
+                            *ngIf="!item.isUpdate"
+                        />
+                        <img
+                            (click)="onUpdateProblem(item)"
+                            src="assets/svg/icon-save.svg"
+                            *ngIf="item.isUpdate"
+                        />
+                    </span>
+                </div>
+                <span class="ci-input-create">
+                    <input
+                        *ngIf="(visitId && visitId !== 0)"
+                        type="text"
+                        placeholder="{{ 'Add new problem' | translate }}"
+                        name="problem"
+                        [(ngModel)]="nameNewProblem"
+                        (input)="onSearchProblem()"
+                    />
+                    <img
+                        (click)="onCreateNewProblem()"
+                        *ngIf="nameNewProblem && listProblemSearch.length ===0"
+                        src="assets/svg/Bottomadd.svg"
+                    />
+                    <mat-list class="w-100">
+                        <mat-list-item
+                            *ngFor="let item of listProblemSearch"
+                            (click)="onCreateNewProblemPredefine(item)"
+                        >
+                            {{ item.Name }}
+                        </mat-list-item>
+                    </mat-list>
+                </span>
+            </div>
+            <div class="row">
+                <ng-container *ngFor="let i of listCodeValue">
+                    <div
+                      class="col-6" class="re-color"
+                      *ngIf="i && i.NumericKey === patientModel.Status" >
+                         Status:
+                        {{i?.Value}}
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+    <div class="ci-group-btn mt-2 btn-bottom">
+      <!-- chưa xử lý với NurseVisitId -->
+      <!-- *ngIf="(visitId === 0)  && !patientModel.NurseVisitId" -->
+        <button
+            *ngIf="visitId === 0 && loaded === true"
+            class="ci-button-save"
+            (click)="startVisit()"
+        >
+            {{ "START" | translate }}
+        </button>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container-fluid mt-4">
+    <div class="insideShadow w-100">
+        <div class="row profile__nav m-0 diagnosis">
+            <mat-tab-group
+                mat-stretch-tabs
+                animationDuration="0ms"
+                class="insideShadow diagnosis_menu col p-0"
+            >
+                <mat-tab
+                    label="{{ item.Name }}"
+                    *ngFor="let item of problemList"
+                >
+                    <app-diagnosis-detail [data]="item"></app-diagnosis-detail>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

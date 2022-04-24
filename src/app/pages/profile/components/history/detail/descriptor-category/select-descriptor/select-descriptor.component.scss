@@ -1,0 +1,23 @@
+.select-header {
+    span {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.select-content {
+    height: 30vh;
+    margin-top: 40px;
+    .select-content-item {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        label {
+            margin-top: 20px;
+            margin-right: 10px;
+            margin-bottom: 0;
+        }
+    }
+}

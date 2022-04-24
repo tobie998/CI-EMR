@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48.001" height="24.002" viewBox="0 0 48.001 24.002">
+  <g id="En" transform="translate(-844.998 -46.998)">
+    <path id="Union_24" data-name="Union 24" d="M11370,16697h-24a12,12,0,1,1,0-24h24a12,12,0,0,1,0,24Z" transform="translate(-10489 -16625.998)" fill="#cfcfcf"/>
+    <g id="_arrow_right" data-name=" arrow_right" transform="translate(599 -3385)">
+      <path id="Icon" d="M280,3446.58v-5.17a1,1,0,0,1,1.71-.71l2.59,2.59a1,1,0,0,1,0,1.41l-2.59,2.59A1,1,0,0,1,280,3446.58Z" fill="#4d4d4d"/>
+    </g>
+    <path id="Path_2890" data-name="Path 2890" d="M7.5,0H1.2V-10.5H7.258v1.926H3.567V-6.24H7v1.919H3.567v2.4H7.5Zm8.7,0H13.894V-4.167q0-1.743-1.245-1.743a1.235,1.235,0,0,0-.989.461,1.758,1.758,0,0,0-.388,1.172V0H8.958V-7.5h2.314v1.187H11.3a2.652,2.652,0,0,1,2.41-1.37q2.49,0,2.49,3.091Z" transform="translate(852.799 64.504)" fill="#4d4d4d"/>
+  </g>
+</svg>

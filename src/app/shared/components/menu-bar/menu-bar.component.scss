@@ -1,0 +1,165 @@
+@import "../../scss/variables.scss";
+.sidenav {
+    width: 75px;
+    height: 86vh;
+    background-color: $ci-color-ecko-blue;
+    transition: 0.2s;
+    padding-top: 30px;
+    border-radius: 24px;
+    margin-top: 3vh;
+    margin-left: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px #c9c9c9, -3px -3px 6px #ffffff;
+}
+
+.menu-patients {
+    width: 75px;
+    height: 100px;
+    background-color: #9fb9c8;
+    margin-left: 15px;
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    img {
+        margin-top: 27px;
+        // width: 57px;
+        height: 45px;
+    }
+}
+
+.sidenav a {
+    padding: 13px 7px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(0, 0, 0, 0.4);
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: medium;
+    border-left: 3px solid rgb(233, 233, 233, 0.3);
+    margin-left: 6px;
+    mat-icon {
+        font-size: xx-large;
+        margin-right: 15px;
+        position: relative;
+        top: 10px;
+    }
+    span {
+        left: 15px;
+        position: relative;
+    }
+}
+
+.sidenav a:hover {
+    color: #000;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidenav .avatar {
+    margin-bottom: 35px;
+    margin: auto;
+    img {
+        border-radius: 15px;
+        height: 45px;
+    }
+}
+
+#home,
+#noti,
+#client,
+#calendar,
+#package,
+#chat {
+    opacity: 0.4;
+}
+
+.sideBarActive {
+    border-left: 3px solid #000 !important;
+    color: #000 !important;
+    #history,
+    #exam,
+    #diagnosis,
+    #plan,
+    #report,
+    #invoice,
+    #home,
+    #noti,
+    #client,
+    #calendar,
+    #package,
+    #chat {
+        opacity: 1;
+    }
+}
+
+.tab-item {
+    height: 76vh;
+    width: 75px;
+    transition: 0.2s;
+    padding-top: 30px;
+    border-radius: 24px;
+    margin-top: 1vh;
+    margin-left: 5px;
+    overflow: hidden;
+    margin-left: 15px;
+    a {
+        padding-top: 1rem;
+        text-align: center;
+        height: 80px;
+        border-left: 3px solid #e9e9e9;
+        text-decoration: none;
+        color: #6f6f6f;
+        display: block;
+        transition: 0.3s;
+        cursor: pointer;
+        font-size: medium;
+        margin-left: 6px;
+        img {
+            opacity: 0.5;
+        }
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
+#mySidenav {
+    margin-top: 20px;
+    a {
+        p {
+            margin: 0;
+            margin-top: 5px;
+            text-align: center;
+            margin-left: -7px;
+            font-size: 12px;
+        }
+    }
+}
+
+.outsvg {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    img {
+        margin: 8px 6px;
+    }
+    .icon-menu {
+        height: 30px;
+        background: none;
+        margin: 0;
+    }
+}
+
+.menu-button-down {
+    margin-left: 13px;
+}
+.arrow-up {
+    position: absolute;
+    left: 36px;
+}

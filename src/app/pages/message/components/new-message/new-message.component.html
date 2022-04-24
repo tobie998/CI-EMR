@@ -1,0 +1,161 @@
+<div class="ci-allergy-create">
+    <div class="row mb-4">
+        <div class="col-12 ci-body-text-h1 ci-dflex-modal">
+            Create new chat
+            <div>
+                <button
+                    class="ci-button-cancel"
+                    type="button"
+                    (click)="closeDialog()"
+                >
+                    {{ "CANCEL" | translate }}
+                </button>
+                <button
+                    class="ci-button-save"
+                    (click)="creareGroup()"
+                >
+                    {{ "SAVE" | translate }}
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="new-message-style">
+        <div class="row ci-align-items-center">
+            <div class="col-1">
+                Name:
+            </div>
+            <div class="col-11">
+                <input
+                    class="ci-input-search"
+                    type="text"
+                    placeholder="Group name..."
+                    [(ngModel)]="model.ConversationName"
+                >
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-6 d-flex">
+                <div class="col-2">
+                    About:
+                </div>
+                <div class="col-10">
+                    <input
+                        class="ci-input-search mb-2"
+                        placeholder="search"
+                        type="text"
+                        (input)="onSearchPatient($event.target.value)"
+                    >
+                    <div>
+                        <!-- <div class="col-12 p-0">
+                            <div class=" mess-item ci-dflex-modal">
+                                <div class="avatar">
+                                    <img
+                                        src="assets/images/avatar.png"
+                                        width="100%"
+                                        height="100%"
+                                    />
+                                </div>
+                                <div class="title">
+                                    <div class="ci-caption">
+                                        Not about a client
+                                    </div>
+                                </div>
+                                <div>
+                                    <input
+                                        type="checkbox"
+                                        id="notClient"
+                                        [checked]="checked"
+                                        (click)="onSelectPatient()"
+                                    />
+                                    <label for="notClient"></label>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-12 p-0 mess-list">
+                            <div *ngFor="let i of listPatientFilter">
+                                <div class=" mess-item ci-dflex-modal">
+                                    <div class="d-flex aligh-item-center">
+                                        <div class="avatar">
+                                            <img
+                                                src="{{i.MediaURL }}"
+                                                width="100%"
+                                                height="100%"
+                                            />
+                                        </div>
+                                        <div class="title ml-2">
+                                            <div class="ci-mess">
+                                                {{i.fullText}}
+                                            </div>
+                                            <div class="ci-caption">
+                                                {{i.fullText}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="checkbox"
+                                            [id]="i.fullText"
+                                            [checked]="i.checked"
+                                            (click)="onSelectPatient(i)"
+                                        />
+                                        <label for="{{i.fullText}}"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 d-flex">
+                <div class="col-2">
+                    Add:
+                </div>
+                <div class="col-10">
+                    <input
+                        class="ci-input-search mb-2"
+                        placeholder="search"
+                        type="text"
+                    >
+                    <div class="col-12 mess-list p-0">
+                        <div *ngFor="let i of listProvider">
+                            <div class=" mess-item ci-dflex-modal">
+                                <div class="d-flex aligh-item-center">
+                                    <div class="avatar">
+                                        <img
+                                            src="{{i.MediaURL }}"
+                                            width="100%"
+                                            height="100%"
+                                        />
+                                    </div>
+                                    <div class="title ml-2">
+                                        <div class="ci-mess">
+                                            {{i.FirstName}} {{i.LastName}}
+                                        </div>
+                                        <div class="ci-caption">
+                                            ID: {{i.ProviderId}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input
+                                        type="checkbox"
+                                        [id]="i.fullText"
+                                        [checked]="i.checked"
+                                        (click)="onSelectProvider(i)"
+                                    />
+                                    <label for="{{i.fullText}}"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div>
+                    <div *ngFor="let i of listProvider">
+                        {{i.FirstName}}
+                    </div>
+                </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

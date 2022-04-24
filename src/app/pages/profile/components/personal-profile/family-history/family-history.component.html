@@ -1,0 +1,11 @@
+<div class="ci-p-30-table">
+    <div class="row">
+        <div class="col-12">
+            <app-table-base [(listlable)]="collumsFamily" [checkWidth]="true" [(data)]="dataSource"
+                (callback)="handleCallBackTable($event)"></app-table-base>
+        </div>
+    </div>
+    <div class="ci-group-btn">
+        <img (click)="openDialog()" src="assets/svg/Bottomadd.svg" />
+    </div>
+</div>

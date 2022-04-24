@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="select-header">
+      <span>Add Review System</span>
+      <div>
+          <button class="ci-button-cancel" (click)="closeDialog()">
+            {{ "CANCEL" | translate }}
+          </button>
+          <button class="ci-button-save" (click)="createReviewSystom()">
+              {{ "SAVE" | translate }}
+          </button>
+          <!-- <button class="ci-button-cancel" (click)="closeDialog()">
+              {{ "BACK" | translate }}
+          </button> -->
+      </div>
+  </div>
+  <div class="header">
+      <div class="row">
+          <mat-tab-group mat-stretch-tabs animationDuration="0ms" class="insideShadow col p-0 height-81">
+              <mat-tab *ngFor="let organ of listOrgan, let i = index">
+                  <ng-template mat-tab-label>
+                      <span id="{{i}}" class="organNameTab">{{organ.OrganName}}</span>
+                  </ng-template>
+                  <div class="content">
+                      <div class="list-item">
+                          <div class="item" *ngFor="let item of organ.ListReviewSystems" (click)="updateReviewSystem(item)" [class]="item.VisitReviewSystemId !== null ?'itemActive' :''">
+                              {{item.ReviewSystemName}}
+                          </div>
+                      </div>
+                  </div>
+              </mat-tab>
+          </mat-tab-group>
+      </div>
+  </div>
+
+
+</div>

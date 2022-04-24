@@ -1,0 +1,79 @@
+@import "../../../../shared/scss/variables.scss";
+
+::ng-deep .home_timeline {
+    .e-schedule-toolbar-container {
+        display: none;
+    }
+    .e-schedule .e-timeline-view .e-appointment {
+        border-radius: 20px !important;
+        height: 25px;
+    }
+    .e-toolbar .e-toolbar-items.e-tbar-pos .e-toolbar-right {
+        right: 0;
+        display: none;
+    }
+    .e-schedule .e-timeline-view .e-appointment .e-left-icon,
+    .e-schedule .e-timeline-view .e-appointment .e-right-icon,
+    .e-schedule .e-timeline-month-view .e-appointment .e-left-icon,
+    .e-schedule .e-timeline-month-view .e-appointment .e-right-icon {
+        font-size: 10px;
+        line-height: 25px;
+        padding-right: 7px;
+    }
+    td.e-work-cells,
+    tr.e-header-row {
+        background: none !important;
+    }
+    .e-schedule {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        background-color: #f6f6f6 !important;
+        box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+        border: none;
+    }
+    .e-schedule .e-timeline-view .e-child-node {
+        background-color: #f6f6f6;
+    }
+    .e-schedule .e-timeline-view .e-date-header-wrap table td.e-current-day {
+        background-color: #f6f6f6;
+    }
+    .e-schedule .e-timeline-view .e-date-header-wrap table tbody td.e-time-slots {
+        background-color: #f6f6f6;
+    }
+    .e-schedule .e-timeline-view .e-date-header-wrap table td:first-child {
+        background: none;
+        display: none;
+    }
+    .e-schedule .e-new-event {
+        display: none;
+    }
+    span.e-header-date.e-navigate {
+        color: $ci-color-ecko-blue;
+    }
+    .e-schedule .e-timeline-view .e-current-time {
+        color: $ci-color-ecko-blue;
+    }
+    .e-schedule .e-timeline-view .e-current-timeline {
+        border-left: 1px solid $ci-color-ecko-blue;
+    }
+    .e-calendar .e-content td.e-today.e-selected span.e-day {
+        background-color: $ci-color-ecko-blue;
+        border: 1px solid $ci-color-ecko-blue;
+    }
+    .e-btn.e-flat.e-primary,
+    .e-css.e-btn.e-flat.e-primary {
+        color: $ci-color-ecko-blue;
+    }
+    .e-btn.e-flat.e-primary:focus,
+    .e-css.e-btn.e-flat.e-primary:focus {
+        background-color: #fff;
+        border: none;
+    }
+    .e-calendar .e-content td.e-selected span.e-day {
+        background-color: $ci-color-ecko-blue;
+    }
+    .e-calendar .e-content td.e-today span.e-day {
+        border: 1px solid $ci-color-ecko-blue;
+        color: black;
+    }
+}

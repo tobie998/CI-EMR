@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-2 clients ci-title-fz20 d-flex align-items-center">
+            {{ "CLIENTS" | translate }}
+        </div>
+        <div class="col-5 input-search">
+            <input
+                type="search"
+                class="ci-input-search"
+                placeholder="{{ 'SEARCH' | translate }}"
+                (input)="searchPatient($event.target.value)"
+            >
+            <mat-icon class="input-search-icon">search</mat-icon>
+            <div
+                *ngIf="keyword"
+                class="list-patient-search"
+            >
+                <div
+                    *ngFor="let item of patientsSub"
+                    class="row list-item"
+                >
+                    <div
+                        class="img"
+                        (click)="routerLink(item.PatientId)"
+                    >
+                        <img src="{{ item.MediaURL }}" />
+                    </div>
+                    <div
+                        class="ml-2"
+                        (click)="routerLink(item.PatientId)"
+                    >
+                        <p class="fz-12">{{ item.FirstName }} {{ item.LastName }}</p>
+                        <p class="fz-12">ID: {{ item.ClientID }}</p>
+                    </div>
+                    <!-- <mat-icon (click)="deletePatient(item.PatientId)">delete</mat-icon> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5 search">
+            <app-user></app-user>
+        </div>
+    </div>
+    <div [hidden]="!hideLastResults">
+        <app-list-patient
+            [data]="openClients"
+            [config]="configOpenClients"
+            (callback)="showAllOpenClients()"
+        >
+        </app-list-patient>
+        <app-list-patient
+            [data]="listRecent"
+            [config]="configRecent"
+            (callback)="showRecentClient()"
+        >
+        </app-list-patient>
+        <app-list-patient
+            [data]="listPatientScheduled"
+            [config]="configSchedule"
+            (callback)="showAllSchedule()"
+        >
+        </app-list-patient>
+        <app-list-patient
+            [data]="patientTested"
+            [config]="configPatientTested"
+            (callback)="showListTestOrder()"
+        >
+        </app-list-patient>
+    </div>
+    <app-list-patient
+        [hidden]="hideLastResults"
+        [data]="listResultViewAll"
+        [config]="configLastResult"
+        (callback)="showViewAll()"
+    >
+    </app-list-patient>
+    <div class="ci-group-btn">
+        <button
+            class="ci-button-save"
+            (click)="createPatient()"
+        >
+            Register New Client
+        </button>
+    </div>
+</div>

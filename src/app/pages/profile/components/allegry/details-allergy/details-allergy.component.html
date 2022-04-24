@@ -1,0 +1,100 @@
+<div class="ci-allergy-create">
+    <div class="row mb-2">
+        <div class="col-12 ci-body-text-h1 ci-dflex-modal">
+            <div *ngIf="data.StatusType ==='detail'">{{ "DETAILS ALLERGY" | translate }}</div>
+            <div *ngIf="data.StatusType ==='create'">{{ "ADD ALLERGY" | translate }}</div>
+            <div>
+                <button
+                    class="ci-button-cancel"
+                    (click)="closeDialog()"
+                    type="button"
+                >
+                    {{ "CANCEL" | translate }}
+                </button>
+                <button
+                    class="ci-button-save"
+                    (click)="onClickAllergry()"
+                >
+                    {{ "SAVE" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row ci-align-items-center">
+        <div class="col-2">
+            {{ "ALLERGY FOR" | translate }}:
+        </div>
+        <div class="col-10">
+            <select
+                class="ci-select-defaut"
+                [(ngModel)]="model.AllergyId"
+                name="AllergyId"
+                [disabled]="data.StatusType ==='detail'"
+            >
+                <option
+                    *ngFor="let item of allergyList"
+                    [value]="item.AllergyId"
+                >
+                    {{ item.Name }}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="row ci-align-items-center">
+        <div class="col-2">
+            {{ "SINCE" | translate }}:
+        </div>
+        <div class="col-10">
+            <input
+                type="number"
+                name="date"
+                class="ci-input-text-bt"
+                [(ngModel)]="model.StartDate"
+            />
+        </div>
+    </div>
+    <div class="row ci-align-items-center">
+        <div class="col-2">
+            {{ "SYMPTONS" | translate }}:
+        </div>
+        <div class="ci-input-group-text col-10">
+            <input
+                type="text"
+                class="ci-input-boder-bt"
+                name="problem"
+                [(ngModel)]="model.SymptomSNOMEDDescription"
+                autocomplete="off"
+            />
+            <mat-spinner
+                class="spinner-loading"
+                *ngIf="!isLoading"
+                matSuffix
+                [diameter]="18"
+            ></mat-spinner>
+            <mat-selection-list
+                class="example-full-width"
+                [multiple]="false"
+            >
+                <mat-list-option
+                    *ngFor="let item of symptomsList"
+                    [value]="item.SymptomSNOMEDCode"
+                >
+                    {{ item.FullName }}
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+    <div class="row ci-align-items-center">
+        <div class="col-2">
+            {{ "FREQUENCY" | translate }}
+        </div>
+        <div class="col-10">
+            <input
+                type="text"
+                name="frequency"
+                class="ci-input-text-bt"
+                [(ngModel)]="model.Frequency"
+            />
+        </div>
+    </div>
+</div>

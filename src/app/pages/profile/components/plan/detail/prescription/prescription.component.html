@@ -1,0 +1,128 @@
+<div class="ci-p-30-table ci-prescription">
+    <table
+        mat-table
+        class="tableStyle ci-normal-table"
+        [dataSource]="dataSource"
+    >
+        <ng-container matColumnDef="Name">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            >{{ "NAME-1" | translate }}</th>
+            <td
+                mat-cell
+                *matCellDef="let prescription"
+            >
+                {{ prescription.NameDrug }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Dose">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            >{{ "DOSE" | translate }}</th>
+            <td
+                mat-cell
+                *matCellDef="let prescription"
+            >
+                {{ prescription.DoseValue }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Frequency">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            >{{ "FREQUENCY" | translate }}</th>
+            <td
+                mat-cell
+                *matCellDef="let prescription"
+            >
+            {{ prescription.FrequencyValue}} {{ prescription.FrequencyUnit }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Start Date">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            >{{ "STARTDATE" | translate }}</th>
+            <td
+                mat-cell
+                *matCellDef="let prescription"
+            >
+                {{ prescription.StartDate | date: "MM/dd/yyyy" }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="End Date">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            >{{ "ENDDATE" | translate }}</th>
+            <td
+                mat-cell
+                *matCellDef="let prescription"
+            >
+                {{ prescription?.EndDate | date: "MM/dd/yyyy" }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Route">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            >{{ "ROUTE" | translate }}</th>
+            <td
+                mat-cell
+                *matCellDef="let prescription"
+            >
+                {{ prescription.NameDrugRoute }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Detail">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            >{{ "DETAILS" | translate }}</th>
+            <td
+                mat-cell
+                *matCellDef="let prescription"
+            >
+                {{ prescription.Instruction }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th
+                mat-header-cell
+                *matHeaderCellDef
+            ></th>
+            <td
+                mat-cell
+                *matCellDef="let item"
+            >
+                <img
+                    (click)="openDetailDialog(item)"
+                    src="assets/svg/edit-inline.svg"
+                    class="h-20"
+                />
+                <img
+                    (click)="deleteItem(item)"
+                    src="assets/svg/deleteinline.svg"
+                    class="h-20 ml-2"
+                />
+            </td>
+        </ng-container>
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns"
+        ></tr>
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+    </table>
+    <div class="ci-group-btn">
+        <img
+            class="ci-btn-create"
+            (click)="openDialog()"
+            src="assets/svg/Bottomadd.svg"
+        />
+    </div>
+</div>

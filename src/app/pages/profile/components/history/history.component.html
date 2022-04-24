@@ -1,0 +1,21 @@
+<div class="container-fluid mt-4">
+    <div class="row m-0 history_row">
+        <div class=" profile__nav insideShadow   w-100 history">
+            <mat-tab-group
+                mat-stretch-tabs
+                class="example-stretched-tabs mat-elevation-z4 p-0"
+                animationDuration="0ms"
+            >
+                <mat-tab
+                    *ngFor="let item of ListProblem"
+                    [label]="item.Name"
+                >
+                    <app-history-detail
+                        [data]="item"
+                        [modelPatient]="modelPatient"
+                    ></app-history-detail>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

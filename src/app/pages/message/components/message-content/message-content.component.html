@@ -1,0 +1,24 @@
+<div class="row mess-box mess-scroll" #scrollMe>
+    <div class="col-12">
+        <div>
+            <div *ngFor="let i of listMesGroup">
+                <div *ngIf="i.UserProfielId != currentUserprofileId" class="row mess-box-chat">
+                    <div class="mess-box-user-avatar">
+                        <img src="{{ i.ProfileImageUrl }}" />
+                    </div>
+                    <div class="box-content">
+                        <p class="user-name">{{i?.SenderFullName}}</p>
+                        <p class="chat-content">{{i?.Content}}</p>
+                    </div>
+                </div>
+                <div class="message-sent">
+                    <div *ngIf="i.UserProfielId == currentUserprofileId" class=" current-user-box-chat mt-1">
+                        <p class="user-name text-align-right">
+                            {{i?.Content}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

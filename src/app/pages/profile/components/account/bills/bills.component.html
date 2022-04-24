@@ -1,0 +1,34 @@
+<div class="container-fluid ci-p-30-table">
+  <div class="row bill-table">
+    <div class="w-100">
+      <table mat-table matSort [dataSource]="dataSource" class="ci-normal-table tableStyle">
+        <ng-container matColumnDef="No.">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let item">
+            {{ item.BillId }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let item">
+            {{ item.CreatedOn | date: "MM/dd/yyyy" }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let item; let index = index">
+            {{ item.TotalAmount | number: "1.0-0" }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="print">
+          <th mat-header-cell *matHeaderCellDef style="width: 60px;"></th>
+          <td mat-cell *matCellDef="let item; let index = index">
+            <img src="assets/images/download.png" (click)="downloadPDF(item)">
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; let item" (click)="clickDetail(item)"></tr>
+      </table>
+    </div>
+  </div>
+</div>

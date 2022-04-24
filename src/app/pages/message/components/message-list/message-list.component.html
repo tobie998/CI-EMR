@@ -1,0 +1,39 @@
+<div [class]="!isLoading ? 'c-loading--hidden c-loading' : 'c-loading'">
+    <div class="c-loading__status spinner-border m-5" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row  align-items-center">
+        <div class="col-6 ci-title-fz20 pl-35px">
+            Message
+        </div>
+        <div class="col-6 search">
+            <app-user></app-user>
+        </div>
+    </div>
+    <div class="ci-message row">
+        <mat-tab-group mat-align-tabs="start" class="col-4 list-message insideShadow p-0">
+            <mat-tab label="All">
+                <app-message-tab [listConveration]="listAll" [type]="'All'" (callBack)="showMessageFromAll($event)"></app-message-tab>
+            </mat-tab>
+            <mat-tab label="Contacts">
+                <app-message-tab [listConveration]="listContacts" [type]="'Contacts'" (callBack)="showMessageFromContracts($event)"></app-message-tab>
+            </mat-tab>
+            <mat-tab label="By Client">
+                <app-message-tab [listConveration]="listClients" [type]="'ByClient'" (callBack)="showMessageByClient($event)"></app-message-tab>
+
+                <div class="text-align-right">
+                    <img (click)="openDialog()" src="assets/svg/createnote.svg" />
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <div class="col-8 detail-message">
+            <div class="container-fluid detail-message-2 insideShadow">
+                <app-message-header [groupModel]="GroupModel"></app-message-header>
+                <app-message-content [listMesGroup]="listMesGroup" [currentUserprofileId]="currentUserId"></app-message-content>
+                <app-message-footer [content]="content" (sendMessage)="sendMessage($event)"></app-message-footer>
+            </div>
+        </div>
+    </div>
+</div>

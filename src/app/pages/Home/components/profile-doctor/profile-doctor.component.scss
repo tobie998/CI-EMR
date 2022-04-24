@@ -1,0 +1,126 @@
+@import "../../../../shared/scss/variables.scss";
+.avatar {
+    width: 13em;
+    height: 20em;
+    border-radius: 15px;
+    margin-top: 2rem;
+    margin-left: 3rem;
+    position: relative;
+    border: 1px solid;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+    .add-photo {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        bottom: 5px;
+        right: 5px;
+        filter: contrast(0.5);
+    }
+    .material-icons {
+        position: absolute;
+        bottom: 17px;
+        right: 16px;
+        color: $ci-color-white;
+        font-size: 21px;
+    }
+}
+
+.form {
+    height: 87vh;
+    padding: 10px;
+}
+
+.title {
+    line-height: 55px;
+    font-size: 20px;
+    color: $ci-color-dim-gray;
+}
+.content {
+    float: right;
+    margin-top: 1rem;
+    h3 {
+        margin: 0;
+        color: $ci-color-dim-gray;
+    }
+    label {
+        width: 127px;
+        color: $ci-color-dim-gray;
+        margin: 0;
+        font-size: 14px;
+    }
+}
+
+.info {
+    margin-bottom: 2rem;
+}
+
+.book-register {
+    float: right;
+    position: relative;
+    top: 5px;
+    right: 1rem;
+    button {
+        background-color: $ci-color-ecko-blue;
+        width: 175px;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        font-size: 20px;
+        color: $ci-color-white;
+    }
+    a {
+        font-size: 20px;
+        margin-right: 1em;
+        color: $ci-color-ecko-blue;
+    }
+}
+
+.gender {
+    select {
+        border: none;
+        background: none;
+        border-bottom: 2px solid $ci-color-border;
+        width: 100%;
+    }
+}
+
+mat-icon {
+    font-size: 50px;
+    color: $ci-color-dim-gray;
+}
+
+.edit {
+    position: absolute;
+    right: 2em;
+    bottom: 0.5em;
+    .save {
+        width: 100px;
+        height: 35px;
+        border: none;
+        background-color: $ci-color-ecko-blue;
+        border-radius: 20px;
+        color: $ci-color-white;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+.infor-item {
+    display: flex;
+    align-items: center;
+}
+.info-row {
+    height: 45px;
+}
+.infor-item-label {
+    width: 65px;
+}
+.group-profile {
+    width: 100%;
+    img {
+        float: right;
+    }
+}

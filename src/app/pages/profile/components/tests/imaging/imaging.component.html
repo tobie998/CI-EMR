@@ -1,0 +1,29 @@
+<div class="container-fluid lab ">
+    <div class="row mb-2">
+        <div class="col-8 "></div>
+        <div class="col-4 p-0 next-step justify-content-end d-flex">
+            <!-- <button (click)="onClickSort()">sort</button> -->
+            <button class="ci-button-next test-button-next justify-content-center">
+                <img
+                    class="img-back-table"
+                    src="assets/svg/back.svg"
+                >
+                Not yet reviewed
+                <img
+                    class="img-back-chart"
+                    src="assets/svg/next.svg"
+                >
+            </button>
+        </div>
+    </div>
+    <div class="row justify-content-between ml-1">
+        <div class="col-12">
+            <app-table-base
+                [listlable]="listlable"
+                [(data)]="data"
+                [(height)]="height"
+                [(checkWidth)]="check"
+            ></app-table-base>
+        </div>
+    </div>
+</div>

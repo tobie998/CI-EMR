@@ -1,0 +1,70 @@
+<div class="background">
+    <img
+        class="logo-login"
+        src="assets/svg/logo.svg"
+    >
+    <div
+        class="c-loading"
+        [class.c-loading--hidden]="!isLoading"
+    >
+        <div
+            class="c-loading__status spinner-border m-5"
+            role="status"
+        >
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <form class="container">
+        <div class="row">
+            <div class="col-5 mx-auto">
+                <div class="title">
+                    Sign in <br>your account
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5 mx-auto">
+                <input
+                    class="ci-input-login "
+                    type="text"
+                    name="userName"
+                    placeholder="Username"
+                    [(ngModel)]="model.userName"
+                >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5 mx-auto">
+                <input
+                    class="ci-input-login "
+                    type="password"
+                    name="pwd"
+                    placeholder="Password"
+                    [(ngModel)]="model.pwd"
+                >
+                <p *ngIf="error">Sai tên đăng nhập hoặc mật khẩu. Hãy thử lại</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5 mx-auto d-flex justify-content-between">
+                <!-- <mat-checkbox>Remember me</mat-checkbox> -->
+                <a routerLink="forgot-password">Forgot password?</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5 mx-auto">
+                <button
+                    class="ci-button-login"
+                    (click)="login()"
+                >
+                    Sign in
+                </button>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-5 mx-auto text-center">
+                Don't have an account? <u routerLink="sign-up">Sign up</u>
+            </div>
+        </div> -->
+    </form>
+</div>

@@ -1,0 +1,134 @@
+<div class="p-3">
+  <!-- Hiển thị Cột cấp 1 -->
+  <div class="listTestCategory">
+    <ul class="ul-listTestCategory">
+      <li class="li-listTestCategory" *ngFor="let item of listParentTest"
+        [class]="item.isActive === true ? 'border-bottom-1': '' ">
+        <div class="listTestCategorySub" (click)="onActiveItem(item)">
+          <mat-icon *ngIf="item.isActive === true">done</mat-icon>
+          {{item.Name}}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <ng-container *ngFor="let parentTest of listParentTest">
+      <!-- Hiển thị Cột cấp 2 -->
+    <div class="ml-3 listTestCategory" name="2Ca" *ngIf="parentTest.isActive === true">
+      <ul class="ul-listTestCategory scroll-55vh" *ngIf="parentTest.ListTestcategories.length !== 0">
+        <li class="li-listTestCategory" *ngFor="let testcategory of parentTest.ListTestcategories"
+          [class]="testcategory.isActive === true ? 'border-bottom-1': '' ">
+          <div class="listTestCategorySub" (click)="onActiveTestCategory(parentTest.ListTestcategories, testcategory)">
+            <mat-icon *ngIf="testcategory.isActive === true">done</mat-icon>
+            {{testcategory.Name}}
+          </div>
+        </li>
+      </ul>
+      <ul class="ul-listTestCategory scroll-55vh" name="2Or" *ngIf="parentTest.ListOrgans.length !== 0">
+        <li class="li-listTestCategory" *ngFor="let listOrgans of parentTest.ListOrgans; let i = index"
+          [class]="listOrgans.isActive === true ? 'border-bottom-1': '' ">
+          <div class="listTestCategorySub" (click)="onActiveOrgans(parentTest.ListOrgans, listOrgans)">
+            <mat-icon *ngIf="listOrgans.isActive === true">done</mat-icon>
+            {{listOrgans.Name}}
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <ng-container *ngIf="parentTest.isActive === true && parentTest.ListTestcategories.length !== 0">
+      <ng-container *ngFor="let testcategories of parentTest.ListTestcategories">
+        <ng-container *ngIf="testcategories.isActive === true && testcategories.ListOrgans.length !== 0">
+          <!-- listOrgans -->
+          <!-- Hiển thị Cột cấp 2.5 -->
+          <div class="ml-3 listTestCategory" name="2.5Or">
+            <ul class="ul-listTestCategory scroll-55vh" >
+              <li class="li-listTestCategory" *ngFor="let organ of testcategories.ListOrgans"
+                [class]="organ.isActive ? 'border-bottom-1': '' ">
+                <div class="listTestCategorySub" (click)="onActiveOrgans(testcategories.ListOrgans, organ)">
+                  <mat-icon *ngIf="organ.isActive === true">done</mat-icon> {{organ.Name}}
+                </div>
+              </li>
+            </ul>
+            <div class="scroll-drop">
+              <img src="assets/svg/arrow-down.svg">
+            </div>
+          </div>
+          <!-- listTest -->
+          <!-- Hiển thị Cột cấp 3 -->
+          <ng-container *ngFor="let organ of testcategories.ListOrgans">
+            <div class="listCategorySub scroll-55vh" name="3OrCa" [ngStyle]="{'width.%': '33' }"
+            *ngIf="testcategories.isActive === true && organ.isActive === true">
+            <ul class="ul-listTestCategory">
+              <li class="li-listTestCategory row" *ngFor="let testcombination of organ.ListTestcombinations; let comId = index"
+                >
+                <div [class]="(comId % 2) === 0 ? 'bg-br col-9 text-align-center mr-3': ' col-9 text-align-center mr-3'">
+                  {{testcombination.Name}}
+                </div>
+                <div class="text-align-center" [class]="comId % 2 === 0? 'bg-br col-2': 'col-2'" (click)="onActiveCatSub(testcombination)">
+                  <div class="example-section">
+                    <mat-checkbox class="custom-frame" [(ngModel)] = "testcombination.isActive" >
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="testcategories.isActive === true && testcategories.ListTestcombinations && testcategories.ListTestcombinations.length !== 0">
+          <!-- listTest -->
+          <!-- Hiển thị Cột cấp 3 -->
+          <div class="listCategorySub scroll-55vh" name="3OrCa" [ngStyle]="{'width.%': '55' }">
+            <ul class="ul-listTestCategory">
+              <li class="li-listTestCategory row" *ngFor="let testcombination of testcategories.ListTestcombinations; let comId = index"
+                >
+                <div [class]="(comId % 2) === 0 ? 'bg-br col-9 text-align-center mr-3': ' col-9 text-align-center mr-3'">
+                  {{testcombination.Name}}
+                </div>
+                <div class="text-align-center" [class]="comId % 2 === 0? 'bg-br col-2': 'col-2'" (click)="onActiveCatSub(testcombination)">
+                  <div class="example-section">
+                    <mat-checkbox class="custom-frame" [(ngModel)] = "testcombination.isActive" >
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+
+      </ng-container>
+    </ng-container>
+
+
+    <ng-container *ngIf="parentTest.isActive === true && parentTest.ListOrgans.length !== 0">
+      <ng-container *ngFor="let organ of parentTest.ListOrgans">
+        <!-- Hiển thị Cột cấp 3 -->
+        <!-- listTest -->
+        <div class="listCategorySub scroll-55vh" name="3Or" [ngStyle]="{'width.%': '55' }"
+          *ngIf="organ.isActive === true">
+          <ul class="ul-listTestCategory">
+            <li class="li-listTestCategory row" *ngFor="let testcombination of organ.ListTestcombinations; let comId = index"
+              >
+              <div [class]="(comId % 2) === 0 ? 'bg-br col-9 text-align-center mr-3': ' col-9 text-align-center mr-3'">
+                {{testcombination.Name}}
+              </div>
+              <div class="text-align-center" [class]="comId % 2 === 0? 'bg-br col-2': 'col-2'" (click)="onActiveCatSub(testcombination)">
+                <div class="example-section">
+                  <mat-checkbox class="custom-frame" [(ngModel)] = "testcombination.isActive" >
+                  </mat-checkbox>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </ng-container>
+
+
+  </ng-container>
+
+  <div *ngIf="lstTestcombinationsTemp.length" class="btn-order-all">
+    <button class="ci-button-save order-all" (click)="orderTestAll()">
+      Order all
+    </button>
+  </div>
+</div>

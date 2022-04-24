@@ -1,0 +1,121 @@
+@import "../../../../../shared/scss/variables.scss";
+@import "../../../../../shared/scss/base.style.scss";
+@import "../../../../../shared/scss/button.scss";
+@import "../../../../../shared/scss/input.scss";
+select {
+    border: none;
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid;
+    padding: 0px 12px;
+    background-color: #ebebeb;
+    outline: none;
+}
+
+.view {
+    height: 76vh;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.box {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    button {
+        margin-right: 1rem;
+        min-width: 105px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.box-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        color: $ci-color-dim-gray;
+        padding-top: 13px;
+    }
+}
+.frequency {
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    & > button {
+        margin-right: 1rem;
+        min-width: 105px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .bg-EB {
+        position: absolute;
+        top: 55px;
+        background-color: $ci-profile-list;
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        padding: 10px 0 0;
+        .per_day {
+            .list_time {
+                border-right: 1px solid;
+                height: auto;
+                width: 100%;
+                overflow: hidden;
+                margin-bottom: 15px;
+                button {
+                    width: 100px;
+                    margin: 10px;
+                }
+            }
+        }
+        .for {
+            .list_time {
+                // height: 300px;
+                width: 100%;
+                overflow: hidden;
+                button {
+                    width: 100px;
+                    margin: 10px;
+                }
+            }
+        }
+        .other {
+            height: 30px;
+            padding: 0;
+            width: 90%;
+            margin-left: 10px;
+            background-color: white;
+            border-radius: 30px;
+            text-align: left;
+            padding-left: 15px;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+            input {
+                position: absolute;
+                width: 55%;
+                height: 30px;
+                padding: auto;
+                border: none;
+                margin-left: 15px;
+                border-radius: 0px 30px 30px 0;
+            }
+        }
+    }
+}
+
+.p-bg-70 {
+    color: $ci-color-dim-gray;
+    white-space: nowrap;
+}
+.social-over {
+    overflow: hidden !important;
+}

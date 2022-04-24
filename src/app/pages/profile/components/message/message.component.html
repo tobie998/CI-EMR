@@ -1,0 +1,248 @@
+<div [class]="!isLoading ? 'c-loading--hidden c-loading' : 'c-loading'">
+    <div
+        class="c-loading__status spinner-border m-5"
+        role="status"
+    >
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="ci-message row">
+        <mat-tab-group
+            mat-align-tabs="start"
+            class="col-4 list-message insideShadow p-0"
+        >
+            <mat-tab label="To:">
+                <input
+                    class="ci-input-search"
+                    type="text"
+                    placeholder="search"
+                    (input)="onSearchClients($event.target.value)"
+                >
+                <div class="ci-mess-scroll">
+                    <div class="ci-body-mess">
+                        <div
+                            *ngFor="let item of listClientsFilter"
+                            class="info"
+                            (click)="detailGroupConversation(item)"
+                        >
+                            <div
+                                *ngIf="item.Profilelist.length === 2"
+                                class="col-3 mess-group2"
+                            >
+                                <div class="row ml-0">
+                                    <div
+                                        *ngFor="let i of item.Profilelist, let ix = index"
+                                        [class]="ix === 0 ? 'avatar-item1' : 'avatar-item2'"
+                                    >
+                                        <img
+                                            [src]="i"
+                                            width="100%"
+                                            height="100%"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="item.Profilelist.length === 3"
+                                class="col-3 mess-group3"
+                            >
+                                <div class="row ml-0">
+                                    <div
+                                        *ngFor="let i of item.Profilelist, let ix = index"
+                                        [class]="ix === 0 ? 'avatar-item1 col-6' : ix === 1 ? 'avatar-item2 col-6': 'avatar-item3 col-12'"
+                                    >
+                                        <img
+                                            [src]="i"
+                                            width="100%"
+                                            height="100%"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="item.Profilelist.length === 4"
+                                class="col-3 mess-group4"
+                            >
+                                <div class="row ml-0">
+                                    <div
+                                        *ngFor="let i of item.Profilelist, let ix = index"
+                                        [class]="(ix === 0 || ix === 2) ? 'avatar-item1 col-6' : 'avatar-item col-6'"
+                                    >
+                                        <img
+                                            [src]="i"
+                                            width="100%"
+                                            height="100%"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="item.Profilelist.length > 4"
+                                class="col-3 mess-group5"
+                            >
+                                <div class="row ml-0">
+                                    <div
+                                        *ngFor="let i of item.Profilelist, let ix = index"
+                                        class="avatar-item"
+                                    >
+                                        <img
+                                            *ngIf=" 3 > ix"
+                                            [src]="i"
+                                            width="100%"
+                                            height="100%"
+                                        />
+                                        <span *ngIf="ix === 3">+{{item.Profilelist.length -3}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="title">
+                                    <h5> {{item?.ConversationName}} </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-align-right">
+                    <img
+                        (click)="openDialog()"
+                        src="assets/svg/createnote.svg"
+                    />
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <div class="col-8 detail-message">
+            <div class="container-fluid detail-message-2 insideShadow">
+                <div
+                    class="row d-flex mess-box-title p-1"
+                    *ngIf="GroupModel"
+                >
+                    <div
+                        *ngIf="GroupModel.Profilelist.length === 2"
+                        class="col-2 mess-group2"
+                    >
+                        <div class="row ml-0">
+                            <div
+                                *ngFor="let i of GroupModel.Profilelist, let ix = index"
+                                [class]="ix === 0 ? 'avatar-item1' : 'avatar-item2'"
+                            >
+                                <img
+                                    [src]="i"
+                                    width="100%"
+                                    height="100%"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="GroupModel.Profilelist.length === 3"
+                        class="col-2 mess-group3"
+                    >
+                        <div class="row ml-0">
+                            <div
+                                *ngFor="let i of GroupModel.Profilelist, let ix = index"
+                                [class]="ix === 0 ? 'avatar-item1 col-6' : ix === 1 ? 'avatar-item2 col-6': 'avatar-item3 col-12'"
+                            >
+                                <img
+                                    [src]="i"
+                                    width="100%"
+                                    height="100%"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="GroupModel.Profilelist.length === 4"
+                        class="col-2 mess-group4 ci-padding-right-35"
+                    >
+                        <div class="row ml-0">
+                            <div
+                                *ngFor="let i of GroupModel.Profilelist, let ix = index"
+                                [class]="(ix === 0 || ix === 2) ? 'avatar-item1 col-6' : 'avatar-item col-6'"
+                            >
+                                <img
+                                    [src]="i"
+                                    width="100%"
+                                    height="100%"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="GroupModel.Profilelist.length > 4"
+                        class="col-2 mess-group5 ci-padding-right-50"
+                    >
+                        <div class="row ml-0">
+                            <div
+                                *ngFor="let i of GroupModel.Profilelist, let ix = index"
+                                class="avatar-item col-6"
+                            >
+                                <img
+                                    *ngIf=" 3 > ix"
+                                    [src]="i"
+                                    width="100%"
+                                    height="100%"
+                                />
+                                <span *ngIf="ix === 3">+{{GroupModel.Profilelist.length -3}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 p-0 align-self-center mess-title ci-white-space"> {{GroupModel?.ConversationName}}
+                    </div>
+                </div>
+                <div
+                    class="row mess-box mess-scroll"
+                    #scrollMe
+                >
+                    <div class="col-12">
+                        <div *ngIf="listMesGroup.length">
+                            <div *ngFor="let i of listMesGroup">
+                                <div
+                                    *ngIf="i.CreatedBy != user.UserprofileId"
+                                    class="row mess-box-chat"
+                                >
+                                    <div class="mess-box-user-avatar">
+                                        <img src="{{ i.ProfileImageUrl }}" />
+                                    </div>
+                                    <div class="box-content">
+                                        <p class="user-name">{{i?.SenderFullName}}</p>
+                                        <p class="chat-content">{{i?.Content}}</p>
+                                    </div>
+                                </div>
+                                <div class="message-sent">
+                                    <div
+                                        *ngIf="i.CreatedBy == user.UserprofileId"
+                                        class=" current-user-box-chat mt-1"
+                                    >
+                                        <p class="user-name text-align-right"> {{i?.Content}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ci-input-create">
+                    <span class="ci-input-create">
+                        <input
+                            type="text"
+                            placeholder="Texts"
+                            [(ngModel)]="content"
+                            *ngIf="GroupModel" (keyup.enter)="onSendMesGroup()"
+                        />
+                        <img
+                            *ngIf="!content.length && GroupModel"
+                            src="assets/svg/Bottomadd.svg"
+                            alt=""
+                        >
+                        <mat-icon
+                            class="add-icon"
+                            *ngIf="content.length && GroupModel"
+                            (click)="onSendMesGroup()"
+                        >send </mat-icon>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

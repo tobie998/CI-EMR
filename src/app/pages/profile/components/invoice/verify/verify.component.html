@@ -1,0 +1,324 @@
+<div class="container-fluid mt-4 ci-profile-verify">
+    <div class="insideShadow verify-content w-100 mt-1 p-4">
+        <div class="ci-body-text-h1 mb-3">Medical invoice</div>
+        <div class="verify-item">
+            <p class="verify-title mb-3">Client's infomation</p>
+            <div class="row ci-align-items-center">
+                <div class="col-2">
+                    <p>Invoid number:</p>
+                </div>
+                <div class="col-3">
+                    <p>{{invoiceDetail?.InvoiceId}}</p>
+                </div>
+                <div class="col-2">
+                    <p>Bill date:</p>
+                </div>
+                <div class="col-3">
+                    <p>{{invoiceDetail?.CreatedOn | date:'MM/dd/yyyy'}}</p>
+                </div>
+            </div>
+            <div class="row ci-align-items-center">
+                <div class="col-2">
+                    <p>Patient's name:</p>
+                </div>
+                <div class="col-3">
+                    <p>{{invoiceDetail?.FirstName}} {{invoiceDetail?.LastName}}</p>
+                </div>
+                <div class="col-2">
+                    <p>Start date:</p>
+                </div>
+                <div class="col-3">
+                    <p>{{invoiceDetail?.StartDate | date:'MM/dd/yyyy'}}</p>
+                </div>
+            </div>
+            <div class="row ci-align-items-center">
+                <div class="col-2">
+                    <p>Patient's Id:</p>
+                </div>
+                <div class="col-3">
+                    <p>{{patientId}}</p>
+                </div>
+                <div class="col-2">
+                    <p>Finish date:</p>
+                </div>
+                <div class="col-3">
+                    <p>{{invoiceDetail?.EndDate | date:'MM/dd/yyyy'}}</p>
+                </div>
+            </div>
+        </div>
+        <br />
+        <p class="verify-title">Service</p>
+        <div class="container-fluid p-0">
+            <table
+                mat-table
+                class="tableStyle ci-normal-table"
+                [dataSource]="dataSourceService"
+            >
+                <ng-container matColumnDef="No.">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >No.</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item, let index = index"
+                    > {{index + 1}} </td>
+                </ng-container>
+                <ng-container matColumnDef="service">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Service</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{ item.ServiceType === 1
+                        ? 'Exam' : item.ServiceType === 2
+                        ? 'Diagnosis' : item.ServiceType === 3
+                        ? 'Test' : item.ServiceType }}</td>
+                </ng-container>
+                <ng-container matColumnDef="Description">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Description</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Description}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Quantity">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Quantity</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Quantity}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Unit cost">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Unit cost</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Price | number: '1.0-0'}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Tax">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Tax</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item, let index = index"
+                    >{{item.Tax * 100}}<span>%</span></td>
+                </ng-container>
+                <ng-container matColumnDef="Discount">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Discount</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item let index = index"
+                    >{{item.Discount * 100}}<span>%</span></td>
+                </ng-container>
+                <ng-container matColumnDef="Amount">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Amount</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >
+                        <p>{{item.TotalAmount | number: '1.0-0'}}</p>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="edit">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    ></th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >
+                        <p>
+                            <img (click)="openEditDialog(item, 'service')" src="assets/svg/edit-inline.svg" alt="">
+                        </p>
+                    </td>
+                </ng-container>
+                <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumnsServices"
+                ></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumnsServices"
+                ></tr>
+            </table>
+        </div>
+        <div class="row subtotal mt-3">
+            <div class="col-5">
+                <p>Subtotal:</p>
+            </div>
+            <div class="col-7">
+                <p>{{count | number:'1.0-0'}}</p>
+            </div>
+        </div>
+        <br />
+        <br><br>
+        <p class="verify-title">Medication</p>
+        <div class="container-fluid p-0">
+            <table
+                mat-table
+                class="tableStyle ci-normal-table"
+                [dataSource]="dataSourceMedication"
+            >
+                <ng-container matColumnDef="No.">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >No.</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item; let index = index"
+                    >{{index + 1}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Name">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Name</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="SKU">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >SKU</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    ></td>
+                </ng-container>
+                <ng-container matColumnDef="Quantity">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Quantity</th>
+                    <th
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Quantity}}</th>
+                </ng-container>
+                <ng-container matColumnDef="Unit cost">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Unit cost</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Price | number:'1.0-0'}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Tax">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Tax</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Tax * 100}}<span>%</span></td>
+                </ng-container>
+                <ng-container matColumnDef="Discount">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Discount</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.Discount * 100}}<span>%</span></td>
+                </ng-container>
+                <ng-container matColumnDef="Amount">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    >Amount</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >{{item.TotalAmount | number:'1.0-0'}}</td>
+                </ng-container>
+                <ng-container matColumnDef="edit">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                    ></th>
+                    <td
+                        mat-cell
+                        *matCellDef="let item"
+                    >
+                        <img (click)="openEditDialog(item, 'medication')" src="assets/svg/edit-inline.svg" alt="">
+                    </td>
+                </ng-container>
+                <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumnsMedication"
+                ></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumnsMedication"
+                ></tr>
+            </table>
+        </div>
+
+        <div class="mt-3 dl-fdc-aide">
+            <div class="row subtotal">
+                <div class="col-5">
+                    <p>Subtotal:</p>
+                </div>
+                <div class="col-7">
+                    <p>{{ countAmountMedical | number:'1.0-0'}}</p>
+                </div>
+            </div>
+            <div class="row discount">
+                <div class="col-5">
+                    <p>Discount:</p>
+                </div>
+                <div class="col-7">
+                    <p>{{countDiscount * 100}} <span>%</span></p>
+                </div>
+            </div>
+            <div class="row total">
+                <div class="col-5">
+                    <p>Total:</p>
+                </div>
+                <div class="col-7">
+                    <p>{{totalCount | number:'1.0-0'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ci-group-btn">
+        <button
+            class="ci-button-cancel"
+            routerLink="/pages/profile/detail/{{patientId}}/invoice"
+        >Back</button>
+        <button
+            class="ci-button-save"
+            (click)="create()"
+            routerLink="/pages/profile/detail/{{patientId}}/account"
+        >Create</button>
+    </div>
+</div>

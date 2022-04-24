@@ -1,0 +1,57 @@
+@import "../../../shared/scss/variables.scss";
+
+.background {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    img {
+        margin-top: -40px;
+    }
+}
+
+.row {
+    margin-bottom: 2em;
+    a {
+        color: $ci-color-dim-gray;
+    }
+}
+
+.title {
+    width: 100%;
+    color: $ci-color-ecko-blue;
+    font-size: 2.2em;
+    margin-top: 1em;
+}
+
+.navigate-signin {
+    border: none;
+    background: $ci-color-ecko-blue;
+    color: $ci-color-white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    float: right;
+    margin-top: 0.8em;
+    outline: none;
+    i {
+        position: absolute;
+        font-size: 3em;
+        right: -9px;
+        bottom: -10px;
+    }
+}
+
+.container {
+    // background: #f5f8f9;
+    box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+    border-radius: 15px;
+    width: 30rem;
+    height: 100vh;
+    margin-top: -120px;
+}
+.form-signup {
+    height: 40vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

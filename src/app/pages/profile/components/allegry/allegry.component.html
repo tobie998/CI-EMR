@@ -1,0 +1,15 @@
+<div class="allergy outsideShadow mt-4 ci-p-30-table-patient">
+    <app-table-base
+        [listlable]="listlable"
+        [(data)]="data"
+        [(height)]="height"
+        (callback)="handleCallBackTable($event)"
+        [(checkWidth)]="check"
+    ></app-table-base>
+    <div class="ci-group-btn allergy_padding">
+        <img
+            (click)="openDialog()"
+            src="assets/svg/Bottomadd.svg"
+        />
+    </div>
+</div>

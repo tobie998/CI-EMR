@@ -1,0 +1,161 @@
+<div class="background">
+    <img
+        src="assets/images/logo.png"
+        alt=""
+    >
+
+    <form
+        class="container insideShadow"
+        ngNativeValidate
+        #createForm="ngForm"
+        (ngSubmit)="createForm.form.valid &&  registerAccount()"
+        novalidate
+    >
+        <button
+            class="navigate-signin"
+            routerLink="/login"
+        >
+            <i class="material-icons">
+                arrow_drop_down
+            </i>
+        </button>
+
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="title">
+                    Sign up
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="position">
+                    <select
+                        class="ci-input-login"
+                        name="position"
+                        [(ngModel)]="model.Type"
+                    >
+                        <option value="1">Doctor</option>
+                        <option value="2">Nurse</option>
+                        <option value="3">Receptionist</option>
+                        <option value="4">Technician</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-signup">
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <input
+                        class="ci-input-login"
+                        type="text"
+                        name="Email"
+                        placeholder="Email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        [(ngModel)]="model.Email"
+                        #Email="ngModel"
+                        [ngClass]="{ 'is-invalid': createForm.submitted && Email.invalid }"
+                        required
+                    >
+                    <div
+                        *ngIf="createForm.submitted && Email.invalid "
+                        class="invalid-feedback"
+                    >
+                        <div *ngIf="Email.errors.required">must not leave the date and time blank</div>
+                    </div>
+                    <p
+                        class="invalid-feedback"
+                        *ngIf="Email.errors?.pattern"
+                    >
+                        This is not a valid Email!!!
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <input
+                        class="ci-input-login"
+                        type="text"
+                        name="phone"
+                        placeholder="Phone"
+                        [(ngModel)]="model.Phone"
+                        #Phone="ngModel"
+                        [ngClass]="{ 'is-invalid': createForm.submitted && Phone.invalid }"
+                        required
+                    >
+                    <div
+                        *ngIf="createForm.submitted && Phone.invalid "
+                        class="invalid-feedback"
+                    >
+                        <div *ngIf="Phone.errors.required">must not leave the phone blank</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <input
+                        class="ci-input-login"
+                        type="password"
+                        name="pwd"
+                        pattern=".{6,}"
+                        placeholder="Password"
+                        #Password="ngModel"
+                        [ngClass]="{ 'is-invalid': createForm.submitted && Password.invalid }"
+                        required
+                        [(ngModel)]="model.Password"
+                    >
+                    <div
+                        *ngIf="createForm.submitted && Password.invalid "
+                        class="invalid-feedback"
+                    >
+                        <div *ngIf="Password.errors.required">Do not leave the password blank</div>
+                    </div>
+                    <p
+                        class="invalid-feedback"
+                        *ngIf="Password.errors?.pattern"
+                    >
+                        Password at least 6 characters
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <input
+                        class="ci-input-login"
+                        type="password"
+                        name="ConfirmPassword"
+                        placeholder="Confirm Password"
+                        #ConfirmPassword="ngModel"
+                        [ngClass]="{ 'is-invalid': createForm.submitted && ConfirmPassword.invalid }"
+                        required
+                        [(ngModel)]="model.ConfirmPassword"
+                    >
+                    <div
+                        *ngIf="createForm.submitted && ConfirmPassword.invalid "
+                        class="invalid-feedback"
+                    >
+                        <div *ngIf=" ConfirmPassword.errors.required">Do not leave the password blank</div>
+                    </div>
+                    <div
+                        *ngIf="model.Password !== model.ConfirmPassword "
+                        class="invalid-feedback"
+                    >
+                        <div>
+                            Password must be duplicate</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <button class="ci-button-login">
+                    Sign up
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>

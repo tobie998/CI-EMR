@@ -1,0 +1,53 @@
+<div class="container-fluid mt-4">
+    <div class="row m-0">
+        <div class="profile__nav w-100 medication outsideShadow height-83vh">
+            <mat-tab-group
+                mat-stretch-tabs
+                (selectedTabChange)="onChangeTab($event)"
+                class="outsideShadow w-100 mat-elevation-z4"
+            >
+                <mat-tab label="Current medication">
+                    <app-current-medication
+                        [dataSource]="listData.current"
+                        (callback)="onLoadDate()"
+                    >
+                        <ng-template mat-tab-label>
+                            <span>{{ "CURRENT MEDICATION" | translate }}</span>
+                        </ng-template>
+                    </app-current-medication>
+                </mat-tab>
+                <mat-tab label="Medication history">
+                    <app-medication-history
+                        [dataSource]="listData.history"
+                        (callback)="onLoadDate()"
+                        (callback2)="onLoadDate2()"
+                    >
+                        <ng-template mat-tab-label>
+                            <span>{{ "MEDICATION HISTORY" | translate }}</span>
+                        </ng-template>
+                    </app-medication-history>
+                </mat-tab>
+                <mat-tab label="Medication by problems">
+                    <app-problems-medication
+                        [dataSource]="listData.problems"
+                        (callback)="onLoadDate()"
+                        (callback2)="onLoadDate2()"
+                    >
+                        <ng-template mat-tab-label>
+                            <span>{{ "MEDICATION BY PROBLEM" | translate }}</span>
+                        </ng-template>
+                    </app-problems-medication>
+                </mat-tab>
+                <!-- <mat-tab label="Prescription history">
+                  <app-prescription-medicition
+                      [dataInput]="listData.prescription"
+                  >
+                      <ng-template mat-tab-label>
+                          <span>{{ "PRESCRIPTION HISTORY" | translate }}</span>
+                      </ng-template>
+                  </app-prescription-medicition>
+              </mat-tab> -->
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

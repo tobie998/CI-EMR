@@ -1,0 +1,53 @@
+<div class="row mb-4">
+    <div
+        *ngIf="data.type ==='create'"
+        class="col-6 ci-body-text-h1"
+    >
+        {{ "ADD IMMU" | translate }}
+    </div>
+    <div
+        *ngIf="data.type ==='detail'"
+        class="col-6 ci-body-text-h1"
+    >
+        {{ "DETAILS IMMU" | translate }}
+    </div>
+    <div class="col-6 ci-group-btn-dialog">
+        <div class="button-group">
+            <button
+                class="ci-button-cancel"
+                (click)="closeDialog()"
+            >
+                {{ "CANCEL" | translate }}
+            </button>
+            <button
+                class="ci-button-save"
+                (click)="handleEvent()"
+            >
+                {{ "SAVE" | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2">
+        {{ "VACCINES" | translate }}:
+    </div>
+    <div class="col-10">
+        <input
+            class="ci-input-text-bt"
+            [(ngModel)]="model.Vaccine"
+        />
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-2">
+        {{ "SINCE" | translate }}:
+    </div>
+    <div class="col-10">
+        <input
+            class="ci-input-text-bt"
+            [(ngModel)]="model.AppliedDate"
+            placeholder="{{ 'YEAR' | translate }}"
+        />
+    </div>
+</div>

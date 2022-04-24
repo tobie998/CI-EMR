@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-6 clients ci-title-fz20 d-flex align-items-center">
+            {{ "LIST OF TEST" | translate }} -  CLIENT: {{patientName}}
+        </div>
+        <div class="col-6 search">
+            <app-user></app-user>
+        </div>
+    </div>
+    <div class="mt-4">
+        <div class="row profile__nav m-0 personal-info">
+            <mat-tab-group
+                mat-stretch-tabs
+                mat-align-tabs="center"
+                class="col outsideShadow p-0"
+                [selectedIndex]="selectedIndex"
+            >
+                <mat-tab *ngFor="let item of categoryList">
+                    <ng-template mat-tab-label>
+                        <span>{{item.Name}}</span>
+                    </ng-template>
+                    <div>
+                        <app-result-list-detail [data]="item"></app-result-list-detail>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="profile__content"></div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="c-loading" [class.c-loading--hidden]="!isLoading">
+    <div class="c-loading__status spinner-border m-5" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container-fluid p-3">
+    <div class="listTestCategory ">
+        <div class="scroll-55vh">
+            <ul class="ul-listTestCategory">
+                <li class="li-listTestCategory text-center" *ngFor="let item of listOrgans; let i = index"
+                    [class]="item.isActive ? 'border-bottom-1' : ''">
+                    <div (click)="onActiveOrgans(item)">{{ item.OrganName }}</div>
+                </li>
+            </ul>
+        </div>
+        <div class="scroll-drop">
+            <img src="assets/svg/arrow-down.svg" alt="">
+        </div>
+    </div>
+    <div class="listCategorySub scroll-55vh">
+        <ul class="ul-listTestCategory">
+            <ng-container *ngFor="let item of listOrgans">
+                <ng-container *ngIf="item.isActive === true && item.ListEducationcombinations.length !== 0">
+                    <li class="li-listTestCategory row" *ngFor="let educationcombinations of item.ListEducationcombinations; let i = index">
+                        <div class="description" [class]="i % 2 === 0? 'bg-br col-9': 'col-9'">
+                            {{ educationcombinations.EducationitemName }}
+                        </div>
+                        <div class="radio-check" [class]="i % 2 === 0? 'bg-br col-2': 'col-2'">
+                            <div class="example-section">
+                                <mat-checkbox class="custom-frame" (click)="createHealth(educationcombinations)" [(ngModel)]="educationcombinations.isActive">
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                    </li>
+                </ng-container>
+            </ng-container>
+
+        </ul>
+    </div>
+</div>

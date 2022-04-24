@@ -1,0 +1,87 @@
+.note {
+    height: auto;
+    .title {
+        height: 20px;
+        padding: 0 1rem;
+        h4 {
+            font-weight: bold;
+        }
+    }
+    .date {
+        height: 20px;
+        margin-left: -1rem;
+        color: #808080;
+    }
+    .content p {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #808080;
+        border-bottom: 1px solid;
+        height: 25px;
+        margin-bottom: 0;
+    }
+}
+.note:hover {
+    cursor: pointer;
+    background-color: #cccccc;
+}
+.note-container {
+    padding: 0.8em;
+    position: absolute;
+    top: -4.5em;
+    width: 90%;
+    height: 208px;
+    .note-body {
+        height: 7em;
+        overflow: auto;
+    }
+    .note-header {
+        margin-bottom: 10px;
+        color: #707070;
+        font-weight: bold;
+    }
+    .note-title {
+        display: flex;
+        justify-content: space-between;
+        .note-left {
+            font-weight: bold;
+            width: 150px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .note-time {
+            font-size: 0.8em;
+        }
+    }
+    .note-footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
+        position: relative;
+        img {
+            position: absolute;
+            left: 14em;
+            bottom: 0.2em;
+        }
+    }
+}
+
+//end note style
+.contact_img img {
+  width: 98%;
+  margin: 10px;
+  margin-top: 25px;
+  border-radius: 37px;
+  box-shadow: 10px 7px 30px #c9c9c9, -2px -2px 4px #ffff;
+}
+.today {
+    height: 35px;
+    padding-left: 26px;
+    padding-top: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+}

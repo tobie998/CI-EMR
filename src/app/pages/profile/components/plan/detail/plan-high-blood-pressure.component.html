@@ -1,0 +1,38 @@
+<div class="insideShadow w-100 mt-3">
+    <div class="row profile__nav m-0 plan">
+        <mat-tab-group
+            mat-stretch-tabs
+            class="col p-0 height-72vh"
+            [selectedIndex]="selectedIndex"
+        >
+            <mat-tab label="Order Tests">
+                <app-order-tests [data]="data">
+                    <ng-template mat-tab-label>
+                        <span>{{ "ORDER TEST" | translate }}</span>
+                    </ng-template>
+                </app-order-tests>
+            </mat-tab>
+            <mat-tab label="Health Education">
+                <app-health-education [data]="data">
+                    <ng-template mat-tab-label>
+                        <span>{{ "HEALTH EDUCATION" | translate }}</span>
+                    </ng-template>
+                </app-health-education>
+            </mat-tab>
+            <mat-tab label="Prescription">
+                <app-prescription [data]="data">
+                    <ng-template mat-tab-label>
+                        <span>{{ "PRESCRIPTION" | translate }}</span>
+                    </ng-template>
+                </app-prescription>
+            </mat-tab>
+            <mat-tab label="Follow up">
+                <app-follow-up [data]="data">
+                    <ng-template mat-tab-label>
+                        <span>{{ "FOLLOW UP" | translate }}</span>
+                    </ng-template>
+                </app-follow-up>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

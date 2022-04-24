@@ -1,0 +1,150 @@
+h2 {
+    margin: 0px 20px 10px;
+    padding-top: 5px;
+    color: black;
+}
+table {
+    width: 100%;
+    border-collapse: separate;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 600;
+}
+::ng-deep th.mat-header-cell {
+    background-color: #a3becd;
+    color: white;
+    text-align: center !important;
+}
+
+th.mat-header-cell:first-of-type {
+    padding-left: 0px;
+}
+th.mat-header-cell:last-of-type {
+    padding-right: 0px;
+}
+td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    content td:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}
+td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+::ng-deep tr {
+    border-bottom: none;
+}
+th {
+    border-right: 1px solid;
+}
+th:nth-child(1) {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 1px solid;
+    border-bottom: none;
+}
+th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: none;
+}
+.mat-elevation-z8 {
+    border-radius: 10px;
+}
+.content td {
+    padding: 0rem 0 !important;
+}
+
+th.mat-header-cell {
+    border-bottom-style: none;
+}
+input[type="checkbox"] {
+    // padding-left: 0 !important;
+    margin-left: 15px;
+}
+::ng-deep.mat-paginator .mat-paginator-container {
+    justify-content: space-between !important;
+}
+::ng-deep th.mat-header-cell {
+    background-color: #a3becd;
+    color: white;
+    text-align: center !important;
+}
+::ng-deep tr.mat-row {
+    padding-top: 20px;
+}
+::ng-deep tr.mat-row,
+tr.mat-footer-row,
+tr.mat-header-row {
+    height: 4.6vh !important;
+}
+::ng-deep td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+    padding: auto;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #343a40 !important;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #343a40;
+}
+::ng-deep .mat-form-field.mat-focused .mat-input-element {
+    color: #343a40;
+}
+
+.table {
+    height: 64vh;
+    overflow-y: auto;
+    td {
+        vertical-align: middle;
+    }
+    th {
+        vertical-align: middle;
+        font-size: 15px;
+        font-weight: 600;
+    }
+}
+.add-button {
+    border: none;
+    background-color: #f6f6f6;
+    position: relative;
+    bottom: 50px;
+    float: right;
+}
+.checkout {
+    float: right;
+    position: relative;
+    top: 10px;
+    button {
+        background-color: #9fb9c8;
+        width: 140px;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        font-size: 20px;
+        color: white;
+    }
+}
+.total {
+    width: 235px;
+    height: 30px;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    line-height: 30px;
+    float: right;
+    right: 2rem;
+}
+
+.ci-create-invoice {
+    .h-43 {
+        height: 43em;
+    }
+    .ci-m-m-0 {
+        margin: 0;
+    }
+}

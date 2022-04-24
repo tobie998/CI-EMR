@@ -1,0 +1,29 @@
+<div
+    class="c-loading"
+    id="loading-page"
+>
+    <div
+        class="c-loading__status spinner-border m-5"
+        role="status"
+    >
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container-fluid mt-4">
+    <div class="insideShadow w-100">
+        <div class="row profile__nav m-0 plan">
+            <mat-tab-group
+                mat-stretch-tabs
+                animationDuration="0ms"
+                class="insideShadow col p-0"
+            >
+                <mat-tab
+                    *ngFor="let item of listProblem"
+                    [label]="item.Name"
+                >
+                    <app-plan-high-blood-pressure [data]="item"></app-plan-high-blood-pressure>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

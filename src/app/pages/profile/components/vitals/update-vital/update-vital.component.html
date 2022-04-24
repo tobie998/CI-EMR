@@ -1,0 +1,138 @@
+<div class="row ci-align-items-center">
+    <div class="col-12 ci-body-text-h1 ci-dflex-modal">
+        Edit vitals
+        <div>
+            <button
+                class="ci-button-cancel"
+                (click)="onCloseModal()"
+            >
+                {{ "CANCEL" | translate }}
+            </button>
+            <button
+                class="ci-button-save"
+                (click)="onUpdateVital()"
+            >
+                {{ "SAVE" | translate }}
+            </button>
+        </div>
+
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-3">
+        Date:
+    </div>
+    <div class="col-3">
+        {{model.Date | date:'MM/dd/yyyy'}}
+    </div>
+    <div class="col-3">
+        Time:
+    </div>
+    <div class="col-3">
+        {{model.Time}}
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-3">
+        BP systolic(mmHg):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            placeholder="BP systolic"
+            [(ngModel)]="model.BPsystolic"
+            required
+            type="number"
+        />
+    </div>
+    <div class="col-3">
+        SpO<sub>2</sub>(%):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            placeholder="sPO2"
+            [(ngModel)]="model.sPO2"
+            required
+            type="number"
+        />
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-3">
+        BP diastolic(mmHg):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            placeholder="BP diastolic"
+            [(ngModel)]="model.BPdiastolic"
+            required
+            type="number"
+        />
+    </div>
+    <div class="col-3">
+        Height(cm):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            placeholder="Height"
+            [(ngModel)]="model.Height"
+            required
+            type="number"
+        />
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-3">
+        Pulse(/min):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            placeholder="Pulse"
+            [(ngModel)]="model.Pulse"
+            required
+            type="number"
+        />
+    </div>
+    <div class="col-3">
+        Temperature(&#8451;):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            placeholder="Temperature"
+            [(ngModel)]="model.Temperature"
+            required
+            type="number"
+        />
+    </div>
+</div>
+<div class="row ci-align-items-center">
+    <div class="col-3">
+        Respiratory rate(/min):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            placeholder="Respiratory rate"
+            [(ngModel)]="model.RepiratoryRate"
+            type="number"
+            required
+        />
+    </div>
+    <div class="col-3">
+        Weight(kg):
+    </div>
+    <div class="col-3">
+        <input
+            class="ci-input-text-bt"
+            type="number"
+            placeholder="Weight"
+            [(ngModel)]="model.Weight"
+            required
+        />
+    </div>
+</div>

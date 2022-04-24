@@ -1,0 +1,86 @@
+<div class="row ci-align-items-center">
+  <div class="col-12 ci-body-text-h1 ci-dflex-modal">
+    {{ "UPDATE_HISTORY" | translate }}
+    <div>
+      <button class="ci-button-cancel" (click)="closeDialog()">
+        {{ "CANCEL" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="ci-scroll-modal">
+  <table mat-table class="tableStyle ci-normal-table" [dataSource]="dataSource">
+    <ng-container matColumnDef="UpdateOn">
+      <th mat-header-cell *matHeaderCellDef>{{ "UPDATEON" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{ prescription.CreatedOn | date: "MM/dd/yyyy" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>{{ "NAME-1" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{ prescription.NewDrugName }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Dose">
+      <th mat-header-cell *matHeaderCellDef>{{ "DOSE" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{ prescription.DoseValue }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Number">
+      <th mat-header-cell *matHeaderCellDef>{{ "NUMBER" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{ prescription.Quantity }}/{{ prescription.QuantityUnit }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Frequency">
+      <th mat-header-cell *matHeaderCellDef>{{ "FREQUENCY" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{prescription.FrequencyValue}}
+        <ng-container *ngIf="prescription.FrequencyValue !== null">/</ng-container>
+        <ng-container *ngIf="prescription.FrequencyUnit === 'times weekly';">
+          week
+        </ng-container>
+        <ng-container *ngIf="prescription.FrequencyUnit !== 'times weekly';">
+          day
+        </ng-container>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="StartDate">
+      <th mat-header-cell *matHeaderCellDef>{{ "STARTDATE" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        <ng-container *ngIf="prescription.EndDate
+        && prescription.EndDate !== ''">
+          {{ prescription.StartDate | date: "MM/dd" }} - {{ prescription.EndDate | date: "MM/dd/yyyy" }}
+        </ng-container>
+        <ng-container *ngIf="!prescription.EndDate">
+          {{ prescription.StartDate | date: "MM/dd/yyyy" }}
+        </ng-container>
+
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Route">
+      <th mat-header-cell *matHeaderCellDef>{{ "ROUTE" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{ prescription.NameDrugRoute }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="VisitDate">
+      <th mat-header-cell *matHeaderCellDef>{{ "VISIT DATE" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{ data.VisitDate | date: "MM/dd/yyyy" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Problem">
+      <th mat-header-cell *matHeaderCellDef>{{ "PROBLEM" | translate }}</th>
+      <td mat-cell *matCellDef="let prescription">
+        {{ data.ProblemName }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+</div>

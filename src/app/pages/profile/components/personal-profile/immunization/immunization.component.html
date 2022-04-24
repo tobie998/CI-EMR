@@ -1,0 +1,16 @@
+<div class="ci-p-30-table">
+    <app-table-base
+        [(listlable)]="collumsImmunization"
+        [(data)]="dataSource"
+        (callback)="handleCallBackTable($event)"
+        [(height)]="height"
+        [checkWidth]="true"
+    >
+    </app-table-base>
+</div>
+<div class="ci-group-btn">
+    <img
+        (click)="openDialog()"
+        src="assets/svg/Bottomadd.svg"
+    />
+</div>

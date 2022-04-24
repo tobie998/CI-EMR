@@ -1,0 +1,41 @@
+.personal__info {
+    height: 20vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+        height: 100%;
+        width: 120px;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+
+    .info__content {
+        height: auto;
+        width: 100%;
+        padding: 20px;
+
+        div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            h5 {
+                width: 30%;
+                font-size: 14px !important;
+                color: #707070;
+            }
+
+            .info-text {
+                width: 90%;
+                font-size: 14px;
+                color: black;
+                width: 200px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

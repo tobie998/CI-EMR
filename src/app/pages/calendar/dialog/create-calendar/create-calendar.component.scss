@@ -1,0 +1,49 @@
+label {
+    line-height: 35px;
+    font-size: 16px;
+}
+input[type="time"] {
+    width: 120px;
+    margin: 0 15px 0 15px;
+}
+.add-people {
+    width: 11px;
+    position: absolute;
+    right: 20px;
+    top: 11px;
+}
+textarea {
+    height: 50px;
+}
+span {
+    font-size: 13px;
+    padding-right: 0 10px;
+}
+
+.patients {
+    display: flex;
+    height: 40px;
+    margin-bottom: 1rem;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    border: none;
+    img {
+        width: 40px;
+        border-radius: 50%;
+        background-color: #bcd6bf;
+        margin-right: 10px;
+    }
+
+    .badge {
+        background-color: blue;
+    }
+    .name_id {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.bg-transparent {
+    background-color: transparent;
+}

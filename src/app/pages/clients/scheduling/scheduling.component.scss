@@ -1,0 +1,123 @@
+@import "../../../shared/scss/variables.scss";
+.header {
+    mat-icon {
+        color: #707070;
+        font-size: 50px;
+    }
+}
+
+.schedule {
+    padding-left: 2rem;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.detail {
+    height: 90%;
+}
+
+.img-patient {
+    .img-patient-avatar {
+        img {
+            border-radius: 15px;
+            height: 65px;
+            margin: 5px 10px 5px;
+            width: 85px;
+        }
+    }
+    .avatar__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 15px;
+    }
+}
+
+.infoLine {
+    display: flex;
+    height: 55px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2em;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+input[type="text"],
+.schedule {
+    .e-schedule-toolbar-container {
+        display: none;
+    }
+    .e-schedule .e-timeline-view .e-appointment {
+        height: 25px !important;
+        border-radius: 20px;
+    }
+    .e-schedule .e-timeline-view .e-resource-left-td {
+        width: 140px !important;
+        background: none;
+    }
+    .e-schedule .e-new-event {
+        display: none;
+    }
+    td.e-work-cells,
+    tr.e-header-row {
+        background: none !important;
+    }
+    .e-schedule {
+        border-radius: 15px;
+        background-color: #f6f6f6 !important;
+        box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+        border: none;
+    }
+    .e-schedule .e-timeline-view .e-child-node {
+        background-color: #f6f6f6;
+    }
+    .e-schedule .e-timeline-view .e-date-header-wrap table td.e-current-day {
+        background-color: #f6f6f6;
+    }
+    .e-schedule .e-timeline-view .e-date-header-wrap table tbody td.e-time-slots {
+        background-color: #f6f6f6;
+    }
+    .e-schedule .e-timeline-view .e-date-header-wrap table td:first-child {
+        background: none;
+    }
+    span.e-header-date.e-navigate {
+        color: $ci-color-ecko-blue;
+    }
+    .e-schedule .e-timeline-view .e-current-time {
+        color: $ci-color-ecko-blue;
+    }
+    .e-schedule .e-timeline-view .e-current-timeline {
+        border-left: 1px solid $ci-color-ecko-blue;
+    }
+    .e-calendar .e-content td.e-today.e-selected span.e-day {
+        background-color: $ci-color-ecko-blue;
+        border: 1px solid $ci-color-ecko-blue;
+    }
+    .e-btn.e-flat.e-primary,
+    .e-css.e-btn.e-flat.e-primary {
+        color: $ci-color-ecko-blue;
+    }
+    .e-btn.e-flat.e-primary:focus,
+    .e-css.e-btn.e-flat.e-primary:focus {
+        background-color: #fff;
+        border: none;
+    }
+    .e-calendar .e-content td.e-selected span.e-day {
+        background-color: $ci-color-ecko-blue;
+    }
+    .e-calendar .e-content td.e-today span.e-day {
+        border: 1px solid $ci-color-ecko-blue;
+        color: black;
+    }
+}
+.schedule_calendar {
+    .e-calendar {
+        border: none;
+        background: none;
+    }
+}

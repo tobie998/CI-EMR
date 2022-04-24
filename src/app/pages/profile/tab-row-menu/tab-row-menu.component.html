@@ -1,0 +1,102 @@
+<div class="container-fluid ci-tab-row-menu">
+    <div class="row">
+        <div
+            id="tabs-row"
+            class="tab-item"
+        >
+            <a
+                name="Problem list"
+                routerLink="/pages/profile/detail/{{ patientId }}/problem-list"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="problem"
+                    class="svg"
+                    src="assets/svg/emr-problem-list.svg"
+                />
+                <p>{{ "PROBLEM LIST" | translate }}</p>
+            </a>
+            <a
+                name="Profile"
+                routerLink="/pages/profile/detail/{{ patientId }}/profile-info"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="profile"
+                    src="{{ currentPatient?.MediaURL }}"
+                />
+                <p>{{ "PROFILE" | translate }}</p>
+            </a>
+            <a
+                name="Allegry"
+                routerLink="/pages/profile/detail/{{ patientId }}/allegry"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="allergy"
+                    src="assets/svg/emr-allergy.svg"
+                />
+                <p>{{ "ALLERGY" | translate }}</p>
+            </a>
+            <a
+                name="Medication"
+                routerLink="/pages/profile/detail/{{ patientId }}/medication"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="medication"
+                    src="assets/svg/emr-medication.svg"
+                />
+                <p>{{ "MEDICATION" | translate }}</p>
+            </a>
+            <a
+                name="Vitals"
+                routerLink="/pages/profile/detail/{{ patientId }}/vital"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="vitals"
+                    src="assets/svg/emr-vital.svg"
+                />
+                <p>{{ "VITALS" | translate }}</p>
+            </a>
+            <a
+                name="Test"
+                routerLink="/pages/profile/detail/{{ patientId }}/test"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="test"
+                    src="assets/svg/emr-test.svg"
+                />
+                <p>{{ "TEST" | translate }}</p>
+            </a>
+            <a
+                name="Account"
+                routerLink="/pages/profile/detail/{{ patientId }}/account"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="account"
+                    src="assets/svg/emr-account.svg"
+                />
+                <p>{{ "ACCOUNT" | translate }}</p>
+            </a>
+            <a
+                name="Message"
+                routerLink="/pages/profile/detail/{{ patientId }}/message"
+                routerLinkActive="sideBarActive"
+            >
+                <img
+                    id="message"
+                    src="assets/svg/emr-message.svg"
+                />
+                <p>{{ "MESSAGES" | translate }}</p>
+            </a>
+            <span>CLIENT: {{currentPatient?.FirstName}} {{currentPatient?.LastName}}</span>
+        </div>
+        <div class="tab-user">
+            <app-user></app-user>
+        </div>
+    </div>
+</div>

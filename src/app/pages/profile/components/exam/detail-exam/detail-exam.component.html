@@ -1,0 +1,328 @@
+<div class="ci-exam">
+  <!-- <div
+        class="c-loading"
+        [class.c-loading--hidden]="isLoading"
+        id="loading-page"
+    >
+        <div
+            class="c-loading__status spinner-border m-5"
+            role="status"
+        >
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div> -->
+
+
+  <!-- load exam 1 -->
+  <div class="position-r">
+    <ul class="nav">
+      <li class="nav-item" *ngFor="let exam of listExamSub">
+        <button (click)="onClickActiveExam(exam, listExamSub)" class="nav-title btn fz-15 fw-700">
+          {{ exam.Name }}
+        </button>
+        <hr class="nav-hr" [style.background]="exam.isActive ? 'black' : ''" />
+        <div class="nav-btn">
+          <button [class]="
+                        exam.Status == 1
+              ? 'ci-button-exam he-30'
+              : 'ci-button-exam-active he-30'
+          " (click)="onClickActiveExam(exam, listExamSub); onSelectExamType(exam, 1)" [disabled]="exam.Status == 0">
+            {{ "NORMAL" | translate }}
+          </button>
+          <button [class]="
+                        exam.Status == 2
+                ? 'ci-button-exam he-30'
+                : 'ci-button-exam-active he-30'
+          " (click)="onClickActiveExam(exam, listExamSub); onSelectExamType(exam, 2)" [disabled]="exam.Status == 2">
+            {{ "ABNORMAL" | translate }}
+          </button>
+        </div>
+      </li>
+      <button type="button" class="btn btn-openDialog" (click)="openDialog()" [disabled]="isDisable === true ? 'disabled': null">
+        <mat-icon class="mat-icon-style">add_circle_outline</mat-icon>
+      </button>
+    </ul>
+  </div>
+  <!-- load exam 2 -->
+  <ng-container>
+    <ng-container *ngFor="let exam of listExamSub">
+      <div class="position-r" id="e2" *ngIf="exam.isActive === true && exam.Status == 2 && exam.level2 !== true">
+        <ul class="nav" style="background-color: transparent;">
+          <li class="nav-item2" *ngFor="let i of exam.ListSubExams">
+            <button class="nav-title btn fz-15 fw-700" (click)="onClickActiveExam(i, exam.ListSubExams)">
+              {{ i.Name }}
+            </button>
+            <hr class="nav-hr" [style.background]="i.isActive ? 'black' : ''" />
+            <div class="nav-btn">
+              <button [class]="
+                  i.Status == 0
+                    ? 'ci-button-exam he-30'
+                    : 'ci-button-exam-active he-30'
+                " [disabled]="i.Status == 0" (click)="onClickActiveExam(i, exam.ListSubExams); onSelectExamType(i, 0)">
+                {{ "NOT EXAM" | translate }}
+              </button>
+              <button [class]="
+                  i.Status == 1
+                    ? 'ci-button-exam he-30'
+                    : 'ci-button-exam-active he-30'
+                " [disabled]="i.Status == 1" (click)="onClickActiveExam(i, exam.ListSubExams); onSelectExamType(i, 1)">
+                {{ "NORMAL" | translate }}
+              </button>
+              <button [class]="
+                  i.Status == 2
+                    ? 'ci-button-exam he-30'
+                    : 'ci-button-exam-active he-30'
+                " [disabled]="i.Status == 2" (click)="onClickActiveExam(i, exam.ListSubExams); onSelectExamType(i, 2)">
+                {{ "ABNORMAL" | translate }}
+              </button>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </ng-container>
+  </ng-container>
+  <!-- load exam 2.5 -->
+  <ng-container *ngFor="let itemChild1 of listExamSub">
+    <ng-container
+      *ngIf="itemChild1 && itemChild1.isActive === true && itemChild1.Status == 2 && itemChild1.level2 === true">
+      <div class="row m-0 listSection-exam"  id="e25"*ngIf="itemChild1 && itemChild1.isActive === true">
+        <div class="col-7">
+          <div *ngFor="let exam of itemChild1.ListSubExams" class="row">
+            <button class="item-section btn col-4 fz-14" (click)="onClickActiveExam(exam, itemChild1.ListSubExams)"
+              [ngClass]="{ black: exam.isActive}">
+              {{ exam?.Name }}
+            </button>
+            <div class="col-8 align-self-center d-flex">
+              <button (click)="onClickActiveExam(exam, itemChild1.ListSubExams); onSelectExamType(exam, 0)" [disabled]="exam.Status == 0" [class]="
+                          exam.Status == 0
+                ? 'ci-button-exam  button-nowap'
+                : 'ci-button-exam-active button-nowap'
+            ">
+                {{ "NOT EXAM" | translate }}
+              </button>
+              <button (click)="onClickActiveExam(exam, itemChild1.ListSubExams); onSelectExamType(exam, 1)" [disabled]="exam.Status == 1" [class]="
+                          exam.Status == 1
+                ? 'ci-button-exam '
+                : 'ci-button-exam-active button-nowap'">
+                {{ "NORMAL" | translate }}
+              </button>
+              <button (click)="onClickActiveExam(exam, itemChild1.ListSubExams); onSelectExamType(exam, 2)" [disabled]="exam.Status == 2" [class]="
+                          exam.Status == 2
+                ? 'ci-button-exam'
+                : 'ci-button-exam-active button-nowap'">
+                {{ "ABNORMAL" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <ng-container *ngFor="let exam of itemChild1.ListSubExams">
+            <ng-container *ngIf="exam.isActive === true &&  exam.Status == 2">
+              <div *ngFor="let result of exam.ListResults">
+                <div class="row style-bt-mt" *ngIf="result.LeftRight === 0  &&
+                (result.Normal === 0 && exam.Status === 2)">
+                  <button class="col-12" (click)="onSeclectionResult(result)" [class]="
+                  result.Status === 1
+          ? 'ci-button-exam w-100 mb-2 '
+          : 'ci-button-exam-active buttontwo w-100 mb-2'
+      ">
+                    {{ result?.Name }}
+                  </button>
+                </div>
+              </div>
+              <div>
+                <div class="row style-bt-mt">
+                  <div class="col-6">
+                    <button class="w-100 title btn mb-2" *ngIf="exam.haveLeftRight === true">
+                      {{ "LEFT" | translate }}
+                    </button>
+                    <ng-container *ngFor="let result of exam.ListResults">
+                      <button *ngIf="result.LeftRight === 1  &&
+                 (result.Normal === 0 && exam.Status === 2)" (click)="onSeclectionResult(result)" [class]="
+                      result.Status === 1
+          ? 'ci-button-exam w-100 mb-2'
+          : 'ci-button-exam-active buttontwo w-100 mb-2'">
+                        {{ result?.Name }}
+                      </button>
+                    </ng-container>
+                  </div>
+                  <div class="col-6">
+                    <button class="btn w-100 title mb-2" *ngIf="exam.haveLeftRight === true">
+                      {{ "RIGHT" | translate }}
+                    </button>
+                    <ng-container *ngFor="let result of exam.ListResults">
+                      <button *ngIf="result.LeftRight === 2 &&
+                (result.Normal === 0 && exam.Status === 2)" (click)="onSeclectionResult(result)" [class]="
+                      result.Status === 1
+          ? 'ci-button-exam w-100 mb-2'
+          : 'ci-button-exam-active buttontwo w-100 mb-2'">
+                        {{ result?.Name }}
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <!-- load exam 3 -->
+  <ng-container *ngFor="let item of listExamSub">
+    <ng-container *ngIf="item && item.isActive === true && item.Status == 2">
+      <ng-container *ngFor="let itemChild1 of item.ListSubExams">
+        <ng-container>
+          <div class="row m-0 listSection-exam"
+            *ngIf="itemChild1 && itemChild1.isActive === true && itemChild1.Status === 2">
+            <div class="col-7" *ngIf="itemChild1.ListSubExams && itemChild1.ListSubExams.length !== 0">
+              <ng-container *ngFor="let result of itemChild1.ListResults">
+                <button class="col-12" (click)="onSeclectionResult(result)" [class]="
+                  result.Status === 1
+          ? 'ci-button-exam w-100 mb-2 '
+          : 'ci-button-exam-active buttontwo w-100 mb-2'
+      ">
+                    {{ result?.Name }}
+                </button>
+              </ng-container>
+              <div *ngFor="let exam of itemChild1.ListSubExams" class="row">
+                <button class="item-section btn col-4 fz-14" (click)="onClickActiveExam(exam, itemChild1.ListSubExams)"
+                  [ngClass]="{ black: exam.isActive}">
+                  {{ exam?.Name }}
+                </button>
+                <div class="col-8 align-self-center d-flex">
+                  <button (click)="onClickActiveExam(exam, itemChild1.ListSubExams); onSelectExamType(exam, 0)" [disabled]="exam.Status == 0" [class]="
+                              exam.Status == 0
+                    ? 'ci-button-exam  button-nowap'
+                    : 'ci-button-exam-active button-nowap'
+                ">
+                    {{ "NOT EXAM" | translate }}
+                  </button>
+                  <button (click)="onClickActiveExam(exam, itemChild1.ListSubExams); onSelectExamType(exam, 1)" [disabled]="exam.Status == 1" [class]="
+                              exam.Status == 1
+                    ? 'ci-button-exam '
+                    : 'ci-button-exam-active button-nowap'">
+                    {{ "NORMAL" | translate }}
+                  </button>
+                  <button (click)="onClickActiveExam(exam, itemChild1.ListSubExams); onSelectExamType(exam, 2)" [disabled]="exam.Status == 2" [class]="
+                              exam.Status == 2
+                    ? 'ci-button-exam'
+                    : 'ci-button-exam-active button-nowap'">
+                    {{ "ABNORMAL" | translate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-5" *ngIf="itemChild1.ListSubExams && itemChild1.ListSubExams.length !== 0">
+              <ng-container *ngFor="let exam of itemChild1.ListSubExams">
+                <ng-container *ngIf="exam.isActive === true && exam.Status === 2">
+                  <div *ngFor="let result of exam.ListResults">
+                    <div class="row style-bt-mt" *ngIf="result.LeftRight === 0 &&
+                (result.Normal === 0 && exam.Status === 2)">
+                      <button class="col-12" (click)="onSeclectionResult(result)" [class]="
+                      result.Status === 1
+              ? 'ci-button-exam w-100 mb-2 '
+              : 'ci-button-exam-active buttontwo w-100 mb-2'
+          ">
+                        {{ result?.Name }}
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="row style-bt-mt">
+                      <div class="col-6">
+                        <button class="w-100 title btn mb-2" *ngIf="exam.haveLeftRight === true">
+                          {{ "LEFT" | translate }}
+                        </button>
+                        <ng-container *ngFor="let result of exam.ListResults">
+                          <button *ngIf="result.LeftRight === 1  &&
+                (result.Normal === 0 && exam.Status === 2)" (click)="onSeclectionResult(result)" [class]="
+                          result.Status === 1
+              ? 'ci-button-exam w-100 mb-2'
+              : 'ci-button-exam-active buttontwo w-100 mb-2'">
+                            {{ result?.Name }}
+                          </button>
+                        </ng-container>
+                      </div>
+                      <div class="col-6">
+                        <button class="btn w-100 title mb-2" *ngIf="exam.haveLeftRight === true">
+                          {{ "RIGHT" | translate }}
+                        </button>
+                        <ng-container *ngFor="let result of exam.ListResults">
+                          <button *ngIf="result.LeftRight === 2 &&
+                (result.Normal === 0 && exam.Status === 2)" (click)="onSeclectionResult(result)" [class]="
+                          result.Status === 1
+              ? 'ci-button-exam w-100 mb-2'
+              : 'ci-button-exam-active buttontwo w-100 mb-2'">
+                            {{ result?.Name }}
+                          </button>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+
+
+            </div>
+            <div class="col-12"
+              *ngIf="checkShow === true && (!itemChild1.ListSubExams || itemChild1.ListSubExams.length === 0 ) && itemChild1.ListResults.length !== 0">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+              
+              <div *ngFor="let result of itemChild1.ListResults">
+                <div class="row style-bt-mt" *ngIf="result.LeftRight === 0 &&
+                (result.Normal === 0 && itemChild1.Status === 2)">
+                  <button class="col-12" (click)="onSeclectionResult(result)" [class]="
+                      result.Status === 1
+              ? 'ci-button-exam w-100 mb-2 '
+              : 'ci-button-exam-active buttontwo w-100 mb-2'
+          ">
+                    {{ result?.Name }}
+                  </button>
+                </div>
+              </div>
+              <div>
+                <div class="row style-bt-mt">
+                  <div class="col-6">
+                    <button class="w-100 title btn mb-2" *ngIf="itemChild1.haveLeftRight === true">
+                      {{ "LEFT" | translate }}
+                    </button>
+                    <ng-container *ngFor="let result of itemChild1.ListResults">
+                      <button *ngIf="result.LeftRight === 1  &&
+                (result.Normal === 0 && itemChild1.Status === 2)" (click)="onSeclectionResult(result)" [class]="
+                          result.Status === 1
+              ? 'ci-button-exam w-100 mb-2'
+              : 'ci-button-exam-active buttontwo w-100 mb-2'">
+                        {{ result?.Name }}
+                      </button>
+                    </ng-container>
+                  </div>
+                  <div class="col-6">
+                    <button class="btn w-100 title mb-2" *ngIf="itemChild1.haveLeftRight === true">
+                      {{ "RIGHT" | translate }}
+                    </button>
+                    <ng-container *ngFor="let result of itemChild1.ListResults">
+                      <button *ngIf="result.LeftRight === 2 &&
+                (result.Normal === 0 && itemChild1.Status === 2)" (click)="onSeclectionResult(result)" [class]="
+                          result.Status === 1
+              ? 'ci-button-exam w-100 mb-2'
+              : 'ci-button-exam-active buttontwo w-100 mb-2'">
+                        {{ result?.Name }}
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+
+</div>

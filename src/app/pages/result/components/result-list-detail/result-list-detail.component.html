@@ -1,0 +1,42 @@
+<div class="result-list-detail">
+    <div *ngIf="data.Name === 'Lab'">
+        <app-table-base
+        [listlable]="listlable"
+        [(data)]="dataTable"
+        [(height)]="height"
+        [role]="Role"
+        (callback)="handleCallBackTableLab($event)"
+        [(checkWidth)]="check"
+      ></app-table-base>
+    </div>
+    <div *ngIf="data.Name === 'Other Documents'">
+        <app-table-base
+        [listlable]="listlableDoc"
+        [(data)]="dataTableDoc"
+        [(height)]="height"
+        (callback)="handleCallBackTableDoc($event)"
+        [role]="Role"
+        [(checkWidth)]="check"
+      ></app-table-base>
+    </div>
+    <div *ngIf="data.Name === 'Imaging'" id="Imaging">
+      <app-table-base
+      [listlable]="listlableImaging"
+      [(data)]="dataTableImaging"
+      [(height)]="height"
+      (callback)="handleCallBackTableImaging($event)"
+      [role]="Role"
+      [(checkWidth)]="check"
+    ></app-table-base>
+    </div>
+    <div *ngIf="data.Name !== 'Other Documents' && data.Name !== 'Imaging' &&  data.Name !== 'Lab'">
+      <app-table-base
+      [listlable]="listlableCategory"
+      [(data)]="dataTableCategory"
+      [(height)]="height"
+      [role]="Role"
+      (callback)="handleCallBackTableCategory($event)"
+      [(checkWidth)]="check"
+    ></app-table-base>
+  </div>
+</div>

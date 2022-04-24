@@ -1,0 +1,25 @@
+<div class="status">
+    <div class="status-header">
+        <div class="header-left">Update client status</div>
+        <div class="header-right">
+            <button
+                class="ci-button-cancel"
+                (click)="close(false)"
+            >Cancel</button>
+            <button
+                class="ci-button-save"
+                (click)="save()"
+            >Save</button>
+        </div>
+    </div>
+    <div class="body">
+        <div class="status-main">
+            <div
+                class="item"
+                *ngFor="let i of listStatus"
+                (click)="click(i.NumericKey, i.Value)"
+                [class.active]=" status == i.NumericKey"
+            >  {{i.Value}} </div>
+        </div>
+    </div>
+</div>

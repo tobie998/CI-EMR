@@ -1,0 +1,108 @@
+<div class="container">
+    <form
+        name="form"
+        (ngSubmit)="f.form.valid &&  createNote()"
+        #f="ngForm"
+        novalidate
+    >
+        <div class="row ci-align-items-center">
+            <div class="col ci-dflex-modal">
+                <div class="ci-body-text-h1">
+                    Add note
+                </div>
+                <div>
+                    <button
+                        class="ci-button-cancel"
+                        (click)="closeDialog()"
+                        type="button"
+                    >
+                        {{ "CANCEL" | translate }}
+                    </button>
+                    <button
+                        class="ci-button-save"
+                        [disabled]='isLoading'
+                        type="submit"
+                    >
+                        {{ "SAVE" | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row ci-align-items-center">
+            <div class="col-2">
+                <span>Created:</span>
+            </div>
+            <div class="col-10 row">
+                <input
+                    type="date"
+                    class="ci-input-text-bt col-4 mr-3"
+                    [(ngModel)]="model.DateSub"
+                    name="DateSub"
+                    #DateSub="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && DateSub.invalid }"
+                    required
+                > at <input
+                    type="time"
+                    [(ngModel)]="model.TimeSub"
+                    class="col-2 ml-3 ci-input-text-bt"
+                    name="TimeSub"
+                    #TimeSub="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && TimeSub.invalid }"
+                    required
+                >
+                <div
+                    *ngIf="f.submitted && DateSub.invalid  && TimeSub.invalid"
+                    class="invalid-feedback"
+                >
+                    <div *ngIf="DateSub.errors.required">must not leave the date and time blank</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row ci-align-items-center">
+            <div class="col-2">
+                <span>Subject:</span>
+            </div>
+            <div class="col-10 p-0">
+                <input
+                    type="text"
+                    class="ci-input-text-bt"
+                    [(ngModel)]="model.Title"
+                    name="Title"
+                    #Title="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && Title.invalid }"
+                    required
+                >
+                <div
+                    *ngIf="f.submitted && Title.invalid"
+                    class="invalid-feedback"
+                >
+                    <div *ngIf="Title.errors.required">Subject cannot be left blank</div>
+                </div>
+            </div>
+        </div>
+        <div class="row ci-align-items-center">
+            <div class="col-2">
+                <span>Body:</span>
+            </div>
+            <div class="col-10 p-0">
+                <textarea
+                    oninput="this.parentNode.dataset.value = this.value"
+                    class="ci-input-text-bt"
+                    [(ngModel)]="model.Content"
+                    name="Content"
+                    #Content="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && Content.invalid }"
+                    required
+                ></textarea>
+                <div
+                    *ngIf="f.submitted && Content.invalid"
+                    class="invalid-feedback"
+                >
+                    <div *ngIf="Content.errors.required">Content cannot be left blank</div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

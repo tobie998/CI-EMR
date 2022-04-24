@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row align-items-center">
+    <div class="col-2 clients ci-title-fz20 d-flex align-items-center">
+      {{ "RESULT" | translate }}
+    </div>
+    <div class="col-5 input-search">
+      <input
+          type="search"
+          class="ci-input-search"
+          placeholder="{{ 'SEARCH' | translate }}"
+          (input)="searchPatient($event.target.value)"
+      >
+      <mat-icon class="input-search-icon">search</mat-icon>
+      <div
+          *ngIf="keyword"
+          class="list-patient-search"
+      >
+          <div
+              *ngFor="let item of dataSub"
+              class="row list-item"
+              routerLink="/pages/result/result-list/{{item.PatientId}}"
+          >
+              <div
+                  class="img"
+              >
+                  <img src="{{ item.MediaURL }}" />
+              </div>
+              <div
+                  class="ml-2"
+              >
+                  <p class="fz-12">{{ item.FirstName }} {{ item.LastName }}</p>
+                  <p class="fz-12">ID: {{ item.ClientID }}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="col-5 search">
+      <app-user></app-user>
+    </div>
+  </div>
+  <div class="list-patient outsideShadow">
+    <div class="box-patient">
+      <div class="mb-3 patient-detail" *ngFor="let item of data" routerLink="/pages/result/result-list/{{item.PatientId}}">
+        <div class="card-patient">
+          <img src="{{ item?.MediaURL }}" />
+          <div class="align-self-center pl-1">
+            <p class="ci-white-space" *ngIf="item.PatientFullName">
+              <b>{{ item?.PatientFullName }}</b>
+            </p>
+            <p class="ci-white-space" *ngIf="!item.PatientFullName">
+              <b> {{ item?.FirstName }} {{ item?.LastName }} </b>
+            </p>
+            <b class="ci-white-space">ID: {{ item?.ClientID }}</b>
+            <p class="fz-12">
+              Last visit: {{ item.LastVisitDate | date: "MM/dd/yyyy" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

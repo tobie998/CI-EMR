@@ -1,0 +1,111 @@
+<div class="ci-create-medical-history">
+    <div class="row ci-align-items-center">
+        <div class="col-12 ci-body-text-h1 ci-dflex-modal">
+            <div *ngIf="data.StatusType==='create'">
+                {{ "ADD MEDICAL HISTORY" | translate }}
+            </div>
+            <div *ngIf="data.StatusType==='detail'">
+                {{ "DETAILS MEDICAL" | translate }}
+            </div>
+            <div>
+                <button
+                    class="ci-button-cancel"
+                    (click)="closeDialog()"
+                >
+                    {{ "CANCEL" | translate }}
+                </button>
+                <button
+                    class="ci-button-save"
+                    (click)="onClickEvent()"
+                >
+                    {{ "SAVE" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row ci-align-items-center">
+        <div class="col-2">
+            {{ "TYPE" | translate }}:
+        </div>
+        <div class="col-5">
+            <div class="control">
+                <label class="radio">
+                    <input
+                        type="radio"
+                        [checked]="model.Type == 1"
+                        (click)="selectType(1)"
+                        name="answer"
+                    />
+                    {{ "MEDICAL HISTORY" | translate }}
+                </label>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="control">
+                <label class="radio">
+                    <input
+                        type="radio"
+                        [checked]="model.Type == 2"
+                        (click)="selectType(2)"
+                        name="answer"
+                    />
+                    {{ "SURGICAL HISTORY" | translate }}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row ci-align-items-center">
+        <div class="col-2">
+            {{ "NAME" | translate }}:
+        </div>
+        <div class="col-10">
+            <div class="ci-input-group-text">
+                <input
+                    type="text"
+                    class="ci-input-boder-bt"
+                    name="problem"
+                    [(ngModel)]="model.SNOMEDCode"
+                    required
+                />
+                <mat-selection-list
+                    *ngIf="model.Type === 1"
+                    class="w-100"
+                    [multiple]="false"
+                >
+                    <mat-list-option
+                        *ngFor="let item of medicalList"
+                        [value]="item.SNOMEDCode"
+                        (click)="setTermMedical(item)"
+                    >
+                        {{ item.FullName }}
+                    </mat-list-option>
+                </mat-selection-list>
+                <mat-selection-list
+                    *ngIf="model.Type === 2"
+                    class="w-100"
+                    [multiple]="false"
+                >
+                    <mat-list-option
+                        *ngFor="let item of surgicalList"
+                        [value]="item.SNOMEDCode"
+                        (click)="setTermSurgical(item)"
+                    >
+                        {{ item.FullName }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+        </div>
+    </div>
+    <div class="row ci-align-items-center">
+        <div class="col-2">
+            {{ "SINCE" | translate }}
+        </div>
+        <div class="col-10">
+            <input
+                class="ci-input-text-bt"
+                type="text"
+                [(ngModel)]="model.StartDate"
+            />
+        </div>
+    </div>
+</div>

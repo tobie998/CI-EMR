@@ -1,0 +1,127 @@
+<div class="container-fluid ci-diagnosis-detail ci-p-30">
+    <div class="row">
+        <div
+            *ngIf="showLastVisit === true"
+            class="col-6"
+        >
+            <div class="ci-body-text-h3">{{ "LAST VISIT" | translate }}:</div>
+            <div class="list-visit">
+                <div class="height"></div>
+                <div class="title-diagnosis ci-subtitle" *ngIf="diagnosisLastVisit[0].VisitDate">
+                    {{ diagnosisLastVisit[0].VisitDate | date: "MM/dd/yyyy" }}
+                </div>
+                <div class="value-visit">
+                    {{ diagnosisLastVisit[0].SNOMEDFullName }}
+                </div>
+                <div class="title-diagnosis ci-subtitle">
+                    {{ "POSSIBLE OTHER DIAGNOSIS" | translate }}
+                </div>
+                <ng-container  *ngFor="let item of diagnosisLastVisit, let i = index">
+                    <div class="value-visit" *ngIf="i !== 0">
+                        {{item.SNOMEDFullName }}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div [class]="showLastVisit === true ? 'col-6' : 'col-12'">
+            <div>
+                <div class="ci-body-text-h3">{{ "THIS VISIT" | translate }}:</div>
+                <div class="list-visit">
+                    <div class="height"></div>
+                    <div class="title-diagnosis ci-subtitle">{{ "TODAY" | translate }}, {{ today }}</div>
+                    <div class="ci-input-group-text ci-mat-spinner">
+                        <input
+                            type="text"
+                            name="problem"
+                            autocomplete="off"
+                            [(ngModel)]="diagnosisThisVisit[0].SNOMEDFullName"
+                            (input)="onSearchDiagnosis(0, $event.target.value)"
+                            required
+                            placeholder="{{ 'TYPE HERE' | translate }}"
+                        />
+                        <mat-spinner
+                            class="spinner-loading"
+                            *ngIf="!isLoading && type === 1"
+                            matSuffix
+                            [diameter]="18"
+                        >
+                        </mat-spinner>
+                        <mat-selection-list
+                            *ngIf="type === 1"
+                            class="example-full-width"
+                            [multiple]="false"
+                        >
+                              <ng-container *ngIf="diagnosisList[0].length > 1">
+                                <mat-list-option
+                                  *ngFor="let item of diagnosisList[0][1]"
+                                  (click)="onChangeValue(item, 0)"
+                                >
+                                  {{ item }}
+                                </mat-list-option>
+                              </ng-container>
+
+
+                        </mat-selection-list>
+                    </div>
+                    <div class="title-diagnosis ci-subtitle">
+                        {{ "POSSIBLE OTHER DIAGNOSIS" | translate }}
+                    </div>
+                    <ng-container *ngFor="let item of diagnosisThisVisit, let i = index">
+                        <div class="ci-input-group-text ci-mat-spinner" *ngIf="i !== 0">
+                            <input
+                                type="text"
+                                name="problem"
+                                autocomplete="off"
+                                [(ngModel)]="item.SNOMEDFullName"
+                                (input)="onSearchDiagnosis(i, $event.target.value)"
+                                required
+                                placeholder="{{ 'TYPE HERE' | translate }}"
+                            />
+                            <mat-spinner
+                                class="spinner-loading"
+                                *ngIf="!isLoading && type === 2"
+                                matSuffix
+                                [diameter]="18"
+                            >
+                            </mat-spinner>
+                            <mat-selection-list
+                            *ngIf="type === 1"
+                            class="example-full-width"
+                            [multiple]="false"
+                        >
+                              <ng-container *ngIf="diagnosisList[i].length > 1">
+                                <mat-list-option
+                                  *ngFor="let item of diagnosisList[i][1]"
+                                  (click)="onChangeValue(item, i)"
+                                >
+                                  {{ item }}
+                                </mat-list-option>
+                              </ng-container>
+
+
+                        </mat-selection-list>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ci-group-btn">
+        <button
+            class="ci-button-save"
+            (click)="createDiagnosis()"
+        >
+            {{ "SAVE" | translate }}
+        </button>
+        <img
+            class="ci-btn-print"
+            src="assets/svg/print.svg"
+        />
+    </div>
+    <!-- <div class="ci-group-btn">
+        <img
+            class="ci-btn-print"
+            src="assets/svg/print.svg"
+        />
+    </div> -->
+</div>

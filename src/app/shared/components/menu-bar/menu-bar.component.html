@@ -1,0 +1,231 @@
+<div [hidden]="hideMenu">
+    <!-- Menu home -->
+    <div
+        id="mySidenav"
+        class="sidenav "
+        [style.text-align]="'center'"
+        *ngIf="!isShow"
+    >
+        <div class="avatar">
+            <ng-container *ngIf="company && company.MediaURL; else templateIconDef">
+              <img [src]="company.MediaURL" style="height: 60px;">
+            </ng-container>
+            <ng-template #templateIconDef>
+              <img src="assets/svg/emr-logo.svg">
+            </ng-template>
+        </div>
+        <br><br>
+        <a
+            name="Home"
+            routerLink="/pages/home"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="home"
+                src="assets/svg/emr-home.svg"
+            >
+            <p> {{'HOME' | translate }}</p>
+        </a>
+        <a
+            name="Clients"
+            routerLink="/pages/clients"
+            routerLinkActive="sideBarActive"
+            (click)="clickClientMenu()"
+        >
+            <img
+                id="client"
+                src="assets/svg/emr-client.svg"
+            >
+            <p>{{'CLIENTS' | translate }}</p>
+        </a>
+        <a
+            name="Calendar"
+            routerLink="/pages/calendar"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="calendar"
+                src="assets/svg/emr-calendar.svg"
+            >
+            <p>{{'CALENDAR' | translate }}</p>
+        </a>
+        <a
+            name="Result"
+            routerLink="/pages/result"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="chat"
+                src="assets/svg/emr-result.svg"
+            >
+            <p>{{'RESULT' | translate }}</p>
+        </a>
+        <a
+            name="Notifications"
+            routerLink="/pages/notifications"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="noti"
+                src="assets/svg/emr-noti.svg"
+            >
+            <p>{{'NOTI' | translate }}</p>
+        </a>
+        <a
+            name="Messages"
+            routerLink="/pages/message"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="chat"
+                src="assets/svg/emr-message.svg"
+            >
+            <p>{{'MESSAGES' | translate }}</p>
+        </a>
+
+    </div>
+    <div
+        class="outsideShadow outsvg mx-auto arrow-up"
+        *ngIf="!isShow && patientId && VisitId !== 0"
+    >
+        <img
+            (click)="isShow = !isShow"
+            src="assets/svg/arrow-up.svg"
+        >
+    </div>
+    <!-- Menu patients -->
+    <div
+        [hidden]="!isShow"
+        class="text-center menu-patients"
+    >
+      <ng-container *ngIf="company && company.MediaURL; else templateIconDef2">
+        <img [src]="company.MediaURL" style="height: 60px;">
+      </ng-container>
+      <ng-template #templateIconDef2>
+        <img src="assets/svg/emr-logo.svg">
+      </ng-template>
+    </div>
+    <div
+        class="menu-button-down"
+        [hidden]="!isShow"
+    >
+        <div class="outsideShadow outsvg mx-auto">
+            <img
+                (click)="isShow = !isShow"
+                src="assets/svg/arrow-down.svg"
+            >
+        </div>
+    </div>
+
+    <div
+        id="tabs-vertical"
+        class="tab-item insideShadow"
+        *ngIf="isShow && Role === 'Doctor'"
+    >
+        <a
+            name="History"
+            routerLink="/pages/profile/detail/{{patientId}}/history"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="history"
+                src="assets/svg/emr-mb-history.svg"
+            >
+            <p>{{'HISTORY' | translate }}</p>
+        </a>
+        <!-- <a
+            routerLink="/pages/profile/detail/{{patientId}}/profile-info"
+            name="History" *ngIf="isNursingReport === true" (click)="showNursingReport()"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="nursing" style="height: 30px;"
+                src="assets/images/nursing-report.png"
+            >
+            <p>{{'NURSING REPORT' | translate }}</p>
+        </a> -->
+        <a
+            name="Exam"
+            routerLink="/pages/profile/detail/{{patientId}}/exam"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="exam"
+                src="assets/svg/emr-exam.svg"
+            >
+            <p>{{'EXAM' | translate }}</p>
+        </a>
+        <a
+            name="Diagnosis"
+            routerLink="/pages/profile/detail/{{patientId}}/diagnosis"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="diagnosis"
+                src="assets/svg/emr-diagnosis.svg"
+            >
+            <p>{{'DIAGNOSIS' | translate }}</p>
+        </a>
+        <a
+            name="Plan"
+            routerLink="/pages/profile/detail/{{patientId}}/plan"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="plan"
+                src="assets/svg/emr-plan.svg"
+            >
+            <p>{{'PLAN' | translate }}</p>
+        </a>
+        <a
+            name="Report"
+            routerLink="/pages/profile/detail/{{patientId}}/report"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="report"
+                src="assets/svg/emr-report.svg"
+            >
+            <p>{{'REPORT' | translate }}</p>
+        </a>
+        <a
+            name="Invoice"
+            routerLink="/pages/profile/detail/{{patientId}}/invoice"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="invoice"
+                src="assets/svg/invoice.svg"
+            >
+            <p>{{'INVOICE' | translate }}</p>
+        </a>
+    </div>
+    <div
+        id="tabs-vertical"
+        class="tab-item insideShadow"
+        *ngIf="isShow && Role === 'Nurse'"
+    >
+        <a
+            routerLink="/pages/profile/detail/{{patientId}}/profile-info"
+            name="History" (click)="showNursingReport()"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="nursing" style="height: 30px;"
+                src="assets/images/nursing-report.png"
+            >
+            <p>{{'NURSING REPORT' | translate }}</p>
+        </a>
+        <a
+            name="Invoice"
+            routerLink="/pages/profile/detail/{{patientId}}/invoice"
+            routerLinkActive="sideBarActive"
+        >
+            <img
+                id="invoice"
+                src="assets/svg/invoice.svg"
+            >
+            <p>{{'INVOICE' | translate }}</p>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div style="z-index: 1000;"
+    id="notification"
+    class="border p-1"
+    [style.background]="!!notification ? notification.color : ''"
+>
+    <div class="text-right">
+        <button
+            type="button"
+            class="close"
+            (click)="hiddenNoti()"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div><br>
+    <div class="p-2">
+        <strong *ngIf="notification !== null">{{notification.text}}</strong>
+    </div>
+</div>

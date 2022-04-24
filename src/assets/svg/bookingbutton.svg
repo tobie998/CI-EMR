@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <filter id="Path_2818" x="0" y="0" width="36" height="36" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Booking_button" data-name="Booking button" transform="translate(7 -70)">
+    <g transform="matrix(1, 0, 0, 1, -7, 70)" filter="url(#Path_2818)">
+      <path id="Path_2818-2" data-name="Path 2818" d="M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z" transform="translate(2 2)" fill="#f1f1f1"/>
+    </g>
+    <g id="Booking" transform="translate(0 77)">
+      <path id="Path_2883" data-name="Path 2883" d="M14.375,1.667H13.333V.833a.833.833,0,0,0-1.667,0v.833H5V.833a.833.833,0,0,0-1.667,0v.833H2.292A2.294,2.294,0,0,0,0,3.958v9.375a2.5,2.5,0,0,0,2.5,2.5H6.667a.833.833,0,1,0,0-1.667H2.5a.834.834,0,0,1-.833-.833V6.667H15a.833.833,0,1,0,1.667,0V3.958A2.294,2.294,0,0,0,14.375,1.667Z" fill="#707070"/>
+      <g id="Group_2892" data-name="Group 2892" transform="translate(9.167 9.167)">
+        <path id="Path_2884" data-name="Path 2884" d="M16.417,11a5.417,5.417,0,1,0,5.417,5.417A5.423,5.423,0,0,0,16.417,11ZM18.5,17.25H17.25V18.5a.833.833,0,1,1-1.667,0V17.25h-1.25a.833.833,0,1,1,0-1.667h1.25v-1.25a.833.833,0,1,1,1.667,0v1.25H18.5a.833.833,0,1,1,0,1.667Z" transform="translate(-11 -11)" fill="#707070"/>
+      </g>
+    </g>
+  </g>
+</svg>

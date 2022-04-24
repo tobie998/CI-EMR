@@ -1,0 +1,14 @@
+<ngb-carousel>
+    <ng-template
+        ngbSlide
+        *ngFor="let media of listMedias"
+    >
+        <div class="picsum-img-wrapper">
+            <img
+                width="100%"
+                height="100%"
+                [src]="media.MediaURL"
+            >
+        </div>
+    </ng-template>
+</ngb-carousel>

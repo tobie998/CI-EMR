@@ -1,0 +1,110 @@
+@import "./app/shared/scss/_include.scss";
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-calendars/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-lists/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-angular-schedule/styles/material.css";
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+    background-color: #f6f6f6 !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    padding: 0 !important;
+    margin: 0  !important;
+}
+img {
+    object-fit: cover;
+}
+input {
+    outline: none;
+}
+input:focus, textarea:focus, select:focus, button:focus{
+  outline: none !important;
+}
+.edit {
+    mat-dialog-container {
+        padding: 0px !important;
+        background: #f5f5f5;
+        // box-shadow: 10px 10px 20px #d3d3d3, -10px -10px 20px #ffffff;
+        border-radius: 20px !important;
+        position: absolute;
+        left: 1%;
+        top: 2%;
+        width: 98% !important;
+        height: 96% !important;
+    }
+}
+.mat-elevation-z4 {
+    box-shadow:none;
+}
+.mat-menu-panel {
+    border-radius: 20px !important;
+    background-color: #f6f6f6;
+    box-shadow: 5px 5px 9px #c9c9c9, -5px -5px 9px #ffffff;
+    color: #707070;
+    // max-width: 100% !important;
+    width: 250px !important;
+    height: 100% !important;
+    margin-right: 2em;
+}
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: black;
+}
+
+.btn-save {
+    background-color: #9fb9c8;
+    font-size: 16px;
+    min-width: 85px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    height: 35px;
+}
+
+.btn-cancel {
+    background-color: #f5f5f5;
+    min-width: 85px;
+    border: none;
+    color: #9fb9c8;
+    border-radius: 20px;
+}
+
+.h-20 {
+    height: 20px;
+}
+.h-35 {
+  height: 35px;
+}
+// ==================== CI Button ===================//
+.ci-icon {
+    width: 20px;
+    height: 20px;
+    .ci-icon-active {
+        width: 36px;
+        height: 36px;
+        background-color: $ci-color-gainsboro;
+        border-radius: 50%;
+    }
+}
+.ci-box {
+    border-radius: 18px;
+    background: $ci-color-ecko-blue;
+    box-shadow: 5px 5px 9px #c9c9c9, -5px -5px 9px #ffffff;
+}

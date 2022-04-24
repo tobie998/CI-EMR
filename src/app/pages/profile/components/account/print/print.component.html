@@ -1,0 +1,165 @@
+<app-profile-info></app-profile-info>
+<div class="container-fluid mt-4 ci-profile-print">
+    <div class="container-fluid insideShadow w-100 mt-1">
+        <h2>Medical bill</h2>
+        <div class="col-12 br-bt-1">
+            <p class="fw-b-c-80">Client's infomation</p>
+            <div class="row">
+                <div class="col-2 mt-3em">
+                    <p>Patient's name:</p>
+                </div>
+                <div class="col-3">
+                    <span name="patientName">{{patient.LastName}}</span>
+                </div>
+                <div class="col-2 mt-3em">
+                    <p>Bill date:</p>
+                </div>
+                <div class="col-3">
+                    <span name="billDate">{{startDate}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 mt-3em">
+                    <p>Patient Id:</p>
+                </div>
+                <div class="col-3">
+                    <span name="patientId">{{patient.PatientId}}</span>
+                </div>
+                <div class="col-2 mt-3em">
+                    <p>Time:</p>
+                </div>
+                <div class="col-3">
+                    <span name="timeDate">{{createdOn}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 br-bt-1">
+            <br>
+            <p class="fw-b-c-80">Payment infomation</p>
+            <div class="row">
+                <div class="col-2 mt-3em">
+                    <p>Payer name:</p>
+                </div>
+                <div class="col-10">
+                    <span name="payerName">{{payment.PayerName}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 mt-3em">
+                    <p>Phone:</p>
+                </div>
+                <div class="col-10">
+                    <span name="payerPhone">{{payment.PayerPhone}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 mt-3em">
+                    <p>Address:</p>
+                </div>
+                <div class="col-10">
+                    <span name="payerBillingAddress">{{payment.PayerBillingAddress}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 br-bt-1">
+            <br>
+            <p class="fw-b-c-80 ">Bill: {{bill.BillId}}</p>
+            <div class="row m-0mb-20">
+                <table
+                    [dataSource]="dataSource"
+                    mat-table
+                    matSort
+                    class="mat-elevation-z8 tableStyle table-hover text-center"
+                >
+                    <ng-container matColumnDef="No.">
+                        <th
+                            mat-header-cell
+                            *matHeaderCellDef
+                        >
+                            No.
+                        </th>
+                        <td
+                            mat-cell
+                            *matCellDef="let pay"
+                        >
+                            {{pay.InvoiceNumber}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Invoice">
+                        <th
+                            mat-header-cell
+                            *matHeaderCellDef
+                        >
+                            Invoice
+                        </th>
+                        <td
+                            mat-cell
+                            *matCellDef="let pay"
+                        >
+                            {{pay.InvoiceId}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Amount">
+                        <th
+                            mat-header-cell
+                            *matHeaderCellDef
+                        >
+                            Amount
+                        </th>
+                        <td
+                            mat-cell
+                            *matCellDef="let pay"
+                        >
+                            {{pay.Amount}}
+                        </td>
+                    </ng-container>
+                    <tr
+                        mat-header-row
+                        *matHeaderRowDef="displayedColumnsBill; sticky: true"
+                    ></tr>
+                    <tr
+                        mat-row
+                        *matRowDef="let row; columns: displayedColumnsBill;"
+                    ></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-12">
+            <br>
+            <div class="pay-method">
+                <p class="fw-b-c-80">Method of payment: </p>
+                <span name="paymentmethodId">{{payment.PaymentmethodId}}</span>
+            </div>
+            <div class="row subtotal mt-3">
+                <div class="col-5">
+                    <p>Subtotal:</p>
+                </div>
+                <div class="col-7">
+                    <span name="subtotal">{{bill.TotalAmount}}</span>
+                </div>
+            </div>
+            <div class="row total">
+                <div class="col-5">
+                    <p>Total:</p>
+                </div>
+                <div class="col-7">
+                    <span name="total">{{bill.TotalAmount}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment-received">
+        <button
+            class="btn"
+            routerLink="/pages/profile/invoice/{{patientId}}/medical-bill"
+        >
+            Cancel
+        </button>
+        <button
+            class="btn"
+            routerLink="print"
+        >
+            Print
+        </button>
+    </div>
+</div>

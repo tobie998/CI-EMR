@@ -1,0 +1,186 @@
+<div class="ci-allergy-create">
+  <div class="row mb-2">
+    <div class="col-12 ci-body-text-h1 ci-dflex-modal">
+      <div>{{ data.title | translate }}</div>
+      <div>
+        <button class="ci-button-cancel" (click)="closeDialog()" type="button">
+          {{ "CANCEL" | translate }}
+        </button>
+        <button class="ci-button-save" (click)="save()" *ngIf="readonly !== true">
+          {{ "SAVE" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let item of label">
+    <div class="row ci-align-items-center" *ngIf="item.type === 'sdate'">
+      <div class="col-2">
+        {{ item.name }}
+      </div>
+      <div class="col-10">
+        {{ data.data[item.condition] | date: "MM/dd/yyyy" }} - {{model.PatientName}} - ID: {{model.PatientId}}
+      </div>
+    </div>
+    <div class="row ci-align-items-center" *ngIf="item.type === 'text'">
+      <div class="col-2">
+        {{ item.name }}
+      </div>
+      <div class="col-10">
+        {{ data.data[item.condition] }}
+      </div>
+    </div>
+  </div>
+  <div class="row ci-align-items-center" *ngIf="data.type === 'biobpsy'">
+    <div class="col-2">Conclusion:</div>
+    <div class="col-10">
+      <input
+        type="text"
+        name="text"
+        class="ci-input-text-bt"
+        [(ngModel)]="model.Conclusion" [readonly]="(readonly === true) ? true : ''"
+      />
+    </div>
+  </div>
+  <div class="row ci-align-items-center" *ngIf="data.type === 'lab'">
+    <div class="col-2">Choose a method:</div>
+    <div class="col-10">
+      <input
+        class="mr-2"
+        type="radio"
+        [checked]="check == 1"
+        (click)="check = 1" [readonly]="(readonly === true) ? true : ''"
+      /><span class="mr-4"> Add images(s)</span>
+      <input
+        class="mr-2"
+        type="radio"
+        [checked]="check == 2"
+        (click)="check = 2" [readonly]="(readonly === true) ? true : ''"
+      /><span> Input text</span>
+    </div>
+  </div>
+  <div
+    class="row ci-align-items-center"
+    *ngIf="
+      (check === 1 && data.view === 'add') ||
+      (check === 1 && data.view === 'view')
+    "
+  >
+    <div class="col-2">File attached:</div>
+    <div class="col-10">
+      <div class="button">
+        <div class="add-img">
+          <label for="listImage">
+            <img src="assets/svg/add-img-icon.svg" alt="" />
+            Add image(s)
+          </label>
+          <input [readonly]="(readonly === true) ? true : ''"
+            type="file"
+            accept="image/*"
+            id="listImage"
+            (change)="onSelectFile($event)"
+            multiple
+            hidden
+            required
+          />
+        </div>
+        <div class="take-photo">
+          <label>
+            <img src="assets/svg/take-photo-icon.svg" alt="" />
+            Take a picture
+          </label>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="swiper-container">
+      <swiper
+        [slidesPerView]="3"
+        [spaceBetween]="0"
+        (swiper)="onSwiper($event)"
+        [navigation]="true"
+      >
+        <ng-template swiperSlide *ngFor="let item of images; let i = index">
+          <img
+            src="assets/svg/emr-delete-img.svg"
+            alt=""
+            class="close-img"
+            (click)="removeImage(i)"
+          />
+          <img [src]="item" alt="" class="image-item" />
+        </ng-template>
+        <div class="swiper-pagination"></div>
+      </swiper>
+    </div>
+    <!-- <div class="swiper-container" *ngIf="(data.view === 'view' && check === 1)">
+      <swiper
+        [slidesPerView]="3"
+        [spaceBetween]="0"
+        (swiper)="onSwiper($event)"
+        [navigation]="true"
+      >
+        <ng-template
+          swiperSlide
+          *ngFor="let item of images; let i = index"
+        >
+          <img
+            src="assets/svg/emr-delete-img.svg"
+            alt=""
+            class="close-img"
+            (click)="removeImage(i)"
+          />
+          <img [src]="item" alt="" class="image-item" />
+        </ng-template>
+        <div class="swiper-pagination"></div>
+      </swiper>
+    </div> -->
+  </div>
+  <div class="row ci-align-items-center" *ngIf="check === 2">
+    <div class="table-base">
+      <table class="table-style">
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>Result</th>
+            <th>Normal range</th>
+            <th>Notes</th>
+            <!-- <th>Conclusion</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of model.ListTests; let ix = index">
+            <td>{{ item.TestName }}</td>
+            <td>
+              <input [readonly]="(readonly === true) ? true : ''"
+                class="ci-input-text"
+                type="text"
+                [(ngModel)]="item.TextResult"
+              />
+            </td>
+            <td>
+              <input [readonly]="(readonly === true) ? true : ''"
+                class="ci-input-text"
+                type="text"
+                [(ngModel)]="item.NormalRange"
+              />
+            </td>
+            <td>
+              <input
+                class="ci-input-text"
+                type="text" [readonly]="(readonly === true) ? true : ''"
+                [(ngModel)]="item.Notes"
+              />
+            </td>
+            <!-- <td>
+              <input
+                class="ci-input-text"
+                type="text"
+                [(ngModel)]="item.Conclusion"
+              />
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

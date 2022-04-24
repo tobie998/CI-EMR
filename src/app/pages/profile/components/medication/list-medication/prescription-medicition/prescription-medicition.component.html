@@ -1,0 +1,173 @@
+<div class="ci-p-30-table ci-prescription">
+  <table
+      mat-table
+      class="tableStyle ci-normal-table"
+      [dataSource]="dataSource"
+  >
+      <ng-container matColumnDef="Name">
+          <th
+          style="width: 15%"
+              mat-header-cell
+              *matHeaderCellDef
+          >{{ "NAME-1" | translate }}</th>
+          <td
+              mat-cell
+              *matCellDef="let prescription"
+          >
+              {{ prescription.NameDrug }}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="Dose">
+          <th
+          style="width: 10%"
+          mat-header-cell
+              *matHeaderCellDef
+          >{{ "DOSE" | translate }}</th>
+          <td
+              mat-cell
+              *matCellDef="let prescription"
+          >
+              {{ prescription.DoseValue }}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="Number">
+        <th
+          style="width: 10%"
+          mat-header-cell
+            *matHeaderCellDef
+        >{{ "NUMBER" | translate }}</th>
+        <td
+            mat-cell
+            *matCellDef="let prescription"
+        >
+            {{ prescription.Quantity }}/{{ prescription.QuantityUnit }}
+        </td>
+    </ng-container>
+      <ng-container matColumnDef="Frequency">
+          <th
+          style="width: 10%"
+          mat-header-cell
+              *matHeaderCellDef
+          >{{ "FREQUENCY" | translate }}</th>
+          <td
+              mat-cell
+              *matCellDef="let prescription"
+          >
+            {{prescription.FrequencyValue}}
+            <ng-container *ngIf="prescription.FrequencyValue !== null">/</ng-container>
+            <ng-container *ngIf="prescription.FrequencyUnit === 'times weekly';">
+              week
+            </ng-container>
+            <ng-container *ngIf="prescription.FrequencyUnit !== 'times weekly';">
+              day
+            </ng-container>
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="Start Date">
+          <th
+          style="width: 15%"
+          mat-header-cell
+              *matHeaderCellDef
+          >{{ "STARTDATE" | translate }}</th>
+          <td
+              mat-cell
+              *matCellDef="let prescription"
+          >
+              <ng-container *ngIf="prescription.EndDate
+              && prescription.EndDate !== ''">
+                {{ prescription.StartDate | date: "MM/dd" }} - {{ prescription.EndDate | date: "MM/dd/yyyy" }}
+              </ng-container>
+              <ng-container *ngIf="!prescription.EndDate">
+                {{ prescription.StartDate | date: "MM/dd/yyyy" }}
+              </ng-container>
+
+          </td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="End Date">
+          <th
+          style="width: 10%"
+          mat-header-cell
+              *matHeaderCellDef
+          >{{ "ENDDATE" | translate }}</th>
+          <td
+              mat-cell
+              *matCellDef="let prescription"
+          >
+              {{ prescription?.VisitDate | date: "MM/dd/yyyy" }}
+          </td>
+      </ng-container> -->
+      <ng-container matColumnDef="Route">
+          <th
+          style="width: 10%"
+          mat-header-cell
+              *matHeaderCellDef
+          >{{ "ROUTE" | translate }}</th>
+          <td
+              mat-cell
+              *matCellDef="let prescription"
+          >
+              {{ prescription.NameDrugRoute }}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="Visit Date">
+          <th
+          style="width: 10%"
+          mat-header-cell
+              *matHeaderCellDef
+          >{{ "VISIT DATE" | translate }}</th>
+          <td
+              mat-cell
+              *matCellDef="let prescription"
+          >
+          {{ prescription.VisitDate | date: "MM/dd/yyyy" }}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="Problem">
+        <th
+          style="width: 15%"
+          mat-header-cell
+            *matHeaderCellDef
+        >{{ "PROBLEM" | translate }}</th>
+        <td
+            mat-cell
+            *matCellDef="let prescription"
+        >
+            {{ prescription.ProblemName }}
+        </td>
+    </ng-container>
+      <ng-container matColumnDef="edit">
+          <th
+          style="width: 5%"
+          mat-header-cell
+              *matHeaderCellDef
+          > </th>
+          <td
+              mat-cell
+              *matCellDef="let item"
+          >
+            <div class="grid-img" [ngClass]="{'one-grid': Role !== 'Doctor'}">
+              <img *ngIf="Role === 'Doctor'"
+                  (click)="openDetailDialog(item)"
+                  src="assets/svg/edit-inline.svg"
+                  class="h-20"
+              />
+              <img
+                  *ngIf="item.HasHistory"
+                  (click)="openHistoryItem(item)"
+                  src="assets/svg/note.svg"
+                  class="h-20 ml-2"
+              />
+            </div>
+
+          </td>
+      </ng-container>
+      <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+      ></tr>
+      <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+      ></tr>
+  </table>
+</div>

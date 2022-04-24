@@ -1,0 +1,71 @@
+@import "../../../../shared/scss/variables.scss";
+.list-patient{
+    width: 100%;
+    height: 75vh;
+    margin-top: 10px;
+    .box-patient{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .card-patient {
+        border-radius: 15px;
+        display: flex;
+        background-color: #c8c8c8;
+        margin: 15px 10px 0 10px;
+        img {
+            width: 65px;
+            height: 75px;
+            border-radius: 20px;
+        }
+
+        .info-visit {
+            p {
+                font-size: 10px;
+            }
+        }
+    }
+}
+.input-search {
+    .input-search-icon {
+        position: absolute;
+        left: 25px;
+        top: 5px;
+        font-size: 30px;
+        opacity: 0.5;
+    }
+    input {
+        padding: 5px 20px 5px 45px;
+    }
+}
+.list-patient-search {
+    position: absolute;
+    width: 100%;
+    max-height: 350px;
+    border-radius: 20px;
+    z-index: 102;
+    overflow: auto;
+    margin: 10px 0;
+    background-color: $ci-color-greyish;
+    mat-icon {
+        position: absolute;
+    }
+    .list-item {
+        margin: 0 15px 15px 15px;
+        height: 40px;
+        background-color: $ci-color-white;
+        border-radius: 20px;
+        img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 5px;
+        }
+        mat-icon {
+            position: absolute;
+            right: 30px;
+            font-size: 23px;
+            margin-top: 8px;
+            opacity: 0.5;
+        }
+    }
+}

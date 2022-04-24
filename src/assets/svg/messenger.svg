@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="Group_2134" data-name="Group 2134" transform="translate(-501 -3)">
+    <g id="Group_1061" data-name="Group 1061" transform="translate(501 3)" opacity="1">
+      <g id="_chat" data-name=" chat">
+        <rect id="Rectangle_129" data-name="Rectangle 129" width="28" height="28" fill="none"/>
+        <path id="Icon_material-message" data-name="Icon material-message" d="M27.924,3H5.769A2.735,2.735,0,0,0,3.014,5.708L3,30.082l5.539-5.416H27.924a2.747,2.747,0,0,0,2.769-2.708V5.708A2.747,2.747,0,0,0,27.924,3Z" transform="translate(-2.694 -2.917)"/>
+      </g>
+    </g>
+    <path id="Path_2729" data-name="Path 2729" d="M15.089,10.779H32.234" transform="translate(492.696 -1)" fill="#f6f6f6" stroke="#f6f6f6" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_2730" data-name="Path 2730" d="M15.089,10.779H27.183" transform="translate(492.696 6)" fill="#f6f6f6" stroke="#f6f6f6" stroke-linecap="round" stroke-width="3"/>
+  </g>
+</svg>

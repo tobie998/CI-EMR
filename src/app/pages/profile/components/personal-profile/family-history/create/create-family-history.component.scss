@@ -1,0 +1,57 @@
+@import "../../../../../../shared/scss/variables.scss";
+
+.content {
+    overflow: auto;
+    height: 85vh;
+}
+
+.family {
+    display: flex;
+    flex-wrap: wrap;
+    button {
+        font-weight: bold;
+        cursor: pointer;
+        height: 35px;
+        margin: 6px;
+        font-size: 12px;
+    }
+}
+
+.content-history-title {
+    font-size: 16px;
+}
+
+.boder-hr {
+    width: 90%;
+    background-color: $ci-color-dim-gray;
+}
+
+input[type="radio"] {
+    visibility: hidden;
+}
+
+input[type="radio"]:checked + label {
+    color: $ci-color-contains-mainly-blue;
+    box-shadow: inset 0px 3px 6px #c9c9c9, inset -3px -3px 6px #cbd7c2;
+}
+
+input[type="radio"]:checked + label:after {
+    opacity: 1;
+}
+
+input[type="checkbox"] {
+    visibility: hidden;
+}
+
+input[type="checkbox"]:checked + label {
+    color: $ci-color-contains-mainly-blue;
+    box-shadow: inset 0px 3px 6px #c9c9c9, inset -3px -3px 6px #cbd7c2;
+}
+
+input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+}
+
+span {
+    font-weight: bold;
+}

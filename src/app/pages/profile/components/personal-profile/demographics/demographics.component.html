@@ -1,0 +1,153 @@
+<div class="ci-p-30-table">
+    <div class="row">
+        <!-- phần avt -->
+        <div class="col-3 align-self-center">
+            <div class="avatar">
+                <img [src]="profileImageString" *ngIf="profileImageString" /><br />
+                <label for="profileImage" [hidden]="!isShow">
+                    <img class="add-photo" src="assets/svg/logoChat.svg" />
+                    <span class="material-icons"> add_a_photo </span>
+                </label>
+                <input #ProfileImage type="file" accept="image/*" id="profileImage"
+                    (change)="processFileProfileImage(ProfileImage.files)" hidden required />
+                <br />
+            </div>
+        </div>
+        <div class="col-9">
+            <!-- phần thông tin -->
+            <div class="row ci-align-items-center">
+                <div class="col-2">{{ "FIRSTNAME" | translate }}</div>
+                <div class="col-4">
+                    <input class="ci-input-text-bt" name="firstName" [(ngModel)]="model.FirstName"
+                        [readonly]="!isShow" />
+                </div>
+                <div class="col-2">{{ "GENDER" | translate }}</div>
+                <div class="col-4">
+                    <select class="ci-select-defaut" name="gender" [(ngModel)]="model.Gender" [disabled]="!isShow">
+                        <option value="1">{{ "MALE" | translate }}</option>
+                        <option value="2">{{ "FEMALE" | translate }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row ci-align-items-center">
+                <div class="col-2">{{ "LASTNAME" | translate }}</div>
+                <div class="col-4">
+                    <input class="ci-input-text-bt" name="LastName" [(ngModel)]="model.LastName" [readonly]="!isShow" />
+                </div>
+                <div class="col-2">{{ "DATE OF BIRTH" | translate }}</div>
+                <div class="col-4">
+                    <input type="date" name="dob" class="ci-input-text-bt" [(ngModel)]="model.DOB"
+                        [readonly]="!isShow" />
+                </div>
+            </div>
+            <div class="row ci-align-items-center">
+                <div class="col-2">{{ "PHONE" | translate }}</div>
+                <div class="col-4">
+                    <input class="ci-input-text-bt" name="phone" type="text" [(ngModel)]="model.Phone"
+                        [readonly]="!isShow" />
+                </div>
+                <div class="col-2">{{ "NATIONAL ID" | translate }}</div>
+                <div class="col-4">
+                    <input class="ci-input-text-bt" name="nationalId" [(ngModel)]="model.NationalId"
+                        [readonly]="!isShow" type="text" />
+                </div>
+            </div>
+            <div class="row ci-align-items-center">
+                <div class="col-2">{{ "EMAIL" | translate }}</div>
+                <div class="col-4">
+                    <input class="ci-input-text-bt" name="email" [(ngModel)]="model.Email" [readonly]="!isShow" />
+                </div>
+                <div class="col-2">{{ "Date of registration" | translate }}</div>
+                <div class="col-4">
+                    <input class="ci-input-text-bt" name="CreatedOn" type="date" [(ngModel)]="model.CreatedOn"
+                        [readonly]="!isShow" />
+                </div>
+            </div>
+            <div class="row ci-align-items-center">
+                <div class="col-2">{{ "ADDRESS" | translate }}</div>
+                <div class="col-4">
+                    <input class="ci-input-text-bt" name="address" [(ngModel)]="model.Address" [readonly]="!isShow" />
+                </div>
+                <div class="col-1" *ngIf="!isShow">
+                  <img style="height: 34px;" (click)="openGGMap()"
+                    src="assets/images/google_maps_icon.svg"
+                  >
+                </div>
+            </div>
+            <div class="row ci-align-items-center" *ngIf="isShow">
+              <div class="col-2">{{ "MAP" | translate }}</div>
+              <div class="col-9">
+                  <input  class="ci-input-text-bt" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+              </div>
+              <div class="col-1">
+                <img style="height: 34px;" (click)="openGGMap()"
+                  src="assets/images/google_maps_icon.svg"
+                >
+              </div>
+            </div>
+            <div class="row ci-align-items-center">
+                <div class="col-2">{{ "INFO_SOURCE" | translate }}</div>
+                <div class="col-4">
+                    <select
+                        class="ci-select-defaut"
+                        name="infoSource"
+                        [(ngModel)]="model.InfoSource"
+                        [disabled]="!isShow"
+                    >
+                      <ng-container *ngFor="let infoSource of lstInfoSource">
+                        <option [ngValue]="infoSource.NumericKey">{{infoSource.Value}}</option>
+                      </ng-container>
+                    </select>
+                </div>
+                <div class="col-2">Client ID</div>
+                <div class="col-4">
+                  <input class="ci-input-text-bt" name="clientid" [(ngModel)]="model.ClientID"
+                          [readonly]="!isShow" type="text" />
+                </div>
+            </div>
+            <!-- contact -->
+            <div class="contact">
+                <div class="ci-body-text-h1">{{ "EMRGENCY CONTACT" | translate }}</div>
+                <div class="row mt-4 ci-align-items-center">
+                    <div class="col-2">{{ "FIRSTNAME" | translate }}</div>
+                    <div class="col-4">
+                        <input class="ci-input-text-bt" name="relationShipFirstName"
+                            [(ngModel)]="model.RelationshipFirstName" [readonly]="!isShow" />
+                    </div>
+                    <div class="col-2">{{ "LASTNAME" | translate }}</div>
+                    <div class="col-4">
+                        <input class="ci-input-text-bt" name="relationShipLastName"
+                            [(ngModel)]="model.RelationshipLastName" [readonly]="!isShow" />
+                    </div>
+
+                </div>
+                <div class="row ci-align-items-center">
+                    <div class="col-2">{{ "RELATIONSHIP" | translate }}</div>
+                    <div class="col-4">
+                        <input class="ci-input-text-bt" name="EmergencyRelationshipType" [readonly]="!isShow"
+                            [(ngModel)]="model.EmergencyRelationshipType" type="text" />
+                    </div>
+                    <div class="col-2">{{ "PHONE" | translate }}</div>
+                    <div class="col-4">
+                        <input class="ci-input-text-bt" name="emergencyPhone" [(ngModel)]="model.EmergencyPhone"
+                            [readonly]="!isShow" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ci-group-btn" [hidden]="isShow">
+            <img (click)="showEdit(true)" src="assets/svg/Bottomedit.svg" />
+            <img src="assets/svg/print.svg" />
+            <button class="ci-button-save"
+                routerLink='/pages/clients/reason-booking/{{patientId}}/schedule'>Book</button>
+        </div>
+        <div class="ci-group-btn" [hidden]="!isShow">
+            <button (click)="showEdit(false)" class="ci-button-cancel">
+                Cancel
+            </button>
+            <button class="ci-button-save" [disabled]="isLoading" (click)="updateCurrentPatient()">Save
+                <mat-spinner *ngIf="isLoading" matSuffix [diameter]="18"></mat-spinner>
+            </button>
+        </div>
+    </div>
+</div>

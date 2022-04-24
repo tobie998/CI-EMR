@@ -1,0 +1,28 @@
+<div
+    [class]="cssClass?.class"
+    class="personal__info insideShadow ml-1"
+>
+    <img src="{{ data?.MediaURL }}" />
+    <div class="info__content">
+        <div class="infor__content__item">
+            <h5>{{ "NAME" | translate }} :</h5>
+            <div class="info-text">{{ data?.FirstName }} {{ data?.LastName }}</div>
+        </div>
+        <div class="infor__content__item">
+            <h5>{{ "AGE" | translate }} :</h5>
+            <div class="info-text">{{ data?.Age }}</div>
+        </div>
+        <div class="infor__content__item">
+            <h5>{{ "PHONE" | translate }} :</h5>
+            <div class="info-text">{{ data?.Phone }}</div>
+        </div>
+        <div class="infor__content__item">
+            <h5>Email :</h5>
+            <div class="info-text">{{ data?.Email }}</div>
+        </div>
+        <div class="infor__content__item">
+            <h5>{{ "ADDRESS" | translate }} :</h5>
+            <div class="info-text">{{ data?.Address }}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+<div class="row m-0">
+    <div class="col-1"></div>
+    <div class="col-10 follow-up">
+        <div class="row">
+            <div class="follow col-3">{{ "FOLLOW UP IN" | translate }}:</div>
+            <div class="time col-4">
+                {{ quantityNumber }} 
+                <ng-container *ngFor="let item of time">
+                    <span *ngIf="timeUnit == item.id">{{ item.Name[typeTranslate] }}</span>
+                </ng-container>
+                
+                <!-- <span *ngIf="timeActive == 1">Hours</span>
+                <span *ngIf="timeActive == 2">Days</span>
+                <span *ngIf="timeActive == 3">Weeks</span>
+                <span *ngIf="timeActive == 4">Months</span>
+                <span *ngIf="timeActive == 5">Years</span> -->
+            </div>
+            <div class="follow col-2">{{ "WHERE" | translate }}: </div>
+            <ng-container *ngFor="let item of Where">
+                <div class="time col-3" *ngIf="whereActive === item.id">
+                    {{item.Name[typeTranslate]}}
+                </div>
+            </ng-container>
+            
+            
+            <!-- <div
+                class="time col-3"
+                *ngIf="whereActive == 1"
+            >
+                Hospital
+            </div>
+            <div
+                class="time col-3"
+                *ngIf="whereActive == 2"
+            >
+                Clinic
+            </div>
+            <div
+                class="time col-3"
+                *ngIf="whereActive == 3"
+            >
+                Home
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-7 brl-1">
+                <div class="row mt-3">
+                    <div class="col-9 row">
+                        <div
+                            *ngFor="let item of quantity; let ix = index"
+                            class="col-6 p-2"
+                        >
+                            <button
+                                (click)="clickQuantity(item)"
+                                class="w-100"
+                                [class]="item == quantityNumber? 'ci-button-exam': 'ci-button-exam-active' "
+                            >
+                                {{ item }}
+                            </button>
+                        </div>
+                        <div class="col-12 btn btn-quantity">
+                            {{ "OTHER" | translate }}:
+                            <input
+                                class="other"
+                                type="number"
+                                [(ngModel)]="quantityNumber"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div
+                            *ngFor="let item of time"
+                            class="p-2"
+                        >
+                            <button
+                                class="w-100 ci-mw-80 ci-pl-pr-0"
+                                (click)="clickTimeActive(item)"
+                                [class]="timeUnit == item.id ? 'ci-button-exam': 'ci-button-exam-active' "
+                            >
+                                {{ item.Name[typeTranslate] }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="row pt-3">
+                    <div
+                        *ngFor="let item of Where"
+                        class="p-2 col-12"
+                    >
+                        <button
+                            class="w-100 ci-mw-80 ci-pl-pr-0"
+                            (click)="clickWhereActive(item)"
+                            [class]="whereActive == item.id ? 'ci-button-exam': 'ci-button-exam-active' "
+                        >
+                            {{ item.Name[typeTranslate] }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+            </div>
+            <div class="col-5">
+                <div class="confirm">
+                    <button (click)="book()">Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row home-care mt-2">
+    {{ "DO YOU NEED HOMECARE" | translate }}?
+    <div class="button-yes-no">
+        <button
+            (click)="clickHomeCare(1)"
+            class="ml-2"
+            [class]="homeCare == 1 ? 'ci-button-exam': 'ci-button-exam-active' "
+        >
+            {{ "YES" | translate }}
+        </button>
+        <button
+            (click)="clickHomeCare(0)"
+            class="ml-2"
+            [class]="homeCare == 0 ? 'ci-button-exam': 'ci-button-exam-active' "
+        >
+            {{ "No" | translate }}
+        </button>
+    </div>
+</div>

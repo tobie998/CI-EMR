@@ -1,0 +1,54 @@
+<div class="container-fluid mt-4">
+    <div class="row profile__nav m-0 personal-info">
+        <mat-tab-group
+            mat-stretch-tabs
+            mat-align-tabs="center"
+            class="col outsideShadow p-0"
+            [selectedIndex]="selectedIndex"
+        >
+            <mat-tab class="profile-mat-tab">
+                <ng-template mat-tab-label>
+                    <span>{{ "DEMOGRAPHICS" | translate }}</span>
+                </ng-template>
+                <div>
+                    <app-demographics></app-demographics>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span>{{ "LIST OF VISITS" | translate }}</span>
+                </ng-template>
+                <app-list-of-visits></app-list-of-visits>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span> {{ "SOCIAL HISTORY" | translate }}</span>
+                </ng-template>
+                <app-social-history></app-social-history>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span>{{ "MEDICAL HISTORY" | translate }}</span>
+                </ng-template>
+                <app-medical-history></app-medical-history>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span>{{ "FAMILY HISTORY" | translate }}</span>
+                </ng-template>
+                <app-family-history></app-family-history>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span>{{ "IMMUNIZATION" | translate }}</span>
+                </ng-template>
+                <app-immunization></app-immunization>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="profile__content"></div>
+</div>

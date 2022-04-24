@@ -1,0 +1,55 @@
+@import "../../../../shared/scss/variables.scss";
+
+.mess-scroll {
+    overflow: scroll;
+}
+.mess-box {
+    height: 66vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    .mess-box-chat {
+        display: flex;
+        margin-top: 10px;
+        .mess-box-user-avatar {
+            width: 43px;
+            height: 25px;
+            margin-right: 10px;
+
+            img {
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .box-content {
+            border-radius: 15px;
+            background-color: $ci-color-white;
+            max-width: 80%;
+            padding: 5px 15px;
+            .user-name {
+                font-weight: 400;
+                color: #85a4d2;
+            }
+            .chat-content {
+                font-size: 16px;
+            }
+        }
+    }
+    .message-sent {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .current-user-box-chat {
+        max-width: 100%;
+        padding: 5px;
+        background-color: #adb3f9;
+
+        border-radius: 15px;
+        float: right;
+        color: $ci-color-white;
+        .user-name {
+            font-size: 16px;
+        }
+    }
+}

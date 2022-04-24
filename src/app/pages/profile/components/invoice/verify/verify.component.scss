@@ -1,0 +1,86 @@
+@import "../../../../../shared/scss/variables.scss";
+
+.create {
+    float: right;
+    position: relative;
+    top: 10px;
+    button:nth-child(2) {
+        background-color: $ci-color-ecko-blue;
+        width: 110px;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        font-size: 20px;
+        color: $ci-color-white;
+    }
+}
+p {
+    margin: 0;
+}
+h2 {
+    margin: 0px 15px 10px;
+    padding-top: 5px;
+    color: black;
+}
+.add-button {
+    border: none;
+    background-color: $ci-color-white-smoke-f6;
+    position: relative;
+    bottom: 50px;
+    float: right;
+    top: 2px;
+}
+.verify {
+    float: right;
+    position: relative;
+    right: -3rem;
+    top: 10px;
+    button {
+        background-color: $ci-color-ecko-blue;
+        width: 110px;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        font-size: 20px;
+        color: $ci-color-white;
+    }
+}
+.subtotal,
+.discount,
+.total {
+    width: 235px;
+    height: 30px;
+    background-color: $ci-color-white;
+    border-radius: 20px;
+    line-height: 30px;
+    float: right;
+    margin-right: 0;
+    margin-bottom: 1rem;
+}
+.subtotal p {
+    margin-right: 5em;
+    margin-left: 10px;
+}
+input[type="number"] {
+    border: none;
+    width: 100px;
+    text-align: center;
+}
+.verify-content {
+    height: 70vh;
+    overflow: auto;
+    .verify-item {
+        border-bottom: 1px solid;
+    }
+}
+.verify-title {
+    font-weight: bold;
+    color: $ci-color-dim-gray;
+}
+.ci-profile-verify {
+    .dl-fdc-aide {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}

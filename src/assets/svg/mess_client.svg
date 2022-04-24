@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <filter id="Path_2818" x="0" y="0" width="36" height="36" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_2858" data-name="Group 2858" transform="translate(7 -70)">
+    <g transform="matrix(1, 0, 0, 1, -7, 70)" filter="url(#Path_2818)">
+      <path id="Path_2818-2" data-name="Path 2818" d="M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z" transform="translate(2 2)" fill="#f1f1f1"/>
+    </g>
+    <g id="Group_1155" data-name="Group 1155" transform="translate(-56.322 -418.13)">
+      <g id="_chat" data-name=" chat" transform="translate(57.322 497.13)">
+        <rect id="Rectangle_129" data-name="Rectangle 129" width="14.089" height="14.089" transform="translate(0)" fill="none"/>
+        <path id="Icon_material-message" data-name="Icon material-message" d="M18.314,3H4.7A1.7,1.7,0,0,0,3.009,4.7L3,20.016l3.4-3.4H18.314a1.707,1.707,0,0,0,1.7-1.7V4.7A1.707,1.707,0,0,0,18.314,3Zm-1.7,10.209H6.4v-1.7H16.613Zm0-2.552H6.4v-1.7H16.613Zm0-2.552H6.4V6.4H16.613Z" transform="translate(-2.736 -2.736)" fill="#707070"/>
+      </g>
+    </g>
+  </g>
+</svg>

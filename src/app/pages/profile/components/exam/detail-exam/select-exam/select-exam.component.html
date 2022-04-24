@@ -1,0 +1,40 @@
+<div class="ci-select-exam">
+    <div class="row ci-align-items-center position-r">
+        <div class="col-3"></div>
+        <span class="ci-input-create col-6">
+            <input
+                type="text"
+                name="search"
+                (input)="searchExam($event.target.value)"
+                placeholder="{{ 'SEARCH' | translate }}"
+            />
+        </span>
+        <div class="ci-group-btn-dialog col-3">
+            <button
+                class="ci-button-save"
+                [mat-dialog-close]="data"
+                cdkFocusInitial (click)="closeDialog()"
+            >{{ "SAVE" | translate }}</button>
+        </div>
+    </div>
+    <div class="row list-patient">
+        <div
+            class="mx-auto"
+            *ngFor="let item of examSub"
+        >
+            <div class="row list-item">
+                <div class="col-10 align-self-center">
+                    {{ item?.Name }}
+                </div>
+                <div class="col-2 align-self-center">
+                    <input
+                        type="checkbox"
+                        [checked]="item?.checked"
+                        (click)="onSelectItem(item)"
+                    />
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>

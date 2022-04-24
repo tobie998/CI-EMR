@@ -1,0 +1,90 @@
+<div
+    class="w-100 cssClassListPatient"
+    [class]="config.class"
+    [style.height]="config.height"
+>
+    <div class="d-flex justify-content-between">
+        <div class="ci-body-text-h3 header-open">{{ config.title | translate }}</div>
+        <div
+            *ngIf="config.splice !== null"
+            class="ci-body-text-h3 header-open ci-df-center "
+            (click)="routerLinkListPatient()"
+        >  <i style="color: #277be8;">{{ "VIEW ALL" | translate }}</i><img
+                src="assets/svg/viewall.svg"
+                alt=""
+            >
+        </div>
+        <div *ngIf="config.splice === null"
+          class="ci-body-text-h3 header-open ci-df-center"
+          (click)="routerLinkListPatient()">
+          <img
+                src="assets/svg/viewall.svg"
+                style="transform: rotate(180deg);"
+                alt=""
+            >  <i style="color: #277be8;"> {{ "BACK" | translate }}</i>
+        </div>
+    </div>
+    <div class="row">
+        <div
+            class="mb-3"
+            [class]="config.col"
+            *ngFor="let item of dataSub"
+        >
+            <div
+                class="card-patient"
+                [class]="config.cssItem"
+            >
+                <img
+                    src="{{ item?.MediaURL }}"
+                    (click)="routerLinkRecent(item)"
+                />
+                <div
+                    class="align-self-center pl-1"
+                    (click)="routerLinkRecent(item)"
+                >
+                    <p
+                        class="ci-white-space title"
+                        *ngIf="item.PatientFullName"
+                    >
+                        <b>{{ item?.PatientFullName }}</b>
+                    </p>
+                    <p
+                        class="ci-white-space title"
+                        *ngIf="!item.PatientFullName"
+                    >
+                        <b> {{ item?.FirstName }} {{item?.LastName}} </b>
+                    </p>
+                    <b class="ci-white-space title">ID: {{ item?.ClientID }}</b>
+                    <div
+                        class="info-visit"
+                        *ngIf="!config.hideVisit"
+                    >
+                        <p class="ci-white-space"> Last visit: {{ item.LastVisitDate | date: "MM/dd/yyyy" }} </p>
+                        <p class="ci-white-space"> Next Visit: {{ item.LastScheduleDate | date: "MM/dd/yyyy" }} </p>
+                        <p
+                            class="ci-white-space"
+                            *ngIf="!item.VisitId"
+                        > Status: {{ item.StatusString}} </p>
+                    </div>
+                </div>
+                <div
+                    *ngIf="!config.hideMessage"
+                    class="icon-message"
+                    routerLink="/pages/profile/detail/{{ item.PatientId }}/message"
+                >
+                    <img src="assets/svg/mess_client.svg" />
+                </div>
+                <div
+                    class="icon-status"
+                    *ngIf="!item.VisitId"
+                    (click)="checkStatus(item.PatientId, item.StatusString, item)"
+                >
+                    <img
+                        src="assets/svg/icon-status.svg"
+                        alt=""
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

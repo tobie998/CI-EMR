@@ -1,0 +1,15 @@
+@import "../../../../shared/scss/variables.scss";
+.example-stretched-tabs {
+    width: 100%;
+    border-radius: 15px;
+}
+.history_row {
+    border-radius: 15px;
+}
+::ng-deep .history {
+    .mat-tab-labels {
+        background-color: $ci-color-white;
+        border-radius: 15px;
+        height: 50px;
+    }
+}

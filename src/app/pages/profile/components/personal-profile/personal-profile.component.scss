@@ -1,0 +1,40 @@
+@import "../../../../shared/scss/variables.scss";
+.profile {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-mat-tab {
+    display: block;
+}
+
+::ng-deep .personal-info .mat-tab-label {
+    width: auto;
+}
+
+::ng-deep .personal-info {
+    .mat-tab-label-active {
+        opacity: 1;
+    }
+    .mat-tab-labels {
+        background-color: $ci-color-white;
+        border-radius: 15px;
+        height: 50px;
+        box-shadow: inset 2px 2px 4px #c2c2c2, inset -2px -2px 4px #ffffff;
+    }
+    .mat-tab-label:first-child {
+        border-bottom: 2px solid rgb(112, 112, 112, 0.2);
+        height: 40px;
+        margin-left: 25px;
+    }
+    .mat-tab-label:last-child {
+        border-bottom: 2px solid rgb(112, 112, 112, 0.2);
+        height: 40px;
+        margin-right: 25px;
+    }
+    .mat-tab-label {
+        border-bottom: 2px solid rgb(112, 112, 112, 0.2);
+        height: 40px;
+        width: 100px !important;
+    }
+}

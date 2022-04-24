@@ -1,0 +1,13 @@
+.ci-create-medical-history {
+    .radio {
+        margin: 0em 1em;
+        font-size: 18px;
+    }
+
+    mat-list-option {
+        background-color: #f6f6f6;
+        height: 120px;
+        overflow: auto;
+        z-index: 99;
+    }
+}

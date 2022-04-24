@@ -1,0 +1,128 @@
+.header {
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  .add {
+      position: absolute;
+      right: -84px;
+      top: 5%;
+      padding-right: 10px;
+      transform: translate(-100%, -50%);
+      cursor: pointer;
+      z-index: 1;
+      width: 86px;
+      background-color: #fff;
+      border-radius: 14px;
+      mat-icon {
+          font-size: 50px;
+      }
+  }
+}
+
+.select-header {
+  margin-bottom: 15px;
+  span {
+      font-size: 16px;
+      font-weight: 600;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+::ng-deep .header {
+  .mat-tab-header {
+      width: 96% !important;
+      border-radius: 15px !important;
+      margin-left: 20px;
+      overflow: auto;
+  }
+  .mat-tab-label-container {
+      overflow: hidden;
+  }
+  .mat-tab-labels {
+      background-color: #ffffff;
+      border-radius: 15px;
+      height: 65px;
+      padding: 0px 10px;
+      width: 90%;
+      .mat-tab-label {
+        padding: 0 4px;
+        min-width: 121px;
+        .mat-tab-label-content {
+          white-space: pre-wrap;
+        }
+      }
+  }
+  .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+      display: none;
+  }
+  .mat-tab-list {
+      background-color: #ffffff;
+  }
+  .mat-tab-group.mat-primary .mat-ink-bar,
+  .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+      top: 50px;
+  }
+  .mat-tab-group {
+      background-color: #f5f5f5;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  justify-content: space-between;
+  padding: 0 18px;
+  .list-item {
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      max-height: 80vh;
+      flex-flow: wrap;
+      overflow: auto;
+      .item {
+          width: 24%;
+          height: 50px;
+          border-radius: 17px;
+          background-color: #ffffff;
+          padding: 10px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 2px 2px 4px #c9c9c9, -2px -2px 4px #ffffff;
+          margin-bottom: 20px;
+          margin-left: 5px;
+          padding: 0 5px;
+      }
+      .itemActive {
+          background-color: #707070;
+          color: #fff;
+          font-size: 18px;
+          font-weight: 600;
+      }
+  }
+  .input {
+      width: 90%;
+      min-height:  38px;
+      border-radius: 20px;
+      position: relative;
+      background-color: #dadada;
+      margin-bottom: 95px;
+      input {
+          border: none;
+          height: 100%;
+          background-color: #dadada;
+          width: 90%;
+          border-radius: 20px 0 0 20px;
+          padding: 0 30px;
+      }
+      .mat-icon-style {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+      }
+  }
+}

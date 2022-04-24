@@ -1,0 +1,235 @@
+<div class="containerr-fluid ci-p-30-table social-over">
+    <div class="row">
+        <div class="col-3">
+            <div class="ci-profile-table-th">
+                {{ "NAME" | translate }}
+            </div>
+            <div class="ci-profile-table-td">{{ "EXERCISE" | translate }}</div>
+            <div class="ci-profile-table-td">{{ "ALCOHOL" | translate }}</div>
+            <div class="ci-profile-table-td">{{ "SMOKING" | translate }}</div>
+        </div>
+        <div class="col-9">
+            <div class="ci-profile-table-th">{{ "FREQUENCY" | translate }}</div>
+            <div
+                class="box"
+            >
+                <button
+                    [class]=" Excercise &&
+                    Excercise.Type == 1 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(1, Excercise?.PatientSocialfactorId)"
+                >
+                    {{ "NEVER" | translate }}
+                </button>
+                <button
+                    [class]=" Excercise &&
+                    Excercise.Type == 2 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(2, Excercise?.PatientSocialfactorId)"
+                >
+                    {{ "OFTEN" | translate }}
+                </button>
+                <button
+                    [class]=" Excercise &&
+                    Excercise.Type == 3 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(3, Excercise?.PatientSocialfactorId)"
+                >
+                    {{ "DAILY" | translate }}
+                </button>
+            </div>
+            <div
+                class="box"
+            >
+                <button
+                    [class]="
+            Alcohol?.Type == 1 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(1, Alcohol?.PatientSocialfactorId)"
+                >
+                    {{ "NEVER" | translate }}
+                </button>
+                <button
+                    [class]="
+            Alcohol?.Type == 2 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(2, Alcohol?.PatientSocialfactorId)"
+                >
+                    {{ "3/WEEK" | translate }}
+                </button>
+                <button
+                    [class]="
+            Alcohol?.Type == 3 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(3, Alcohol?.PatientSocialfactorId)"
+                >
+                    {{ "5-10/WEEK" | translate }}
+                </button>
+                <button
+                    [class]="
+            Alcohol?.Type == 4 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(4, Alcohol?.PatientSocialfactorId)"
+                >
+                    {{ ">10 WEEK" | translate }}
+                </button>
+            </div>
+            <div
+                class="frequency"
+            >
+                <button
+                    [class]="
+                    Smoking?.Type == 2 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(2, Smoking?.PatientSocialfactorId)"
+                >
+                    {{ "NEVER" | translate }}
+                </button>
+                <button
+                    [class]="
+                    Smoking?.Type == 1 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(1, Smoking?.PatientSocialfactorId)"
+                >
+                    {{ "STOPPED" | translate }}
+                </button>
+                <button
+                    [class]="
+                    Smoking?.Type == 3 ? 'ci-button-exam' : 'ci-button-exam-active'
+          "
+                    (click)="updateSocialfactor(3, Smoking?.PatientSocialfactorId)"
+                >
+                    {{ "SMOKING" | translate }}
+                </button>
+
+                <div
+                    class="bg-EB row"
+                    *ngIf="Smoking?.Type == 1 || Smoking?.Type == 3"
+                >
+                    <!-- <div class="row">
+                        <div class="col-4 align-self-center">
+                            <p class="p-bg-70">{{ "PER DAY" | translate }}:</p>
+                        </div>
+                        <div class="col-8">
+                            <select [(value)]="selectedExcercise"
+                                (change)="updateDateExcercise(Excercise?.PatientSocialfactorId)"
+                                name="frequencyValueExcercise" [(ngModel)]="frequencyValueExcercise">
+                                <option value="1" (change)="chooseDateExcercise(1)" selected>
+                                    1 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="2" (change)="chooseDateExcercise(2)">
+                                    2 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="3" (change)="chooseDateExcercise(3)">
+                                    3 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="4" (change)="chooseDateExcercise(4)">
+                                    4 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="5" (change)="chooseDateExcercise(5)">
+                                    5 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="6" (change)="chooseDateExcercise(6)">
+                                    6 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="7" (change)="chooseDateExcercise(7)">
+                                    7 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="8" (change)="chooseDateExcercise(8)">
+                                    8 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="9" (change)="chooseDateExcercise(9)">
+                                    9 {{ "TIMES" | translate }}
+                                </option>
+                                <option value="10" (change)="chooseDateExcercise(10)">
+                                    10 {{ "TIMES" | translate }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 align-self-center">
+                            <p class="p-bg-70">{{ "FOR" | translate }}:</p>
+                        </div>
+                        <div class="col-8">
+                            <select [(value)]="selectedForExcercise" (change)="
+                  updateDateForExcercise(
+                    Excercise?.Type,
+                    Excercise?.PatientSocialfactorId
+                  )
+                " name="dateForExcercise" [(ngModel)]="dateForExcercise">
+                                <option value="1" (change)="chooseForExcercise(1)">
+                                    1 {{ "YEARS" | translate }}
+                                </option>
+                                <option value="2" (change)="chooseForExcercise(2)">
+                                    2 {{ "YEARS" | translate }}
+                                </option>
+                                <option value="3" (change)="chooseForExcercise(3)">
+                                    3 {{ "YEARS" | translate }}
+                                </option>
+                                <option value="4" (change)="chooseForExcercise(4)">
+                                    4 {{ "YEARS" | translate }}
+                                </option>
+                                <option value="5" (change)="chooseForExcercise(5)">
+                                    5 {{ "YEARS" | translate }}
+                                </option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="col-6 per_day">
+                        {{ "PER DAY" | translate }}: {{ frequencyValueSmoking }}
+                        {{ "CIGARETTES" | translate }}
+                        <div class="list_time">
+                            <button
+                                *ngFor="let item of time"
+                                [class]="
+                  item == frequencyValueSmoking
+                    ? 'ci-button-exam'
+                    : 'ci-button-exam-active'
+                "
+                                (click)="
+                updateDateSmoking(Smoking?.PatientSocialfactorId, item)
+                "
+                            >
+                                {{ item }}
+                            </button>
+                            <div class="other">
+                                Other:
+                                <input
+                                    type="number"
+                                    (change)="updateDateSmoking(Smoking?.PatientSocialfactorId, $event.target.value)"
+                                    [(ngModel)]="frequencyValueSmoking"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 for">
+                        {{ "FOR" | translate }}: {{ frequencyUnitSmoking }}
+                        {{ "YEARS" | translate }}
+                        <div class="list_time">
+                            <button
+                                *ngFor="let item of time"
+                                [class]="
+                  item == frequencyUnitSmoking
+                    ? 'ci-button-exam'
+                    : 'ci-button-exam-active'
+                "
+                                (click)="updateFrequencyUnit(Smoking?.PatientSocialfactorId, item)"
+                            >
+                                {{ item }}
+                            </button>
+                            <div class="other">
+                                Other:
+                                <input
+                                    type="number"
+                                    (change)="updateFrequencyUnit(Smoking?.PatientSocialfactorId, $event.target.value)"
+                                    [(ngModel)]="frequencyUnitSmoking"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
